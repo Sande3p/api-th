@@ -1,0 +1,75 @@
+<?php
+/**
+ * Template Name: Home
+ */
+?>
+<?php get_header(); ?>
+<?php 
+global $activity;
+//$activity = get_activity_summary();
+
+?>
+<div class="content">
+	<div id="main">
+		<div id="banner">
+			<div class="inner">
+				<div class="container">
+					<ul class="slider">
+						<?php 
+						$args = array (
+
+								'post_type' => 'promo',
+								'category_name' => 'Promo home'
+
+						);
+
+						$promos = new WP_Query ( $args );
+							
+						if ($promos->have_posts ()) :
+
+						while ( $promos->have_posts () ) :
+
+						$promos->the_post ();
+						?>
+						<li class="<?php echo strtolower ($post->post_title);?>"><?php the_content(); ?>
+						</li>
+						<?php endwhile; endif; wp_reset_query();?>
+					</ul>
+				</div>
+			</div>
+		</div>
+		<div id="stats">
+			<div class="container">
+				<p>
+					<em class="members"><?php echo get_activity_summary("member_count"); ?></em> of the world's best minds competing
+
+				</p>
+				<a class="btn btnAlt" href="<?php bloginfo('wpurl') ?>/challenges">View Challenges</a>
+			</div>
+		</div>
+		<!-- /#stats -->
+
+
+
+
+		<article id="mainContent">
+			<div class="container">
+				<?php					
+				if (have_posts ()) :
+				while ( have_posts () ) : the_post ();
+				$pid= $post->ID;
+				?>
+				<?php the_content();?>
+			</div>
+		</article>
+		<!-- /#mainContent -->
+		<article id="featuredContent">
+			<div class="container">
+				<?php echo do_shortcode(get_post_meta($pid,'Featured content',true)); ?>
+			</div>
+		</article>
+		<!-- /#featuredContent -->
+
+		<?php endwhile;  endif; wp_reset_query(); ?>
+
+<?php get_footer(); ?>

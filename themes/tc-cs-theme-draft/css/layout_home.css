@@ -1,0 +1,302 @@
+
+/* #header */
+#header{
+    background:url(../i/header-bg.png) repeat-x 0 0;
+	height:auto;
+	border-bottom:none;
+}
+   
+    /* .banner */
+    #header .banner{
+        width:962px;
+        margin:0 auto;
+        height:187px;
+        background:url(../i/banner-bg.png) no-repeat 0 0;
+        display:block;
+        position:relative;
+        z-index:1;
+        top:-1px;
+    }
+
+    #header .banner a{
+        display:block;
+        height:175px;
+    }
+    #header .banner a:hover{
+        text-decoration:none;
+    }
+        #header .banner figure{
+            padding:24px 170px 0 86px;
+        }
+            #header .banner figure img{
+                float:left;
+
+            }
+            #header .banner figcaption{
+                font-family:"Myriad Pro", Arial, Helvetica, Tahoma, sans-serif;
+                padding: 0 0 0 135px;
+            }
+            #header .banner figcaption.noImage{
+                padding: 0;
+            }
+                #header .banner figcaption h2{
+                    font-size:34px;
+                    font-weight:normal;
+                    color:#302f2f;
+                    text-transform:uppercase;
+                    padding-top:6px;
+                }
+                    #header .banner figcaption h2 span{
+                        color:#ff0000;
+                    }
+                #header .banner figcaption p{
+                    font-size:19px;
+                    color:#515151;
+                    padding-bottom:15px;
+                }
+                    #header .banner figcaption p span{
+                        color:#ff0000;
+                    }
+                #header .banner figcaption i{
+                    color:#565656;
+                    font-style:italic;
+                    font-size:13px;
+                }
+        #header .banner span.more{
+            position:absolute;
+            height:70px;
+            width:112px;
+            background:url(../i/more-button.png) no-repeat 0 0;
+            font-size:24px;
+            line-height:24px;
+            color:#fff;
+            font-weight:bold;
+            text-shadow:0 1px 0 #6b0000;
+            padding-left:80px;
+            padding-top:15px;
+            right:-14px;
+            top:48px;
+        }
+
+/* #interactive */
+#interactive{
+    background:url(../i/interactive-bot-bg.png) repeat-x 0 bottom;
+    margin-top:-6px;
+}
+    #interactive .mask{
+        width:962px;
+        margin:0 auto;
+    }
+        /* .sliders */
+        #interactive .sliders{
+            position:relative;
+        }
+        #interactive .slidersMask{
+            overflow:hidden;
+            width:962px;
+            height:336px;
+            position:relative;
+        }
+        #interactive .sliderList{
+            width:99999px;
+            height:336px;
+            margin-left:0;
+            position: relative;
+        }
+            #interactive .sliders .shadow{
+                position:absolute;
+                height:336px;
+                width:45px;
+                background:url(../i/shadow.png) no-repeat center -40px;
+                left:5px;
+                top:0;
+            }
+            #interactive .sliders .slider{
+                height:336px;
+                float:left;
+                overflow:auto;
+            }
+            /* Nav buttons */
+            #interactive .sliders .leftBtn{
+                background:url(../i/navi-button.png) no-repeat 0 -62px;
+                position:absolute;
+                right:0;
+                top:156px;
+                height:31px;
+                width:31px;
+                z-index:3
+            }
+            #interactive .sliders .leftBtn:hover{
+                background-position: 0 -93px;
+
+            }
+            #interactive .sliders .rightBtn{
+                background:url(../i/navi-button.png) no-repeat 0 0;
+                position:absolute;
+                right:-31px;
+                top:156px;
+                height:31px;
+                width:31px;
+                z-index:3
+            }
+            #interactive .sliders .rightBtn:hover{
+                background-position: 0 -31px;
+            }
+        /* footer */
+        #interactive footer{
+            height:22px;
+        }
+            #interactive footer a.home{
+                float:left;
+                height:13px;
+                width:13px;
+                overflow:hidden;
+                background:url(../i/home-icon.png) no-repeat 0 0;
+                margin-top:5px;
+                margin-left:3px;
+            }
+            #interactive footer nav{
+                float:right;
+                overflow:hidden;
+                padding-top:9px;
+            }
+                #interactive footer nav a{
+                    float:left;
+                    overflow:hidden;
+                    background:url(../i/nav.png) no-repeat 0 0;
+                    height:7px;
+                    width:25px;
+                    margin-left:3px;
+                }
+                #interactive footer nav a.active{
+                    background-position:0 -7px;
+                }
+
+
+
+
+/*================ .jScrollPaneContainer ========================*/
+.jScrollPaneContainer {
+	position: relative;
+	overflow: hidden;
+	z-index: 1;
+    float:left;
+}
+
+.jScrollPaneTrack {
+	position: absolute;
+	cursor: pointer;
+	right: 0;
+	top: 0;
+	height: 100%;
+}
+.jScrollPaneDrag {
+	position: absolute;
+	background: #ededed;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.jScrollPaneDrag.hover {
+	position: absolute;
+	background: #bdbaba;
+	cursor: pointer;
+	overflow: hidden;
+}
+
+.jScrollPaneDragTop {
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+    height:5px;
+    width:7px;
+    background:url(../i/scroll-bar.png) no-repeat 0 0;
+}
+
+.jScrollPaneDragTop.hover {
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+    height:5px;
+    width:7px;
+    background:url(../i/scroll-bar-hover.png) no-repeat 0 0;
+}
+
+.jScrollPaneDragBottom {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+    height:5px;
+    width:7px;
+    background:url(../i/scroll-bar.png) no-repeat 0 -5px;
+}
+
+.jScrollPaneDragBottom.hover{
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+    height:5px;
+    width:7px;
+    background:url(../i/scroll-bar-hover.png) no-repeat 0 -5px;
+}
+
+/* For Mobile like ipad ... */
+@media screen and (max-device-width: 768px) {
+
+        #header .banner figure{
+            padding:24px 158px 0 90px;
+        }
+        #interactive .sliders .slider{
+            overflow:auto;
+            position:relative;
+            z-index:1;
+        }
+}
+@media (-webkit-min-device-pixel-ratio: 1.5),
+       (-o-min-device-pixel-ratio: 3/2),
+       (min--moz-device-pixel-ratio: 1.5),
+       (min-device-pixel-ratio: 1.5) {
+
+        #header .banner figure{
+            padding:24px 168px 0 50px;
+        }
+}
+
+/* 
+main wrapper
+*/
+
+#tmpDropDownMenu{
+	width:960px;
+	margin:10px auto;	
+	border-bottom:3px #000000 solid;
+	color:#fff;
+	height:30px;
+}
+
+#mainContent{
+	width:962px;
+	margin:0px auto;	
+}
+
+/* portal title */
+#mainContent h2{
+	padding:5px;
+	margin:5px 0px;
+	font-size:2em;
+	border:1px solid #C0C0C0;
+}
+
+.talk {
+	background: url(../i/talk.png) 0 0 no-repeat;
+	display: block;
+	width: 142px;
+	height: 44px!important;
+	position: absolute;
+	right: -13px;
+	bottom: 17px;
+}

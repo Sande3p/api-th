@@ -1,0 +1,372 @@
+/* CSS Document */
+
+/* Secondary menu */
+.secondaryMenu {
+    background: url(../i/secondary_menu.png) 0 0 repeat-x;
+    height: 47px;
+}
+#menu-secondary_menu {
+    width: 962px;
+    margin: 0 auto;
+    overflow: hidden;
+}
+#menu-secondary_menu li {
+    float: left;
+    margin-right: 70px;
+}
+#menu-secondary_menu li.current_page_item a, #menu-secondary_menu li.current_page_item a:hover {
+    color: #333333;
+    text-decoration: none;
+    position: relative;
+    background: url(../i/triange.png) center bottom no-repeat;
+    display: inline-block;
+    height: 54px;
+}
+    
+
+#menu-secondary_menu li a {
+    font: bold 12px Tahoma, Geneva, sans-serif;
+    color: #0088cc;
+    line-height: 46px;
+}
+.secondaryMenuHolder {
+    display: none;
+}
+
+/* Leadership */
+.frontLeadership {
+    margin-top: 20px;
+    margin-bottom: 98px;
+}
+.leadership {
+    overflow: hidden;
+    clear: both;
+}
+.leadership h1 {
+    font: bold 24px Arial, Helvetica, sans-serif;
+    color: #333;
+    padding: 5px 0 12px 0;
+}
+.person {
+    float: left;
+    margin-right: 30px;
+    margin-bottom: 20px;
+}
+.lastPerson {
+    margin-right: 0;
+}
+.person img {
+    display: block;
+}
+.personInfo {
+    border: 1px solid #d8d8d8;
+    border-top: none;
+    width: 163px;
+    text-align: center;
+    background-color: #f9f9f9;
+    padding: 9px 0 5px 0;
+}
+.personInfo .name {
+    font: bold 14px Tahoma, Geneva, sans-serif;
+    color: #0090ff;
+    display: block;
+}
+
+.personInfo .title {
+    font: bold 11px Tahoma, Geneva, sans-serif;
+    color: #7f7f7f;
+}
+
+/* Event front */
+
+.eventWrapper {
+    border-bottom: 1px solid #e5e5e5;
+    padding-bottom: 15px;
+}
+.eventWrapper h3 {
+    padding-top: 26px;
+    font: bold 24px Arial, Helvetica, sans-serif;
+    color: #000;
+}
+.eventWrapper h3 a {
+    font: bold 24px Arial, Helvetica, sans-serif;
+    color: #000;
+}
+.eventWrapper span.dateAuthor {
+    font: normal 12px Tahoma, Geneva, sans-serif;
+    color: #7f7f7f;
+    display: block;
+    padding-bottom: 17px;
+}
+.eventWrapper span.divider {
+    color: #ccc;
+}
+.eventWrapper .article p {
+    font: normal 12px Tahoma, Geneva, sans-serif;
+    color: #7f7f7f;
+    line-height: 19px;
+} 
+
+.eventWrapper .readmoreLink {
+    color: #0090ff;
+    font: 11px Tahoma, Geneva, sans-serif;
+}
+.eventWrapper .listThumbnail {
+    margin-right: 19px;
+    float: left;
+}
+
+/* Pagnation */
+.pageNumber {
+    float: right;
+}
+.rightPage {
+     float: right;
+     font: normal 11px Tahoma, Geneva, sans-serif;
+     color: #636373;
+     line-height: 31px;
+     padding-right: 10px;
+}
+.filter {
+    clear: both;
+    margin: 14px 0 68px 0;
+    overflow: hidden;
+}
+.pageBox {
+    float: right;
+}
+.pageBox a {
+    width: 32px;
+    height: 31px;
+    overflow: hidden;
+    text-align: center;
+    display: block;
+    float: left;
+    background: url(../i/pagnation.png) -60px 0 no-repeat;
+    font: bold 11px Tahoma, Geneva, sans-serif;
+    line-height: 31px;
+}
+.pageBox a.disable {
+     color: #636373;
+     cursor: default;
+}
+.pageBox a.disable:hover {
+     text-decoration: none;
+}
+
+
+.pageBox a.buttonAblePrev {
+    background-position: 0 -31px;
+    text-indent: 1000px;
+}
+.pageBox a.buttonAbleNext {
+    background-position: -120px -31px;
+    text-indent: 1000px;
+}
+.pageBox a.buttonAblePrev.buttonDisable {
+    background-position: 0 0;
+    text-indent: 1000px;
+}
+.pageBox a.buttonAbleNext.buttonDisable {
+    background-position: -120px 0;
+    text-indent: 1000px;
+}
+
+.singleArticle p, .singleArticle li {
+    padding-bottom: 10px;
+}
+.singleArticle .pageNumBT {
+    float: right;
+}
+
+
+/* Contact Us */
+
+.contactUsContent {
+    width: 553px;
+    float: left;
+    font: normal 14px Arial, Helvetica, sans-serif;
+    line-height: 18px;
+    color: #333;
+    margin-right: 20px;
+}
+
+.contactUsContent h3 {
+    font: bold 24px Arial, Helvetica, sans-serif;
+    color: #333;
+    padding-top: 25px;
+	padding-bottom:5px;
+	line-height:33px;
+}
+.contactUsContent label {
+    font-weight: bold;
+    display: inline-block;
+    width: 80px;
+}
+
+.consultant {
+    padding-top: 25px;
+    margin-left: 575px;
+}
+.consultant h4 {
+    font: normal 18px Tahoma, Geneva, sans-serif;
+    color: #333;
+    line-height: 39px;
+}
+.consultant input. {
+    width: 288px;
+}
+.consultant label {
+    float: left;
+    display: block;
+    width: 64px;
+    font: normal 14px Arial, Helvetica, sans-serif;
+    color: #7f7f7f;
+}
+.consultant div.row {
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+.consultant button.jqTransformButton {
+    margin-left: 71px;
+}
+.consultant span.call {
+    font: normal 12px Tahoma, Geneva, sans-serif;
+    color: #7f7f7f;
+    position: relative;
+    padding-left: 10px;
+    top: -9px;
+}
+.consultant .req {
+    border-top: 1px solid #d8d8d8;
+    border-bottom: 1px solid #d8d8d8;
+    padding: 20px 26px 0px 10px;
+}
+
+.consultant .jqTransformInputWrapper  {
+    width: 279px!important;
+}
+.others {
+    border-bottom: 1px solid #d8d8d8;
+    padding-bottom: 10px;
+    font: normal 12px Tahoma, Geneva, sans-serif;
+    color: #7f7f7f;
+    padding-left: 10px;
+}
+
+.error {
+    color: red;
+}
+.succ {
+    color: green;
+}
+
+div.mapp-container {
+    margin: 0!important;
+    margin-top: 20px!important;
+    margin-bottom: 20px!important;
+}
+
+
+/* Leadership detail */
+.leadershipSing {
+    padding-top: 30px;
+    padding-bottom: 50px;
+    overflow: hidden;
+}
+.leadershipSing h3 {
+    font-size: 14px;
+    color: #333;
+    font-weight: normal;
+    padding-top: 10px;
+}
+.leadershipSing .title {
+    font-size: 14px;
+    color: #666;
+    padding-bottom: 18px;
+}
+.leadershipSing .article {
+    font-size: 12px;
+    color: #000;
+    line-height: 18px;
+    margin-bottom: 10px;
+}
+.leadershipSing .article p {
+    margin-bottom: 10px;
+    font-size: 12px;
+    color: #000;
+    line-height: 18px;
+}
+.leadershipSing .eventWrapper {
+    border-bottom: none;
+}
+
+.leadershipSing .listThumbnail {
+    margin-right: 40px;
+}
+
+.box2 {   
+    position: relative;
+    border: #D2D2D2 1px solid;
+    width: 163px;
+    float: right;
+    margin-left: 20px;
+}
+
+.box2 h5 {
+    border-bottom: 1px solid #D2D2D2;
+    text-align: center;
+    height: 36px;
+    padding-top: 11px;
+    background: url(../i/mamagementTableHeadingBG.gif) repeat-x left bottom white;
+    overflow: hidden;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+.box2 .corner {
+    background-image: url(../i/mamagementTableCorner.gif);
+    width: 4px;
+    height: 4px;
+    display: block;
+    position: absolute;
+    background-repeat: no-repeat;
+    overflow: hidden;
+}
+.box2 .tl {
+    top: -1px;
+    left: -1px;
+    background-position: 0 0;
+}
+.box2 .tr {
+    top: -1px;
+    right: -1px;
+    background-position: -4px 0;
+}
+.box2 .bl {
+    bottom: -1px;
+    left: -1px;
+    background-position: 0 -4px;
+}
+.box2 .br {
+    bottom: -1px;
+    right: -1px;
+    background-position: -4px -4px;
+}
+.box2 ul li {
+    border-bottom: 1px solid #D2D2D2;
+    padding: 12px 9px;
+}
+.box2 ul a, .box2 ul a:visited {
+    font-weight: bold;
+    text-decoration: none;
+    text-align: left;
+    display: block;
+    font-size: 14px;
+    color: #EC1C23;
+}
+.box2 ul span {
+    color: #666;
+    font-size: 12px;
+}
+

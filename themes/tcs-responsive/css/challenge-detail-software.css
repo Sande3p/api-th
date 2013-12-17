@@ -1,0 +1,746 @@
+.challenge-detail .pageHeading h1{
+	font-size: 30px;
+	line-height: 30px;
+	font-weight: normal;
+	color: #474747;
+	padding: 15px 0;
+	margin:10px 0;
+	border-bottom: 1px solid #e7e7e7;
+	overflow:hidden;
+}
+
+ .challenge-detail .pageHeading h2{
+	font-size: 14px;
+	line-height: 30px;
+	font-weight: bold;
+	color: #666666; 
+	margin:10px 0; 
+	overflow:hidden;
+}
+
+.challenge-detail .pageHeading h2 span{ 
+	font-weight: normal; 
+}
+
+#stepBox{
+	display:block;
+	overflow:hidden;
+}
+#stepBox .leftColumn {
+	display: inline;
+	float: left;
+	width: 133px;
+}
+
+#stepBox .leftColumn a{
+	margin-bottom:10px;
+}
+
+#stepBox .middleColumn {
+	display: inline;
+	float: left; 
+	width: 550px;
+	margin: 0 22px;
+}
+
+#stepBox .middleColumn table{
+	border-collapse:collapse;
+	width:100%; 
+}
+
+#stepBox .middleColumn table td{
+	border: 1px solid #e7e7e7;
+	text-align: center;
+	padding:10px;
+}
+
+#stepBox .middleColumn table h2{
+	color: #666666;
+	font-size: 14px;
+	font-weight: bold;
+	margin-bottom:27px;  
+}
+
+#stepBox .middleColumn table h3{
+	color: #00AEFF;
+	font-size: 24px;
+	font-weight: bold;  
+}
+
+#stepBox .middleColumn table p{ 
+	font-size: 14px;
+	font-weight: bold;  
+}
+
+#stepBox .middleColumn table .realibilityPara span{ 
+	color: #00AEFF;
+	font-size: 18px;
+}
+
+#stepBox .middleColumn table .drPointsPara span{ 
+	color: #a1a1a1; 
+	font-size: 18px;
+}
+
+#stepBox .rightColumn {
+	display: inline;
+	float: left;
+	width: 283px;
+}
+
+ .challenge-detail .grid-3-3{
+	float: left;
+	width: 728px; 
+}
+
+.challenge-detail .grid-1-3 {
+	float: right;
+	width: 282px;
+}
+
+#stepBox .rightColumn .nextBox { 
+	position: relative;
+	width: 283px;
+}
+#stepBox .rightColumn .nextBox .nextBoxContent,
+#stepBox .rightColumn .nextBox .allDeadlineNextBoxContent {
+    background:  #01ccff;
+	border: 1px solid #01b3f0;
+    margin: 0 auto;
+    padding: 10px 13px;
+	height: 82px;
+}
+#stepBox .rightColumn .nextBox .allDeadlineNextBoxContent {
+   padding: 10px 6px 10px 6px; 
+	height: 82px;
+}
+#stepBox .rightColumn .nextBox .allDeadlineNextBoxContent p {
+    color: #FFFFFE;
+    font-size: 12px;
+    margin-bottom: 5px;
+} 
+#stepBox .rightColumn .nextBox .allDeadlineNextBoxContent label {
+    display: block;
+    float: left;
+    font-weight: bold;
+    text-align: left;
+    width: 115px;
+}  
+#stepBox .rightColumn .nextBox .nextDTitle {
+    color: #0081a3;
+    display: block;
+    font-size: 22px;
+    margin-bottom: 5px;
+	text-transform: uppercase;
+}
+#stepBox .rightColumn .nextBox .CEDate {
+    color: #0081a3;
+    display: block;
+    font-size: 16px; 
+    margin-bottom: 5px;
+	
+}
+#stepBox .rightColumn .nextBox .icoTime{
+	height: 43px;
+	display:block;
+	padding-left: 60px;
+	padding-top:10px;
+	background: url("../i/ico-time.png") no-repeat 0 0;
+}
+#stepBox .rightColumn .nextBox .timeLeft {
+    color: #FFFFFE;
+    font-size: 30px;
+	line-height: 30px;
+	margin-left:20px; 
+} 
+#stepBox .rightColumn .nextBox .timeLeft small{
+    color: #FFFFFE;
+    font-size: 13px;
+	margin-right:16px; 
+} 
+#stepBox .rightColumn .nextBoxGray .nextBoxContent {
+    background:  #CACACA;
+    height: 66px;
+} 
+#stepBox .rightColumn .nextBoxGray.nextDTitle {
+    color: #252525;
+}
+#stepBox .rightColumn .nextBoxGray .CEDate {
+    color: #252525;
+}
+#stepBox .rightColumn .deadlineBox { 
+    position: relative;
+    width: 283px;
+}
+#stepBox .rightColumn .deadlineBox .deadlineBoxContent {
+    background: #b7b7b7;
+	border: 1px solid #959595;
+	border-top: none; 
+}
+
+#stepBox .rightColumn .deadlineBox .deadlineBoxContent a{ 
+	font-size: 14px;
+	 color: #FFFFFE;
+}
+
+#stepBox .rightColumn .deadlineBox .allDeadlinedeadlineBoxContent,
+#stepBox .rightColumn .deadlineBox .nextDeadlinedeadlineBoxContent
+{
+    padding: 5px 13px;
+}
+  
+
+.challenge-detail .tabNav {
+	padding-top:0;
+	padding-bottom:10px;
+	clear:both;
+	overflow:hidden;
+}
+
+.challenge-detail .tabNav ul{
+	width: auto;
+	padding:0;
+	margin-left: -10px;
+}
+
+.challenge-detail .tabNav ul .link{
+	margin-left:10px;
+}
+
+.challenge-detail .tabNav li{
+        float: left;    
+        border-left: 1px solid #D0D0D1;
+        height: 16px;
+        line-height: 18px;
+}
+    .challenge-detail .tabNav li:first-child{
+        border-left: 0;
+    }
+    .challenge-detail .tabNav .link{
+        margin: 0 10px;        
+    }
+    .challenge-detail .tabNav .link.active,
+    .challenge-detail .tabNav .link.active:hover{
+        color: #666;
+        cursor: default;
+    }
+
+.challenge-detail .tableWrap h1{
+	color: #00aeff;
+	font-size:16px;
+	line-height:22px;
+	font-weight: bold;
+	border-bottom: 1px solid #e7e7e7;
+	margin-bottom:10px;
+	padding-bottom:8px;
+}
+
+.challenge-detail .tableWrap h2{
+	color: #000;
+	font-size:14px;
+	line-height:22px;
+	font-weight: bold; 
+	margin-bottom:10px;
+}
+
+.challenge-detail .tableWrap h3{
+	color: #ed1c24;
+	font-size:14px;
+	line-height:22px;
+	font-weight: bold; 
+	margin-bottom:0px;
+}
+
+.challenge-detail .tableWrap p{
+	color: #797979;
+	font-size:13px;
+	line-height:18px;
+	margin-bottom:15px;
+}
+
+.challenge-detail .tableWrap strong {
+	color: #000;
+}
+
+.challenge-detail .tableWrap ul {
+    margin-left: 0px;
+    padding: 0;
+	margin-bottom:20px;
+    width: auto;
+}
+
+.challenge-detail .tableWrap ul li{
+	float:none;
+	display:block;
+	font-size: 13px;
+    line-height: 18px;
+	border: none;
+	height: auto;
+	padding-left:12px;
+	background: url("../i/bullet.png") no-repeat 0 7px;
+}
+
+.challenge-detail .tableWrap p a{
+		word-wrap: break-word;
+	}
+
+.challenge-detail .tabNav{
+	border-bottom: 1px solid #e7e7e7;
+	margin-bottom:10px;
+}
+
+.challenge-detail .tableWrap{
+	padding-right:20px;
+}
+
+.challenge-detail .topRightTitle{
+	display:block; 
+	width: 100%;
+}
+
+.challenge-detail  .topRightTitle a{
+	font-size: 16px;
+	height: 26px;
+	line-height:20px;
+	float:right;
+	clear:both;
+	padding-left:32px;
+	background: url("../i/ico-contest-forum.png") no-repeat 0 0;
+}
+
+.challenge-detail .columnSideBar{
+	display:block;
+	clear:both;
+	width: 100%;
+	background: #f7f7f7;
+	border: 1px solid #e1e1e1;
+}
+
+.challenge-detail .columnSideBar .sidebar{
+	display:block;
+	overflow:hidden;
+}
+
+.challenge-detail .columnSideBar .inner{
+	padding: 10px 10px 0 10px;
+}
+
+.challenge-detail .columnSideBar h3{
+        color: #00aeff;
+		font-size:16px; 
+		font-weight: bold;
+		border-bottom: 1px solid #e7e7e7; 
+		padding: 11px 10px;
+		text-transform: uppercase;
+    }
+/*.challenge-detail .columnSideBar ul{
+	transform:none!important;
+	transition:none!important;
+	-webkit-transform:none!important;
+	-webkit-transition:none!important;
+	width:100%!important;
+}*/
+	 
+ .challenge-detail .columnSideBar p strong{
+	 color: #000;
+	}
+.reviewStyle p{	
+	font-size: 13px;
+	margin-bottom: 5px;
+	display:block;
+	width:100%!important;
+}
+.reviewStyle p a.tooltip{
+    display: inline-block;
+    background: #ff8a00 url("../i/question.png") no-repeat 3px 2px;
+    border: 1px solid #b56200;
+    height: 12px; 
+    width: 12px;
+    text-align: center; 
+    border-radius: 3px;
+    behavior: url(./css/PIE.htc);
+    position: relative;
+}
+    .reviewStyle p a.tooltip:hover{
+        background: #ffb800 url("../i/question.png") no-repeat 3px 2px;
+        text-decoration: none; 
+        color: #fff; 
+}
+ 
+
+.tip {
+    background: none repeat scroll 0 0 #FFFFFD;
+    display: block;
+    position: absolute;
+    width: 210px;
+    z-index: 100;
+}
+.tip .tipHeader {
+    background: #F7F7F7;
+    border: 1px solid #E1E1E1;
+    clear: both;
+    display: block;
+	border-bottom:none;
+}
+.tip .tipHeader h2 {
+    color: #333333; 
+    font-size: 12px;
+    font-weight: bold;
+    line-height: 30px;
+    margin: 0 0 0 10px;
+    text-align: left;
+}
+.tip .tipBody {
+	font-size: 12px;
+    margin: 0;
+    padding: 5px 10px;
+	background: #fff;
+    border: 1px solid #E1E1E1;
+}
+.tip .tipBody ul {
+    margin: 5px 0;
+    padding: 0;
+}
+.tip .tipBody ul li {
+    line-height: 18px;
+    list-style: none outside none;
+    margin: 0;
+    padding: 5px 18px 5px 10px;
+    text-align: left;
+}
+.tip .tipBody ul li a, .tip .tipBody ul li a.reviewerName {
+    font-size: 12px;
+    text-decoration: none;
+}
+.tip .tipBody ul li a:hover, .tip .tipBody ul li a.reviewerName:hover {
+    text-decoration: underline;
+}
+.tip .tipBody ul li a.reviewerName {
+    background-position: 0 center;
+    background-repeat: no-repeat;
+    display: inline;
+    float: left;
+    font-weight: bold;
+    padding: 0 0 0 34px;
+    text-align: left;
+    width: 80px;
+}
+.tip .tipBody ul li a.reviewScore {
+    float: right;
+}
+.reviewStyle {
+    margin: 0 0 12px;
+    width: 100%;
+}
+.reviewStyle h3 {
+    color: #B30000;
+    font-family: "Lucida Sans Unicode",Arial,Helvetica,sans-serif;
+    font-size: 16px;
+    font-weight: normal;
+    padding: 0 0 6px;
+} 
+
+.contestLinks p{
+	display:block;
+	overflow:hidden;
+	border: none;
+	height: auto;
+	padding-left:12px;
+	font-size:13px; 
+	background: url("../i/bullet-orange.png") no-repeat 0 7px;
+}
+
+.forumFeed .inner{
+	padding-bottom: 10px!important;
+}
+.forumFeed .forumItemWrapper{
+	display:block;
+	padding:10px; 
+} 
+.forumFeed .forumItem{
+	padding-bottom:5px;
+	margin-bottom:5px;
+	border-bottom: 1px dotted #e7e7e7;
+	font-size:13px;
+}
+
+.forumFeed .forumTitle{
+	font-weight:bold;
+}
+
+.forumFeed .forumInfo{
+	font-size:11px;
+}
+
+.btnRegisterDeac{
+    background: #7fd6ff!important;
+    border-bottom: 4px solid #7fcaff!important;
+	text-align:left!important;
+	line-height:12px!important;
+	font-size:12px!important;
+	font-weight: bold!important;
+	text-transform:uppercase;
+	overflow:hidden;
+	display:block;
+}
+    .btnRegisterDeac:hover{
+        background: #7fd6ff!important;
+}
+
+.btnRegisterDeac span{
+	float:left;
+	width: 21px;
+	height: 37px;
+	padding-top:10px;
+	font-weight: bold;
+	font-size:14px;
+	text-align: center;
+	color: #7fcaff;
+	margin-left: 4px;
+	margin-right: 4px;
+	background: url("../i/arrow-button.png") no-repeat 0 0;
+}
+
+.btnRegisterDeac strong{
+	float:left;
+	height:100%;
+	width:77%;
+	margin-top:4px!important;
+	
+}
+
+.btnSubmit{
+    background: #00aeff!important;
+    border-bottom: 4px solid #0096ff!important;
+	text-align:left!important;
+	line-height:12px!important;
+	font-size:12px!important;
+	font-weight: bold!important;
+	text-transform:uppercase;
+	overflow:hidden;
+	display:block;
+}
+    .btnSubmit:hover{
+        background: #0096ff!important;
+}
+
+.btnSubmit span{
+	float:left;
+	width: 21px;
+	height: 37px;
+	padding-top:10px;
+	font-size:14px;
+	font-weight: bold;
+	text-align: center;
+	color: #00aeff;
+	margin-left: 4px;
+	margin-right: 4px;
+	background: url("../i/arrow-button.png") no-repeat 0 0;
+}
+
+.btnSubmit strong{
+	float:left;
+	height:100%;
+	width:77%;
+	margin-top:4px!important;
+	
+} 
+
+.btnMyAcc span {
+    background: url("../i/ico-arrow.png") no-repeat scroll 0 0 rgba(0, 0, 0, 0);
+    cursor: pointer;
+    display: inline-block;
+    height: 9px;
+    position: absolute;
+    right: 13px;
+    top: 13px;
+    transition-duration: 0.3s;
+    width: 16px;
+}
+
+.scroll-pane
+{
+	display:block;
+	width: 100%;
+	height: 400px;
+	overflow: auto;
+	border: 1px solid #e7e7e7;
+	background: #fff;
+} 
+.fifty{
+	width:50%;
+}
+
+@media (max-width: 1019px) {
+	.challenge-detail .pageHeading h1{
+		font-size:18px;
+		line-height:24px;
+		padding: 8px 0;
+	}
+	
+	.challenge-detail .tabNav ul{
+		width:218px;
+		display:block;
+		margin: 0 auto;
+	}
+	
+	#stepBox .middleColumn{
+		width:100%;
+		margin:0;
+	}
+	
+	#stepBox .container{
+		margin: 0;
+	}
+	
+	.challenge-detail .grid-3-3{
+		width:100%;
+	}
+	
+	.challenge-detail .topRightTitle a{
+		float:none;
+		display:block;
+		margin: 0 auto;
+		width:110px;
+	}
+	#stepBox .rightColumn{
+		float:right;
+	}
+	#stepBox .middleColumn{
+		display:block;
+		clear:both;
+		margin-top:10px;
+	}
+	#mainContent.splitLayout .sideStream{
+		margin-bottom:20px;
+		width:100%!important;
+	}
+	.scroll-pane{
+		width:100%;
+	}
+	
+	#stepBox .leftColumn { 
+		width: 128px;
+	}
+	.btnRegisterDeac, .btnSubmit{ 
+		width: 130px; 
+	}
+	#stepBox .rightColumn,
+	#stepBox .rightColumn .nextBox,
+	#stepBox .rightColumn .deadlineBox{
+		width:auto;
+	}
+	#stepBox .rightColumn .nextBox .nextBoxContent, 
+	#stepBox .rightColumn .nextBox .allDeadlineNextBoxContent{
+		padding: 5px;
+	}
+	#stepBox .rightColumn .nextBox .icoTime {
+		background: url("../i/ico-time-phone.png") no-repeat 0 10px; 
+		height: 43px;
+		padding-left: 35px;
+		padding-top: 10px;
+	}
+	#stepBox .rightColumn .nextBox .nextDTitle {  
+		font-size: 12px;
+		margin-bottom: 0px;
+	}
+	
+	#stepBox .rightColumn .nextBox .CEDate { 
+		font-size: 9px;
+		margin-bottom: 5px;
+	}
+	#stepBox .rightColumn .nextBox .timeLeft { 
+		font-size: 20px;
+		line-height: 30px;
+		margin-left: 3px;
+	}
+	#stepBox .rightColumn .deadlineBox .allDeadlinedeadlineBoxContent, 
+	#stepBox .rightColumn .deadlineBox .nextDeadlinedeadlineBoxContent {
+		padding: 5px;
+	}
+	#stepBox .rightColumn .nextBox .timeLeft small{
+		margin-right:2px;
+	}
+	#stepBox .rightColumn .deadlineBox .deadlineBoxContent a{
+		font-size:13px;
+	}
+	#stepBox .rightColumn .nextBox .allDeadlineNextBoxContent p { 
+		font-size: 10px;
+		line-height:12px;
+		margin-bottom: 10px;
+	} 
+	#stepBox .rightColumn .nextBox .allDeadlineNextBoxContent label {
+		display: block;  
+		width: 70px;
+	}
+	#mainContent.splitLayout .mainStream{
+		 width:100%;
+	}
+	
+	.columnSideBar .slider .bx-controls {
+		margin: 0 0 10px 0;
+		text-align: center;
+	}
+	 .columnSideBar .slider .bx-controls .bx-pager-item{
+        display: inline;
+        text-align: center;
+        overflow: hidden;
+    
+        max-width: 21px;
+        vertical-align: top;
+        height: 11px;
+}
+        .columnSideBar .slider .bx-controls .bx-pager-item a{
+            display: inline-block;
+            background: url(../i/orange-dots.png) no-repeat;
+            text-indent: -100px;
+            background-position: 0 0;
+            width: 11px;
+            height: 11px;
+            margin: 0 5px;
+            -moz-transition-duration: 0s; 
+			-webkit-transition-duration: 0s; 
+			transition-duration: 0s; 
+            overflow: hidden;
+}
+   .columnSideBar .slider .bx-controls .bx-pager-item a.active,
+    .columnSideBar .slider .bx-controls .bx-pager-item a:hover{
+        background-position: 0 -20px;        
+    }
+	
+	.btnRegisterDeac, .btnSubmit{
+		font-size: 11px!important;
+		width: 118px!important;	
+	}
+	.btnRegisterDeac strong,
+	.btnSubmit strong{
+		width: 72%;
+	}
+	 
+	.scroll-pane {
+		height: 100px!important;
+		width:100%;
+	}
+	#stepBox .middleColumn table .realibilityPara{
+		text-transform: capitalize!important;
+	}
+	#stepBox .middleColumn table .realibilityPara span,
+	#stepBox .middleColumn table .drPointsPara span{
+		display:block;
+	}
+	#stepBox .rightColumn .nextBox .allDeadlineNextBoxContent{
+		width:155px;
+		height:100px;
+	}
+	#stepBox .rightColumn .nextBox .allDeadlineNextBoxContent p{
+		float:left;
+		width:49%;
+		padding-right:1%;
+	}
+	
+	#stepBox .rightColumn .nextBox .allDeadlineNextBoxContent p.moveRight{
+		clear:left;
+	}
+	
+	
+}

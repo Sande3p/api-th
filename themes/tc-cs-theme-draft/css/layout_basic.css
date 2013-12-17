@@ -1,0 +1,1018 @@
+@charset "utf-8";
+
+/*---------- CSS RESET (http://meyerweb.com/eric/tools/css/reset/) ------------------*/
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed,
+figure, figcaption, footer, header, hgroup,
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure,
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+img{
+	border: none;
+}
+ *:focus{
+     outline:none;
+ }
+
+/*----------------- COMMON CSS CLASSES ----------------------*/
+.clear{
+    clear:both;
+    height:0px;
+    overflow:hidden;
+    display:block;
+}
+.hide{
+	display:none;
+}
+
+body{
+    font-size:12px;
+    -webkit-text-size-adjust:none;
+    color:#333;
+    font-family:Arial, Helvetica, Tahoma, sans-serif;
+	background:url(../i/bg-black-bottom.png) #fff repeat-x bottom right;
+}
+input,textarea{    font-family:Tahoma, Arial, Helvetica, sans-serif;    color:#333;    padding:0 5px;    font-size:12px;}
+a {
+	color: #0090ff;
+	text-decoration: none;
+}
+a:hover { text-decoration: underline; }
+
+
+/*----------------------------------- Button style -----------------------------*/
+a.redBtn{
+    background: url( ../i/red-button.png) no-repeat left top;
+    display: inline-block;
+    padding-left: 4px;
+    text-decoration:none;
+}
+
+    a.redBtn .buttonMask {
+        background: url( ../i/red-button.png ) no-repeat right -108px;
+        padding-right: 4px;
+        display: inline-block;
+        cursor: pointer;
+    }
+
+        a.redBtn .text {
+            background: url( ../i/red-button.png ) repeat-x left -54px;
+            display: inline-block;
+            height: 27px;
+            line-height: 27px;
+            color: #fffefe;
+            font-size: 11px;
+            text-align: center;
+            font-weight: bold;
+            padding: 0 15px;
+            cursor: pointer;
+        }
+    a.redBtn:hover {
+        background-position: 0 -27px;
+		text-decoration:none;
+    }
+        a.redBtn:hover .buttonMask {
+            background-position: right -135px;
+        }
+            a.redBtn:hover .text {
+                background-position: 0 -81px;
+            }
+
+a.redBtn1{    background: url( ../i/red-button-1.png) no-repeat left top;    display: inline-block;    padding-left: 7px;    text-decoration:none;}    a.redBtn1 .buttonMask {        background: url( ../i/red-button-1.png ) no-repeat right -124px;        padding-right: 7px;        display: inline-block;        cursor: pointer;    }        a.redBtn1 .text {            background: url( ../i/red-button-1.png ) repeat-x left -62px;            display: inline-block;            height: 31px;            line-height: 31px;            color: #fff;            font-size: 15px;            text-align: center;            font-weight: bold;            padding: 0 13px;            cursor: pointer;            text-shadow:0 1px 0 #a30000;        }            
+a.redBtn1 i{   background: url( ../i/to-icon.png) no-repeat right center;                display: inline-block;                height: 31px;                line-height: 31px;                font-style:normal;                padding-right:24px;                cursor: pointer;            }    a.redBtn1:hover {        background-position: 0 -31px;		text-decoration:none;    }        a.redBtn1:hover .buttonMask {            background-position: right -155px;        }            a.redBtn1:hover .text {                background-position: 0 -93px;            }a.redBtn2{    background: url( ../i/red-button-2.png) no-repeat left top;    display: inline-block;    padding-left: 3px;    text-decoration:none;}    a.redBtn2 .buttonMask {        background: url( ../i/red-button-2.png ) no-repeat right -140px;        padding-right: 3px;        display: inline-block;        cursor: pointer;    }        a.redBtn2 .text {            background: url( ../i/red-button-2.png ) repeat-x left -70px;            display: inline-block;            height: 35px;            line-height: 34px;            font-family: Tahoma, Arial, Helvetica, sans-serif;            color: #fff;            font-size: 11px;            text-align: center;            font-weight: bold;            padding: 0 12px;            cursor: pointer;         }    a.redBtn2:hover {        background-position: 0 -35px;		text-decoration:none;    }        a.redBtn2:hover .buttonMask {            background-position: right -175px;        }            a.redBtn2:hover .text {                background-position: 0 -105px;            }a.whiteBtn{    background: url( ../i/white-button.png) no-repeat left top;    display: inline-block;    padding-left: 6px;    text-decoration:none;}    a.whiteBtn .buttonMask {        background: url( ../i/white-button.png ) no-repeat right -124px;        padding-right: 6px;        display: inline-block;        cursor: pointer;    }        a.whiteBtn .text {            background: url( ../i/white-button.png ) repeat-x left -62px;            display: inline-block;            height: 31px;            line-height: 28px;            font-family: Tahoma, Arial, Helvetica, sans-serif;            color: #0090ff;            font-size: 11px;            text-align: center;            font-weight: bold;            padding: 0 14px;            cursor: pointer;         }                   a.whiteBtn .back {                background: url( ../i/back-icon.png) no-repeat left center;                display: inline-block;                height: 31px;                padding: 0 2px 0 13px;                cursor: pointer;                font-style:normal;            }    a.whiteBtn:hover {        background-position: 0 -31px;		text-decoration:none;    }        a.whiteBtn:hover .buttonMask {            background-position: right -155px;        }            a.whiteBtn:hover .text {                background-position: 0 -93px;            }   .searchBox{        background:url(../i/search-box-bg.png) no-repeat 0 0;        padding-left:4px;    }        .searchBox .boxR{            background:url(../i/search-box-bg.png) no-repeat right -80px;            padding-right:4px;        }            .searchBox .boxMid{                background:url(../i/search-box-bg.png) repeat-x 0 -40px;                padding-top:9px;                height:31px;            }                .searchBox input{                    background:none;                    border:0;                    height:22px;                    line-height:22px;                    width:345px;                    float:left;                }                .searchBox a{                    background:url(../i/search-icon.png) no-repeat 0 0;                    height:16px;                    width:14px;                    float:right;                    margin:4px 6px 0 2px;                }/* #header */
+#header{
+    background:url(../i/header-bg-1.png) repeat-x 0 0;
+    border-bottom:1px solid #D8D8D8
+}
+    /* nav */
+    #header nav{
+        width:962px;
+        margin:0 auto;
+        height:66px;
+    }
+        #header nav a.logo{
+            background:url(../i/tc-logo.png) no-repeat 0 0;
+            height:40px;
+            width:180px;
+            float:left;
+            margin-top:18px;
+        }
+        #header nav a.redBtn{
+            float:right;
+            margin:20px 0 0 14px;
+        }
+        #header nav ul{
+            float:right;
+        }
+            #header nav ul > li{
+                position:relative;
+                z-index:999;
+                float:left;
+                padding:0 14px 0 15px;
+                height:66px;
+                cursor:pointer;
+            }
+			#header nav #menu-blog_menu > li{
+                z-index:0;
+            }
+            #header nav ul > li.expand{
+                background:url(../i/menu-bg.png) repeat-x 0 0;
+            }
+                #header nav ul > li a.menu{
+                    display:inline-block;
+                    line-height:66px;
+                    color:#ffffff;
+                    font-size:14px;
+                    text-shadow:0 -1px 0 #101010;
+                }
+                #header nav ul > li a.menu:hover{
+                    text-decoration:none;
+                }
+                #header nav ul > li a.community{
+                    background:url(../i/community-icon.png) no-repeat 0 21px;
+                    padding-left:36px;
+                }
+                #header nav ul > li a.studio{
+                    background:url(../i/studio-icon.png) no-repeat 0 22px;
+                    padding-left:22px;
+                }
+				
+				#header nav ul > li a.platform{
+                    background:url(../i/platform-icon.png) no-repeat 0 22px;
+                    padding-left:32px;
+                }
+				
+                #header nav ul > li a.about{
+                    background:url(../i/about-icon.png) no-repeat 0 26px;
+                    padding-left:24px;
+                }
+                #header nav ul > li a.contact{
+                    background:url(../i/contact-icon.png) no-repeat 0 21px;
+                    padding-left:22px;
+                }
+                #header nav ul > li a.blog{
+                    background:url(../i/blog-icon.png) no-repeat 0 23px;
+                    padding-left:27px;
+                }
+                #header nav ul > li .subMenus{
+                    float: none;
+                    position:absolute;
+                    display:none;
+                    background:url(../i/mask-bg.png) repeat 0 0;
+                    width:170px;
+                    left:0;
+                    top:66px;
+                    padding:0px 0px 3px 3px;
+					z-index:999;
+                }
+				#header nav ul > li .subMenu {
+					position:relative;
+				}
+				#header nav ul > li .thirdMenus {
+					float: none;
+                    position:absolute;
+                    display:none;
+                    background:url(../i/mask-bg.png) repeat 0 0;
+                    width:170px;
+                    top:0px;
+					left:170px;
+                    padding:0px 0px 3px 3px;
+					z-index:999;
+				}
+                #header nav ul > li.right .subMenus{
+                    right:0;
+                    left:auto;
+                }
+                    #header nav ul > li .subMenus a{
+                        display:inline-block;
+                        padding:2px 5px 2px 10px;
+                        width:150px;
+                        color:#fff;
+                        line-height:18px;
+                        margin-top:4px;
+						margin-right:3px;
+                    }
+					
+					#header nav ul > li .subMenus a:hover{
+						background:red;
+						text-decoration:none;
+					}
+					
+                #header nav ul > li.expand .subMenus{
+                    display:block;
+                }
+				#header nav ul > li:hover .subMenus{
+                    display:block;
+                }
+				#header nav ul > li .subMenu:hover .thirdMenus{
+                    display:block;
+                }
+/* .titleLine */
+#header .titleLine{
+    height:80px;
+    width:962px;
+    margin:0 auto;
+}
+    #header .titleLine h1{
+        float:left;
+        font-family:"Myriad Pro", Arial, Helvetica, Tahoma, sans-serif;
+        padding-top:12px;
+    }
+        #header .titleLine h1 i{
+		background:url(../i/blog-icon-2.png) no-repeat 0 center;            
+		padding-left:52px;            
+		font-size:24px;            
+		font-weight:bold;            
+		font-style:normal;            
+		display:block;            
+		line-height:40px;        
+		}        #header .titleLine h1 span{            float:left;            color:#666;            font-size:14px;            font-style:italic;            font-weight:normal;        }    #header .titleLine .searchBox{        float:right;        margin-top:20px;        width:382px;    }
+/* #content */
+#content .contentInner{
+    width:962px;
+    margin:0 auto;}    /* .mainRail */   
+	#content .contentInner .mainRail
+	{        
+	float:left;        
+	width:556px;        
+	padding-bottom:50px;    }
+        /* .pagination */
+        #content .mainRail .pagination{
+            overflow:hidden;
+            padding-top:15px;
+        }
+            #content .mainRail .pagination a.whiteBtn{
+                float:left;
+            }
+            #content .mainRail .pagination .pagers{
+                float:right;
+                overflow:hidden;
+                color:#636373;
+                font-size:11px;
+                font-family:Tahoma, Arial, Helvetica,  sans-serif;
+				}                
+				#content .mainRail .pagination .pagers span{
+				float:left;                    
+				line-height:30px;                    
+				padding-right:10px;                }                
+				#content .mainRail .pagination .pagers a{                    
+				float:left;                    background:url(../i/pager-button.png) no-repeat 0 0;                    
+				height:31px;                    
+				width:32px;                    
+				text-align:center;                    
+				line-height:28px;                    
+				font-weight:bold;                    
+				margin-right:-1px;                
+				}                
+				#content .mainRail .pagination .pagers a:hover{                    
+				background-position:0 -31px;                    text-decoration:none;                }                #content .mainRail .pagination .pagers a.disabled:hover,                #content .mainRail .pagination .pagers a.current:hover{                    background-position:0 0;                }                #content .mainRail .pagination .pagers a.current{                    color:#636373;                    cursor:default;                }                    #content .mainRail .pagination .pagers a.prev i{                        background:url(../i/prev-icon.png) no-repeat center center;                        cursor:pointer;                        display:inline-block;                        height:28px;                        width:32px;                    }                    #content .mainRail .pagination .pagers a.prev.disabled i{                        background-image:url(../i/prev-icon-1.png);                        cursor:default;                    }                    #content .mainRail .pagination .pagers a.next i{                        background:url(../i/next-icon.png) no-repeat center center;                        cursor:pointer;                        display:inline-block;                        height:28px;                        width:32px;                     }                    #content .mainRail .pagination .pagers a.next.disabled i{                        background-image:url(../i/next-icon-1.png);                        cursor:default;                    }        /* .rightRail */    #content .contentInner .rightRail{        float:right;        width:388px;        padding-top:25px;        padding-bottom:25px;    }    #content.detailPage .contentInner .rightRail{         padding-top:30px;    }        #content .rightRail .searchBox{            margin-bottom:15px;        }        /* .rssWidget */        #content .rightRail .rssWidget{            margin-bottom:15px;                        }            #content .rightRail .rssWidget header{                background:url(../i/news-header-bg.png) no-repeat 0 0;                padding-left:2px;            }
+                #content .rightRail .rssWidget header .headerR{
+                    background:url(../i/news-header-bg.png) no-repeat right -80px;
+                    padding-right:2px;                 }                    
+					#content .rightRail .rssWidget header h2{                        background:url(../i/news-content-bg.png) repeat-x 0 0;                        height:40px;                        line-height:40px;                        padding-left:12px;                        font-size:19px;                        font-weight:normal;                        text-shadow:0 1px 0 #3a3a3a;                        color:#fff;                        text-transform:uppercase;                        font-family:"Myriad Pro", Arial, Helvetica, Tahoma, sans-serif;                    }                        #content .rightRail .rssWidget header h2 span{                            display:inline-block;                            line-height:40px;                            background:url(../i/rss-icon-1.png) no-repeat 0 center;                            padding-left:38px;                        }            #content .rightRail .rssWidget .content{                background:url(../i/news-body-bg.png) repeat-x 0 0;                height:110px;                padding:0 14px;            }
+                #content .rightRail .rssWidget .content p{
+                    color:#825401;
+                    text-shadow:0 1px 0 #ffd550;
+                    font-weight:bold;
+                    font-size:14px;
+                    padding:13px 0;
+                }
+				
+				#content .rightRail .rssWidget .content .msg{
+					color:#825401;
+                    text-shadow:0 1px 0 #ffd550;
+                    font-weight:bold;
+                    font-size:14px;
+                    padding:40px 0 0px 60px;
+				}
+                #content .rightRail .rssWidget .content .error{
+                    font-size:11px;
+                    color:#ff0000;                    line-height:12px;                 }                #content .rightRail .rssWidget .content .inputBox{                    float:left;                    background:url(../i/input-bg-1.png) no-repeat 0 0;                    padding-left:2px;                }                    #content .rightRail .rssWidget .content .inputBox .boxR{                        background:url(../i/input-bg-1.png) no-repeat right -70px;                        padding-right:2px;                    }
+                        #content .rightRail .rssWidget .content .inputBox .boxM{
+                            background:url(../i/input-bg-1.png) repeat-x right -35px;
+                            height:28px;
+                            padding-top:7px;
+                        }                            #content .rightRail .rssWidget .content .inputBox input{                                border:0;                                background:none;                                width:252px;                                color:#fff;                                height:22px;                                line-height:22px;                                font-family:Tahoma, Arial, Helvetica,  sans-serif;                            }                #content .rightRail .rssWidget .content a.redBtn2{                    float:left;                    margin-left:5px;                }
+
+        /* .socialWidget */
+        #content .rightRail .socialWidget{             background:url(../i/black-box-edge.png) no-repeat 0 0;            padding-left:2px;            margin-bottom:15px;        }            #content .rightRail .socialWidget .widgetR{                background:url(../i/black-box-edge.png) no-repeat right -74px;                padding-right:2px;            }                #content .rightRail .socialWidget ul{                    height:74px;                    background:url(../i/black-box-bg.png) repeat-x 0 0;                }                    #content .rightRail .socialWidget li{                        float:left;                        width:77px;                        text-align:center;                        padding-top:12px;                        background:url(../i/rss-line.png) no-repeat right 0;                        height:62px;                    }
+                        #content .rightRail .socialWidget li.last{
+                            background:none;
+                            width:76px;
+                        }
+                        #content .rightRail .socialWidget li a{                            color:#fff;                            text-shadow:0 1px 0 #3e3e3e;                            display:inline-block;                            padding-top:42px;                            font-family: Tahoma, Arial, Helvetica, sans-serif;                            min-width:40px;                            font-size:10px;                        }                        #content .rightRail .socialWidget li a.rss{                            background:url(../i/rss-icon.png) no-repeat center 0;                        }                        #content .rightRail .socialWidget li a.fb{                            background:url(../i/facebook-icon.png) no-repeat center 0;                        }                        #content .rightRail .socialWidget li a.tw{                            background:url(../i/twitter-icon.png) no-repeat center 0;                        }                        #content .rightRail .socialWidget li a.yt{                            background:url(../i/youtube-icon.png) no-repeat center 0;                        }                        #content .rightRail .socialWidget li a.gp{                            background:url(../i/google-puls-icon.png) no-repeat center 0;                         }        /* .commonWidget */        #content .rightRail .commonWidget{            position:relative;            border:1px solid #d8d8d8;            font-family:Tahoma, Arial, Helvetica, sans-serif;            margin-bottom:15px;        }            #content .rightRail .commonWidget header{                height:46px;                line-height:40px;                background:url(../i/widget-header.png) repeat-x 0 0;                border-bottom:1px solid #d8d8d8;            }                #content .rightRail .commonWidget header h2{                    margin-left:16px;                    padding-left:72px;                    background:url(../i/events-icon.png) no-repeat 0 center;                 }
+                #content .rightRail .commonWidget header ul li{
+                    position:relative;
+                    float:left;
+                    width:33%;
+                    font-weight:bold;
+                    text-align:center;
+                    height:46px;
+                }
+                    #content .rightRail .commonWidget header ul li.current a{
+                        color:#000;
+                        cursor:default;
+                    }
+                    #content .rightRail .commonWidget header ul li.current a:hover{
+                        text-decoration:none;
+                    }
+                    #content .rightRail .commonWidget header ul li span{                        display:none;                    }                    #content .rightRail .commonWidget header ul li.current span{                        display:block;                        position:absolute;                        left:50%;                        bottom:-8px;                        background:url(../i/widget-arrow.png) no-repeat 0 0;                        height:9px;                        width:15px;                        margin-left:-7px;                    }
+            
+			#content .rightRail .commonWidget .content{
+                background:url(../i/widget-footer.png) #fffffe repeat-x 0 bottom; 
+            }
+			
+            #content .rightRail .commonWidget .corner{
+                position:absolute;                background:url(../i/widget-corner.png) no-repeat 0 0;                height:4px;                width:4px;                overflow:hidden;             }            #content .rightRail .commonWidget .tl{                left:-1px;                top:-1px;            }            #content .rightRail .commonWidget .tr{                right:-1px;                top:-1px;                background-position:-4px 0;            }            #content .rightRail .commonWidget .bl{                left:-1px;                bottom:-1px;                background-position:0 -4px;            }            #content .rightRail .commonWidget .br{                right:-1px;                bottom:-1px;                background-position:-4px -4px;            }/* .posts */#content .rightRail .commonWidget.posts .content{    padding:10px 14px 0;    font-size:11px;}
+    #content .rightRail .commonWidget.posts figure{
+        overflow:hidden;
+        padding:10px 0;
+        border-bottom:1px solid #e5e5e5;        color:#333;        display:none;    }
+        #content .rightRail .commonWidget.posts figure img{
+            border:1px solid #e3e3e3;
+            height:64px;
+            width:64px;            float:left;            margin-left:5px;        }
+        #content .rightRail .commonWidget.posts figure figcaption{
+            padding:10px 20px 0 86px;
+        }
+        #content .rightRail .commonWidget.posts figure figcaption.singleLine{
+            padding-top:18px;
+        }
+            #content .rightRail .commonWidget.posts figure figcaption a{
+                display:inline-block;
+                margin-top:2px;
+            }
+    #content .rightRail .commonWidget.posts .pagers{
+        text-align:center;
+        padding:12px 0;
+        line-height:14px;
+        font-weight:bold;        color:#636373;    }        #content .rightRail .commonWidget.posts .pagers a{            display:inline-block;            margin:0 2px;        }        #content .rightRail .commonWidget.posts .pagers a.current,        #content .rightRail .commonWidget.posts .pagers a.disabled{            color:#636373;            cursor:default;        }        #content .rightRail .commonWidget.posts .pagers a.current:hover,        #content .rightRail .commonWidget.posts .pagers a.disabled:hover{            text-decoration:none;        }        #content .rightRail .commonWidget.posts .pagers .prev{            margin-right:8px;        }        #content .rightRail .commonWidget.posts .pagers .next{            margin-left:8px;        }/* .events */#content .rightRail .commonWidget.events .content{    padding:0 14px;    font-size:11px;}    #content .rightRail .commonWidget.events figure{        overflow:hidden;        padding:18px 0;        border-bottom:1px solid #e5e5e5;        color:#333;    }        #content .rightRail .commonWidget.events figure img{            height:39px;            width:64px;            float:left;            margin-left:4px;            margin-top:4px;        }        #content .rightRail .commonWidget.events figure figcaption{            padding-left:78px;            color:#7f7f7f;        }            #content .rightRail .commonWidget.events figure figcaption a{                font-weight:bold;            }
+            #content .rightRail .commonWidget.events figure figcaption p{
+                line-height:14px;
+                padding-top:2px;
+            }
+    #content .rightRail .commonWidget.events a.all{
+        display:inline-block;
+        margin:9px 0 16px 4px;        font-weight:bold;    }
+/* .contactUs */
+	#content .rightRail .commonWidget.contactUs .content{
+    padding:0 14px;
+    font-family: Arial, Helvetica, Tahoma, sans-serif;
+	}
+	
+    #content .rightRail .commonWidget.contactUs h4{
+	font-weight:bold;
+	font-size:14px;
+	line-height:20px;
+	padding:10px 10px;
+    }	
+	
+	#content .rightRail .commonWidget.contactUs .content .msg{
+		padding:20px 40px;
+	}
+    
+	#content .rightRail .commonWidget.contactUs header h2{
+	background:url(../i/contact-icon-1.png) no-repeat 0 11px;
+	font-size:18px;
+	font-weight:normal;
+	text-transform:uppercase;        padding-left:40px;    }         
+	#content .rightRail .commonWidget.contactUs li{            overflow:hidden;            padding-bottom:12px;        }            #content .rightRail .commonWidget.contactUs li .error{                color:#ff0000;                font-size:11px;                text-align:right;            }
+            #content .rightRail .commonWidget.contactUs li label{
+                float:left;
+                color:#7f7f7f;
+                line-height:34px;
+                width:60px;
+                padding-right:4px;
+                font-size:14px;
+            }
+            #content .rightRail .commonWidget.contactUs li .inputBox{
+                background:url(../i/input-bg-2.png) no-repeat 0 0;
+                padding-left:3px;                float:left;            }
+                #content .rightRail .commonWidget.contactUs li .inputBox .boxR{
+                    background:url(../i/input-bg-2.png) no-repeat right -68px;
+                    padding-right:3px;
+                }                    #content .rightRail .commonWidget.contactUs li .inputBox .boxM{                        background:url(../i/input-bg-2.png) repeat-x 0 -34px;                        padding:6px 3px 0;                        height:28px;                    }                        #content .rightRail .commonWidget.contactUs li .inputBox input{                            height:22px;                            line-height:22px;                            width:268px;                            border:0;                            background:none;                            float:left;                        }        #content .rightRail .commonWidget.contactUs li.action{            padding-left:64px;            padding-top:3px;        }
+            #content .rightRail .commonWidget.contactUs li.action a{
+                float:left;
+            }
+            #content .rightRail .commonWidget.contactUs li.action p{
+                float:right;
+                color:#7f7f7f;
+                font-size:11px;
+                font-family: Tahoma, Arial, Helvetica, sans-serif;                line-height:30px;                 width:180px;                text-align:right;                padding-right:5px;            }
+    #content .rightRail .commonWidget.contactUs .learnMore{
+        background:url(../i/shadow-line.png) no-repeat center 0;
+        padding:5px 0;
+        overflow:hidden;
+    }
+        #content .rightRail .commonWidget.contactUs .learnMore img{
+            float:left;
+        }
+        #content .rightRail .commonWidget.contactUs .learnMore div{
+            padding-left:135px;
+            color:#666;
+            font-size:14px;            
+			padding-top:22px;        
+			}            
+			#content .rightRail .commonWidget.contactUs .learnMore strong{
+			color:#d60000;
+			display:block;
+			padding:2px 0 10px;            }
+
+			/* .webinarWidget */
+#content .rightRail .webinarWidget{
+    background:url(../i/gray-box.png) no-repeat 0 0;
+    width:387px;
+    height:144px;
+	}
+	
+    #content .rightRail .webinarWidget img{
+	float:left;
+	margin:36px 0 0 8px;
+    }
+	
+    #content .rightRail .webinarWidget div{
+	padding-left:150px;
+	font-size:16px;
+	font-weight:bold;
+	padding-top:25px;
+    }    
+    
+	#content .rightRail .webinarWidget strong{
+	color:#e00000;            
+	display:block;            
+	padding:4px 0 13px;        
+	}
+/* #footer */
+#footer{
+    background:url(../i/footer-bg.jpg) repeat-x #363636 0 0;
+    height:206px;
+}
+
+    #footer .mask{
+        width:962px;
+        margin:0 auto;
+    }
+        /* .portals */
+		/* author: evilkyro1965 */
+        #footer .portals{
+            padding-top:20px;
+            width:554px;
+            float:left;
+            height:148px;
+        }
+            #footer .portals h3{
+                font-weight:bold;
+                color:#fff;
+                font-size:14px;
+                background:url(../i/footer-line.png) repeat-x 0 bottom;
+                line-height:24px;
+                text-shadow:0 1px 0 #1b1b1b;
+                padding-bottom:10px;
+            }
+            #footer .portals nav{
+                background:url(../i/footer-line2.png) repeat 0 bottom;
+                padding:0px 0 0px 10px;
+            }
+                #footer .portals nav a{
+                    display:inline-block;
+                    margin: 7px 0 7px 10px;
+                    width:92px;
+                    color:#fff;
+                    text-shadow:0 1px 0 #1b1b1b;
+                    line-height:28px;
+                    padding-left:30px;
+                }
+                #footer .portals nav a.analytics{
+                    background:url(../i/portals-analytics.png) no-repeat 0 center;
+                }
+                #footer .portals nav a.blog{
+                    background:url(../i/portals-blog.png) no-repeat 0 center;
+                }
+                #footer .portals nav a.series{
+                    background:url(../i/portals-series.png) no-repeat 0 center;
+                }
+                #footer .portals nav a.news{
+                    background:url(../i/portals-news.png) no-repeat 0 center;
+                    width:86px;
+                }
+                #footer .portals nav a.mobile{
+                    background:url(../i/portals-mobile.png) no-repeat 0 center;
+                }
+                #footer .portals nav a.events{
+                    background:url(../i/portals-events.png) no-repeat 0 center;
+                }
+                #footer .portals nav a.nns{
+                    background:url(../i/portals-nns.png) no-repeat 0 center;
+                }
+                #footer .portals nav a.video{
+                    background:url(../i/portals-video.png) no-repeat 0 center;
+                }
+        /* .customers */
+        #footer .customers{
+            float:right;
+            width:386px;
+            padding:20px 0 0 0;
+            height:148px;
+        }
+            #footer .customers h3{
+                font-weight:bold;
+                color:#fff;
+                text-shadow:0 1px 0 #1b1b1b;
+                font-size:14px;
+                line-height:24px;
+            }
+            #footer .customers p{
+                color:#fff;
+                text-shadow:0 1px 0 #1b1b1b;
+                padding:0 0 6px;
+            }
+            #footer .customers .bx-window{
+                background:url(../i/customers-bg.png) no-repeat 0 0;
+                height:73px;
+                width:386px;
+                overflow:hidden;
+            }
+                #footer .customers .bx-window li{
+                    float:left;
+                }
+        /* footer */
+        #footer .bottom{
+            font-size:11px;
+            color:#fff;
+            height:35px;
+            line-height:35px;
+        }
+            #footer .bottom nav{
+                float:left;
+            }
+                #footer .bottom nav span.line{
+                    display:inline-block;
+                    background:url(../i/line.png) no-repeat center center;
+                    width:3px;
+                    height:13px;
+                    padding:0 6px;
+                    vertical-align:middle;
+                }
+                #footer .bottom nav a{
+                    color:#fff;
+                }
+            #footer .bottom .socials{
+                float:right;
+            }
+                #footer .bottom .socials label{
+                    float:left;
+                    padding-right:8px;
+                }
+                #footer .bottom .socials a{
+                    background:url(../i/social-icon.png) no-repeat 0 0;
+                    height:18px;
+                    width:17px;
+                    display:inline-block;
+                    float:left;
+                    margin:9px 0 0 5px;
+                }
+
+
+.article {
+	margin-bottom:10px;
+	line-height:16px;
+}
+				
+/*================ .jScrollPaneContainer ========================*/
+.jScrollPaneContainer {
+	position: relative;
+	overflow: hidden;
+	z-index: 1;
+    float:left;
+}
+
+.jScrollPaneTrack {
+	position: absolute;
+	cursor: pointer;
+	right: 0;
+	top: 0;
+	height: 100%;
+}
+.jScrollPaneDrag {
+	position: absolute;
+	background: #ededed;
+	cursor: pointer;
+	overflow: hidden;
+}
+.jScrollPaneDragTop {
+	position: absolute;
+	top: 0;
+	left: 0;
+	overflow: hidden;
+    height:5px;
+    width:7px;
+    background:url(../i/scroll-bar.png) no-repeat 0 0;
+}
+.jScrollPaneDragBottom {
+	position: absolute;
+	bottom: 0;
+	left: 0;
+	overflow: hidden;
+    height:5px;
+    width:7px;
+    background:url(../i/scroll-bar.png) no-repeat 0 -5px;
+}  
+
+/* For Mobile like ipad ... */
+@media screen and (max-device-width: 768px) {
+
+        #header .banner figure{
+            padding:24px 158px 0 90px;
+        }
+        #interactive .sliders .slider{
+            overflow:auto;
+            position:relative;
+            z-index:1;
+        }
+}
+@media (-webkit-min-device-pixel-ratio: 1.5),
+       (-o-min-device-pixel-ratio: 3/2),
+       (min--moz-device-pixel-ratio: 1.5),
+       (min-device-pixel-ratio: 1.5) {
+
+        #header .banner figure{
+            padding:24px 168px 0 50px;
+        }
+}
+
+/* 
+main wrapper
+*/
+
+#tmpDropDownMenu{
+	width:960px;
+	margin:10px auto;	
+	border-bottom:3px #000000 solid;
+	color:#fff;
+	height:30px;
+}
+
+#mainContent{
+	width:962px;
+	margin:0px auto;	
+}
+
+/* portal title */
+#mainContent h2{
+	padding:5px;
+	margin:5px 0px;
+	font-size:2em;
+	border:1px solid #C0C0C0;
+}
+
+#followUsWidget { 
+	float:left; 
+}
+	#followUsWidget .widgettitle {
+		float:left;
+		font-weight:normal;
+	}
+	#followUsWidget .socialmedia-buttons {
+		float:left;
+		margin-top:-5px;
+	}
+
+	
+.welcomeSection{
+	width:150px;
+	float:right;
+	color:#fff;
+	padding-top:10px;
+	text-align:right;
+}
+
+.welcomeSection .handle{ color:#0090FF;}	
+
+.welcomeSection a.logoutLink{ color: #f1eded}
+
+.registerSection{
+	width:150px;
+	float:right;
+}	
+
+
+h1.pageTitle {
+    background: url("../i/aboutPageIcon.gif") no-repeat scroll 0 center transparent;
+    font: bold 24px Arial,Helvetica,sans-serif;
+    margin: 18px 0;
+    padding-left: 30px;
+}
+
+#mainContent .post h2 {
+    border: medium none;
+    font-size: 18px;
+    padding: 5px 0;
+}
+
+a.feed{
+	background:url(../i/rss-small.png) no-repeat;
+	padding:3px 20px 3px 30px;
+	display:block;
+	font-size:14px;
+	margin-top:10px;
+}
+
+.article ul{
+	margin:5px 0px 5px 10px;
+	padding:0px 5px;
+	list-style-type:disc;
+}
+
+.article p{
+	margin:5px 0px;
+}
+
+
+/* override plugin */
+.tcCommunity .details h2{
+	color:#7F7F7F;
+	font-size:22px;
+	text-align:center;
+}
+
+.sliderWp #modules h2 a{
+	color:#000;
+}
+
+.tcCommunity .details a.more {margin-right:0px}
+
+.f26{ 	font-size:26px; }
+.f24{ 	font-size:24px; }
+.f20{ 	font-size:20px; }
+.f18{ 	font-size:18px; }
+
+blockquote.quotc{
+	padding:10px 10px 10px 60px;
+	background:url(../i/blockquote.png) 15px 15px no-repeat #f0f1f4;
+	margin:5px 20px 10px 0px;
+	color: #555555;
+    font-family: Georgia,Times,'Times New Roman',serif;
+    font-style: italic;
+	font-size:16px;
+    text-shadow: 1px 1px #FFFFFF;
+}
+
+blockquote.quotc a.tweet{
+	color:#c6501c;
+}
+
+.subscriptionWidget{
+	background:url(../i/subscriptionWidgetBG.png) repeat 0 0;
+	padding:20px 0 15px;
+}
+	.subscriptionWidgetInnder{
+		height:188px;
+		overflow:hidden;
+		width:767px;
+		margin:0 auto;
+		padding-left:195px;
+		background:url(../i/tcicon.png) no-repeat 10px 0;
+		}
+		.subscriptionWidgetInnder .des{
+			font-size:28px;
+			width:425px;
+			display:block;
+			padding-right:30px;
+			text-align:right;
+			font-family:"Myriad Pro",Arial, Helvetica, sans-serif;
+			line-height:50px;
+			text-shadow:1px 1px 1px #42626e;
+			color:#fffffe;
+			padding-bottom:0;
+			position:relative;
+			float:left;
+			top:-10px;
+			}
+			.subscriptionWidgetInnder form{
+			float:left;
+				}
+			.subscriptionWidgetInnder p.formRow{
+				padding-bottom:8px;
+				position:relative;
+				width:295px;
+				}
+				.invalidInfo{
+					position:absolute;
+					right:10px;
+					top:10px;
+					background:#fffffe;
+					color:red;
+					padding:0 10px;
+					display:none;
+					font-size:12px;
+					height:20px;
+					line-height:20px;
+					z-index:1;
+					}
+			.subscriptionWidgetInnder input[type="text"]{
+				font-size:13px;
+				color:#fffffe;
+				font-family:Tahoma, Geneva, sans-serif;
+				background:url(../i/input.png) no-repeat 0 0;
+				width:275px;
+				height: 19px;
+				border:none;
+				line-height:19px;
+				padding:10px;
+				}
+.subscribeBtn,
+.subscribeBtn:visited{
+	position:relative;
+	left:-5px;
+	background:url(../i/subscribeBtn.png) repeat 0 0;
+	width:215px;
+	display:block;
+	height:52px;
+	overflow:hidden;
+	border: none;
+	padding: 0;
+	margin: 0;
+	cursor: pointer;
+}
+.subscribeBtn:hover{
+	background-position:0 -52px;
+	}
+
+/* subscriptionModal */
+.subscriptionModal{
+	background: #497894 url(../i/subscriptionModalBG.png) repeat-x 0 0;
+	width: 665px;
+	height: 405px;
+	position: fixed;
+	z-index: 1001;
+	display: none;
+}
+
+.subscriptionModal .raster {
+    background: url("../i/raster.png") no-repeat scroll 0 0 transparent;
+    height: 225px;
+    position: absolute;
+    width: 646px;
+    z-index: -10;
+}
+
+.subscriptionModal.ebookModal .raster {
+    background: url("../i/raster-ebook.png") no-repeat scroll 0 0 transparent;
+    height: 225px;
+    position: absolute;
+    width: 646px;
+    z-index: -10;
+}
+
+.subscriptionModal.successSubs{
+	height: 225px;
+}
+	.subscriptionModal p{
+		margin: 0;
+	}
+	.subscriptionModal .des{
+		font-size:28px;
+		display:block;
+		text-align:center;
+		font-family:"Myriad Pro",Arial, Helvetica, sans-serif;
+		line-height:45px;
+		text-shadow:1px 1px 1px #42626e;
+		color:#fffffe;
+		padding-top: 20px;
+		position:relative;		
+	}
+	.successSubs .des{
+		padding-top: 55px;
+	}
+	.subscriptionModal .subscriptionForm{
+		background: url('../i/tcIcoSubs.png') 50px 35px no-repeat;
+		padding-left: 338px;		
+		margin-top: 130px;
+		padding-top:30px;
+	}
+	
+	.subscriptionModal.ebookModal .subscriptionForm{
+		background: url('../i/headIcoSubs.png') 10px 0 no-repeat;
+		padding-left: 338px;		
+		margin-top: 130px;
+		padding-top:30px;
+	}
+		.subscriptionModal .formRow{
+			padding-bottom: 9px;
+			position: relative;
+		}
+			.subscriptionModal input[type="text"]{
+				font-size:13px;
+				color:#fffffe;
+				font-family:Tahoma, Geneva, sans-serif;
+				background:url(../i/input-modal.png) no-repeat 0 0;
+				width:275px;
+				height:20px;
+				border:none;
+				line-height:20px;
+				padding: 10px;
+			}
+			.subscriptionModal .btnSubscribe{
+				background:url(../i/subscribeBtn.png) repeat 0 0;
+				width:215px;
+				display:block;
+				height:52px;
+				overflow:hidden;
+				cursor: pointer;
+				border: none;
+				padding: 0;
+				margin: 0 0 0 -6px;
+			}
+			.subscriptionModal .btnSubscribe:hover{
+				background:url(../i/subscribeBtn.png) repeat 0 100%;
+			}
+			
+			.subscriptionModal.ebookModal .btnSubscribe{
+				background:url(../i/subscribeEbookBtn.png) repeat 0 0;
+				width:245px;
+				display:block;
+				height:52px;
+				overflow:hidden;
+				cursor: pointer;
+				border: none;
+				padding: 0;
+				margin: 0 0 0 -6px;
+			}
+			.subscriptionModal.ebookModal .btnSubscribe:hover{
+				background:url(../i/subscribeEbookBtn.png) repeat 0 100%;
+			}
+			
+		.modal .btnClose{
+			position: absolute;
+			right: 0;
+			top: 0;
+			height: 28px;
+			width: 50px;
+			background: url(../i/btnClose.png) 0 0 no-repeat;		
+			z-index: 10;	
+		}
+			.modal .btnClose:hover{
+				background: url(../i/btnClose.png) 0 100% no-repeat;
+			}
+		.subscriptionModal .invalidInfo{
+			right: 38px;
+		}
+
+/* topcoder's API moudle layout */
+/* author: evilkyro1965 */
+/* contest layout */
+.tcApi#content{
+    width: 962px;
+    margin: 0 auto;
+}
+#content .rightLayout .sidebar{
+    float: left;
+    width: 220px;
+    padding: 10px 10px 50px 0;
+}
+#content .rightLayout .mainRail{
+    float: none;
+    margin-left: 240px;
+    border-left: 1px solid #d1d1d1;
+    padding: 10px 0 50px 10px;
+    min-height: 400px;
+}  
+#content .rightLayout h2{
+    font-size: 18px;
+    line-height: 26px;
+}  

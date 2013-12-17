@@ -1,0 +1,17 @@
+/* IE7 CSS Document */
+#content .webinarsPage .topBanner .datepicker .ui-datepicker-calendar td .tips {
+    position: absolute;
+	top: 28px;
+}
+#content .webinarsPage .topBanner .datepicker .ui-datepicker-calendar td.ui-datepicker-current-day {
+    position: relative;
+	z-index: 90;
+}
+#content .webinarsPage .topBanner .datepicker .ui-datepicker-calendar td.tdHovered {
+	z-index: 100;
+}
+#content .webinarsPage .topBanner .topCarousel .container,
+#content .webinarsPage .topBanner .topCarousel .carouselContent,
+#content .webinarsPage  .topBanner .topCarousel .carouselContent h2.title {
+    height: auto;
+}

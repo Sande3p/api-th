@@ -1,0 +1,1479 @@
+/* CSS Document */
+
+
+#header .titleLine h1 i {
+    color: #333333;
+    font-size: 29px;
+    background: url(../i/event/event-page-icon.png) center left no-repeat;
+    padding-left: 90px;
+    line-height: 65px;
+}
+
+a.bigRegBtn{
+	width: 194px;
+	height: 45px;
+	overflow: hidden;
+	display: block;
+    background: url(../i/event/view-more.png) 0 0 no-repeat;
+}
+a.bigRegBtn:hover{
+    background-position: 0 -45px;
+}
+a.regBtn{
+	width: 143px;
+	height: 0;
+	padding: 35px 0 0 0;
+	overflow: hidden;
+	display: block;
+    background: url(../i/webinar/regBtn.png) 0 0 no-repeat;
+}
+a.regBtn:hover{
+    background-position: 0 -35px;
+}
+a.downloadBtn{
+	width: 138px;
+	height: 0;
+	padding: 35px 0 0 0;
+	overflow: hidden;
+	display: block;
+    background: url(../i/webinar/downloadBtn.png) 0 0 no-repeat;
+}
+a.downloadBtn:hover{
+    background-position: 0 -35px;
+}
+a.redBtnWithArrow{
+	display: block;
+	padding: 0 0 0 18px;
+	height: 23px;
+	width: 63px;
+    background: url(../i/webinar/redArrowBtn.png) 0 0 no-repeat;
+}
+a.redBtnWithArrow span{
+	display: block;
+	padding: 0 3px 0 0;
+	height: 23px;
+    background: url(../i/webinar/redArrowBtn.png) 100% -23px no-repeat;
+}
+a.redBtnWithArrow span span{
+	display: block;
+	padding: 0;
+	height: 23px;
+    background: url(../i/webinar/redArrowBtn.png) 0 -46px repeat-x;
+	font:  normal 10px Tahoma,Arial,Helvetica,Tahoma,sans-serif;
+	line-height: 21px;
+	color: #fffffe;
+	text-decoration: none;
+}
+a.redBtnWithArrow:hover{
+    background-position: 0 -69px;
+	text-decoration: none;
+}
+a.redBtnWithArrow:hover span{
+    background-position: 100% -92px;
+	text-decoration: none;
+}
+a.redBtnWithArrow:hover span span{
+    background-position: 0 -115px;
+	text-decoration: none;
+}
+/*
+*
+* Webinar Top Banner Area
+*
+*/
+#header.webinarHeader {
+    background-image: url("../i/webinar/webinarHeaderBg.png");
+    border-bottom: 1px solid #f3f3f3;
+}
+
+#content .webinarsPage  .topBannerBg{
+	background: #f3f3f3 url(../i/webinar/webinarTopBg.png) 0 bottom repeat-x;
+}
+#content .webinarsPage  .topBannerBg .topBanner{
+    margin: 0 auto;
+    width: 962px;
+	padding: 26px 0 95px 0;	
+	background: transparent url(../i/webinar/webinarTopShadow.png) center bottom no-repeat;
+	position: relative;
+}
+
+/*
+*
+* Calendar
+*
+*/
+#content .webinarsPage  .topBanner .datepicker{
+    width: 285px;
+	float: left;
+	padding: 37px 0 23px 0;
+	background: transparent url(../i/webinar/dataPickerAreaBg.jpg) 0 bottom no-repeat;
+	position: absolute;
+	z-index: 90;
+	margin: 2px 0 0 0;
+	z-index:9;
+}
+#content .webinarsPage  .topBanner .datepicker .ui-datepicker-header {
+    width: 285px;
+	height: 24px;
+	line-height: 24px;
+	padding: 6px 0 7px 0;
+	background: transparent url(../i/webinar/datePickerHeader.jpg) 0 0 no-repeat;
+	position: absolute;
+	top: 0;
+	left: 0;
+	text-align: center;
+}
+#content .webinarsPage  .topBanner .datepicker .ui-datepicker-header  .ui-datepicker-title span {
+	font: bold 18px "Myriad Pro",Arial,Helvetica,Tahoma,sans-serif;
+	color: #fffffe;
+	text-shadow: 0px 1px 1px #333740;
+}
+#content .webinarsPage  .topBanner .datepicker .ui-datepicker-header  a{
+	position: absolute;
+	top: 8px;
+	display: block;
+	width: 21px;
+	height: 0px;
+	padding: 21px 0 0 0;
+	overflow: hidden;
+	background: transparent url(../i/webinar/calendarIcon.png) 0 0 no-repeat;
+}
+#content .webinarsPage  .topBanner .datepicker .ui-datepicker-header  a.ui-datepicker-prev{
+	left: 5px;
+	background-position: 0 0;
+}
+#content .webinarsPage  .topBanner .datepicker .ui-datepicker-header  a.ui-datepicker-prev:hover{
+	background-position: 0 -21px;
+	cursor: pointer;
+}
+#content .webinarsPage  .topBanner .datepicker .ui-datepicker-header  a.ui-datepicker-next{
+	right: 5px;
+	background-position: -21px 0;
+}
+#content .webinarsPage  .topBanner .datepicker .ui-datepicker-header  a.ui-datepicker-next:hover{
+	background-position: -21px -21px;
+	cursor: pointer;
+}
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-inline{
+	background: transparent url(../i/webinar/datePickerHighlight.png) 0 0 no-repeat;
+	padding: 0 10px 11px 10px;
+	border-collapse: separate;
+}
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar {
+	border-collapse: separate;
+	border-spacing:0;
+}
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar tr{
+	width: 37px;
+	padding-left: 1px;
+	text-align: center;
+}
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar th{
+	height: 25px;
+	font:  bold 11px Tahoma,Arial,Helvetica,Tahoma,sans-serif;
+	line-height: 25px;
+	color: #333942;
+	text-align: center;
+	text-shadow: 0px 1px 0px #a3a6ab;
+}
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar td{
+	width: 38px;
+	height: 29px;
+	background: transparent url(../i/webinar/datePickerTdBg.png) 0 0 no-repeat;
+	text-align: center;
+	line-height: 29px;
+	border-top: 1px solid #686d72;
+	border-bottom: 1px solid #a6a9ad;
+	vertical-align: top;
+}
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar td a{
+	display: block;
+	width: 38px;
+	height: 29px;
+	font: bold 16px "Myriad Pro",Arial,Helvetica,Tahoma,sans-serif;
+	line-height: 29px;
+	color: #333942;
+	text-shadow: 0px 1px 0px #a3a6ab;
+    position: relative;
+}
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar td .tips {
+    position: relative;
+	width: 38px;
+    height: 0;
+	top: 0;
+	left: 0;
+	z-index: 1000;
+}
+#content .webinarsPage .topBanner .datepicker .ui-datepicker-calendar td .tips a {
+    font-family: Arial,Helvetica,Tahoma,sans-serif;
+}
+
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar td.ui-datepicker-today .tips .tbl {
+    top: 28px;
+}
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar td .tips .tbl {
+    position: absolute;
+    left: -95px;
+    top: 0px;
+    width: 330px;
+}
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar td .tips .tbl .top{
+	width: 330px;
+	height: 14px;
+	overflow: hidden;
+	background: transparent url(../i/webinar/calendarTipsTop.png) 0 0 no-repeat;
+}
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar td .tips .tbl .bottom{
+	background: transparent url(../i/webinar/calendarTipsBottom.png) 0 100% no-repeat;
+    height: 6px;
+}
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar td .tips .tbl .inner{
+	width: 330px;
+	background: transparent url(../i/webinar/calendarTipsBg.png) 0 0 repeat-y;
+	padding: 10px 0 12px 0;
+	overflow: hidden;
+}
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar td .tips .tbl .inner .imgWrap{
+	width: 120px;
+	height: 65px;
+	border: 1px solid #cacaca;
+	overflow: hidden;
+	margin-left: 13px;
+	float: left;
+}
+
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar td .tips .tbl .inner .imgWrap img{
+	width: 120px;
+}
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar td .tips .tbl .inner .dateText,
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar td .tips .tbl .inner .title,
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar td .tips .tbl .inner .content,
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar td .tips .tbl .inner .buttonBar{
+	width: 170px;
+	float: right;
+	margin-right: 15px;
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 13px;
+	text-align: left;
+	text-shadow: none;
+	color: #5a5a5a;
+}
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar td .tips .tbl .inner .dateText{
+	font-size: 11px;
+	font-weight: bold;
+	color: #159bff;
+}
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar td .tips .tbl .inner .title{
+	color: #333333;
+	padding: 5px 0;
+	font-weight: bold;
+}
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar td .tips .tbl .inner .content{
+	font-size: 11px;
+}
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar td .tips .tbl .inner .buttonBar{
+	padding: 10px 0;	
+}
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar td .tips .tbl .inner .buttonBar a{
+	display: block;
+	float: left;
+	line-height: 15px;
+	font-size: 11px;
+	font-weight: normal;
+	color: #00a5ff;
+	text-shadow: none;
+	width: auto;
+	height: 15px;
+	padding: 0 0 0 20px;
+	background: transparent url(../i/webinar/linkIcon_arrow.png) 0 0 no-repeat;
+}
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar td .tips .tbl .inner .buttonBar a.vdetail{
+	margin: 0 21px 0 0;
+}
+
+
+
+
+
+
+
+
+
+body >.tbl {
+    top: 28px;
+}
+body >.tbl {
+    position: absolute;
+    left: -95px;
+    top: 0px;
+    width: 330px;
+}
+body >.tbl .top{
+	width: 330px;
+	height: 14px;
+	overflow: hidden;
+	background: transparent url(../i/webinar/calendarTipsTop.png) 0 0 no-repeat;
+}
+body >.tbl .bottom{
+	background: transparent url(../i/webinar/calendarTipsBottom.png) 0 100% no-repeat;
+    height: 6px;
+}
+body >.tbl .inner{
+	width: 330px;
+	background: transparent url(../i/webinar/calendarTipsBg.png) 0 0 repeat-y;
+	padding: 10px 0 12px 0;
+	overflow: hidden;
+}
+body >.tbl .inner .imgWrap{
+	width: 120px;
+	overflow: hidden;
+	margin-left: 13px;
+	float: left;
+}
+
+body >.tbl .inner .imgWrap img{
+	width: 120px;
+}
+body >.tbl .inner .dateText,
+body >.tbl .inner .title,
+body >.tbl .inner .content,
+body >.tbl .inner .buttonBar{
+	width: 170px;
+	float: right;
+	margin-right: 15px;
+	font-size: 12px;
+	font-weight: normal;
+	line-height: 13px;
+	text-align: left;
+	text-shadow: none;
+	color: #5a5a5a;
+}
+body >.tbl .inner .dateText{
+	font-size: 11px;
+	font-weight: bold;
+	color: #159bff;
+}
+body >.tbl .inner .title{
+	color: #333333;
+	padding: 5px 0;
+	font-weight: bold;
+}
+body >.tbl .inner .content{
+	font-size: 11px;
+}
+body >.tbl .inner .buttonBar{
+	padding: 10px 0;	
+}
+body >.tbl .inner .buttonBar a{
+	display: block;
+	float: left;
+	line-height: 15px;
+	font-size: 11px;
+	font-weight: normal;
+	color: #00a5ff;
+	text-shadow: none;
+	width: auto;
+	height: 15px;
+	padding: 0 0 0 20px;
+	background: transparent url(../i/webinar/linkIcon_arrow.png) 0 0 no-repeat;
+}
+body >.tbl .inner .buttonBar a.vdetail{
+	margin: 0 21px 0 0;
+}
+
+body >.tbl .corner {
+	position: absolute;
+	width: 38px;
+	height: 80px;
+	left: 96px;
+	top: -31px;
+}
+	
+
+
+
+
+
+
+
+
+
+
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar td a:hover{
+	color: #fffffe;
+	text-shadow: 0px 1px 0px #000;
+}
+
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar td.ui-datepicker-current-day{
+	position: absolute;
+}
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar td a.ui-state-active{
+	background: transparent url(../i/webinar/datePickerActive.png) center 0 no-repeat;
+	position: absolute;
+	color: #fff;
+	text-shadow: 0px 1px 0px #2c7dad;
+	
+	width: 61px;
+	left: -12px;
+}
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar tr td {
+    position: relative;
+}
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar tr:first-child td{
+	border-top-width: 0;
+}
+#content .webinarsPage  .topBanner .datepicker  .ui-datepicker-calendar tr:last-child td{
+	border-bottom-width: 0;
+}
+
+/*
+*
+* Webinar Top Carousel
+*
+*/
+#content .webinarsPage  .topBanner .topCarousel{
+	width: 640px;
+	float: right;
+    position: relative;
+    overflow: hidden;
+	z-index: 80px;
+}
+#content .webinarsPage  .topBanner .topCarousel .container {
+    overflow: hidden;
+    position: relative;
+    height: 250px;
+}
+#content .webinarsPage  .topBanner .topCarousel .carouselContent{
+	width: 320px;
+	height: 250px;
+	padding: 0 320px 0 0;
+	position: relative;
+	overflow: hidden;
+    float: left;
+    overflow: hidden;
+}
+#content .webinarsPage  .topBanner .topCarousel .carouselContent h3.dateText{
+	color: #159bff;
+	font-size: 24px;
+	line-height: 24px;
+}
+#content .webinarsPage  .topBanner .topCarousel .carouselContent h2.title {
+	display: block;
+	color: #333333;
+	font-size: 36px;
+	line-height: 36px;
+	margin-bottom: 8px;
+    height: 38px;
+    overflow: hidden;
+}
+.navigation {
+    clear: both;
+}
+#content .webinarsPage  .topBanner .topCarousel .carouselContent p {
+	color: #5a5a5a;
+	font-size: 14px;
+	line-height: 17px;
+}
+#content .webinarsPage  .topBanner .topCarousel .carouselContent p {
+	color: #5a5a5a;
+	font-size: 14px;
+	line-height: 17px;
+}
+#content .webinarsPage  .topBanner .topCarousel .carouselContent .imageWrapper{
+	padding: 0 0 10px 0;
+	background: transparent url(../i/webinar/graphicShadow.jpg) center bottom no-repeat;
+	width: 310px;
+	height: 226px;
+	position: absolute;
+	top: 0;
+	right: 0;
+}
+#content .webinarsPage  .topBanner .topCarousel .carouselContent .imageWrapper img{
+	display: block;
+	border-style: solid;
+	border-color: #ffffff;
+	border-width: 10px 11px;
+	width: 288px;
+	height: 206px;
+}
+#content .webinarsPage  .topBanner .topCarousel .carouselContent .bigRegBtn{
+	margin-top: 20px;
+	float: left;
+	clear: both;
+}
+#content .webinarsPage  .topBanner .topCarousel .carouselContent .moreDetailsLink{
+	display: block;
+	clear: both;
+	float: left;
+	line-height: 15px;
+	height: 15px;
+	padding: 0 0 0 20px;
+	margin: 22px 0 0 0;
+	background: transparent url(../i/webinar/linkIcon_arrow.png) 0 0 no-repeat;
+	white-space: nowrap;
+}
+#content .webinarsPage  .topBanner .carouselDotEvent{
+	display: block;
+	height: 21px;
+	width: 962px;
+	overflow: hidden;
+	text-align: center;
+	z-index: 100;
+	bottom: 65px;
+	left: 0;
+	position:absolute;
+	z-index:0;
+}
+#content .webinarsPage  .topBanner .carouselDotEvent .pagDot{
+	display: inline-block;
+	height: 21px;
+	width: 21px;
+	margin: 0 3px;
+	background: transparent url(../i/webinar/paginationDots.png) 0 0 no-repeat;
+	cursor: pointer;
+}
+#content .webinarsPage  .topBanner .carouselDotEvent .pagDot span { display:none; }
+#content .webinarsPage  .topBanner .carouselDotEvent a.current{
+	background-position: 0 -21px;
+	cursor: default;
+}
+
+
+/*
+*
+* Webinars Page content area
+*
+*/
+.clear{
+	clear: both;	
+}
+#content .webinarsPage .contentInner{
+	position: relative;
+	/*background: transparent url(../i/webinar/contentAreaShadow.png) center top no-repeat;*/
+}
+#content .webinarsPage .contentInner h2{
+	position: absolute;
+	font-size: 28px;
+	font-weight: normal;
+	color: #333333;
+	display: block;
+	height: 30px;
+	line-height: 28px;
+	top: -44px;
+	left: 0;
+}
+
+/*
+*
+*MainRail
+*
+*/
+
+#content .webinarsPage .mainRail{
+	width: 639px;
+	float: left;	
+}
+
+.webinarWrapper{
+	width: 308px;
+    height: 136px;
+	padding: 241px 11px 0 0;
+	background: transparent url(../i/webinar/videoBg.png) 0 16px no-repeat;
+	float: left;
+	position: relative;
+}
+.onTarget {
+    position: relative;
+}
+.webarback {
+    position: absolute;
+    left: -5px;
+    right: 6px;
+    top: 15px;
+    bottom: 0;
+    z-index: -1;
+}
+.webinarWrapper .notAvailable, .webinarWrapper .listThumbnail {
+	width: 280px;
+	height: 177px;
+	position: absolute;
+	top: 36px; 
+	left: 13px;
+	z-index: 8;
+}
+.webinarWrapper .notAvailable, .webinarWrapper .cover {
+	width: 280px;
+	height: 177px;
+	position: absolute;
+	top: 36px; 
+	left: 13px;
+	z-index: 9;
+    background: url(../i/webinar/videoHighlight.png) 0 0 no-repeat;
+}
+.webinarWrapper .notAvailable {
+    background: url(../i/webinar/notAvailable.png) 0 0 no-repeat;
+}
+.webinarWrapper img {
+	width: 280px;
+	height: 177px;
+}
+.webinarWrapper .playButton {
+    display: block;
+	width: 70px;
+	height: 70px;
+    background: url(../i/webinar/playBtn.png) 0 0 no-repeat;
+	overflow: hidden;
+    position: absolute;
+    left: 120px;
+    top: 92px;
+	z-index: 10;
+	cursor: default;
+}
+.vidwoWrapper {
+    width: 610px;
+    margin: 0 auto;
+}
+
+.webinarWrapper .marker1{
+    display: block;
+	width: 81px;
+	height: 42px;
+    background: url(../i/webinar/videoTag.png) 0 0 no-repeat;
+	overflow: hidden;
+    position: absolute;
+    left: 230px;
+    top: 18px;
+	z-index: 11;
+}
+.webinarWrapper .marker2{
+    display: block;
+	width: 81px;
+	height: 42px;
+    background: url(../i/webinar/videoTag.png) 0 -42px no-repeat;
+	overflow: hidden;
+    position: absolute;
+    left: 230px;
+    top: 18px;
+	z-index: 11;
+}
+.webinarWrapper .dateText{
+	font-size: 20px;
+	line-height: 20px;
+	height: 20px;
+	color: #159bff;
+	padding: 0 2px;
+}
+.webinarWrapper .duration{
+	font-size: 20px;
+	line-height: 20px;
+	height: 20px;
+	color: #5a5a5a;
+	position: absolute;
+	top: 241px;
+	right: 14px;
+}
+.webinarWrapper h3{
+	font-size: 28px;
+	line-height: 28px;
+	color: #333333;
+	margin: 5px 2px 11px 2px;
+    height: 30px;
+    overflow: hidden;
+    white-space: nowrap;
+    position: relative;
+}
+.webinarWrapper p{
+	font-size: 12px;
+	line-height: 14px;
+	color: #333333;
+	margin: 0 2px 6px 2px;
+    height: 28px;
+    overflow: hidden;
+}
+.webinarWrapper .btn{
+	margin: 0 4px;	
+	padding: 0 2px 21px 2px;
+	height: 15px;
+	background: transparent url(../i/webinar/dotLine.png) 0 bottom repeat-x;
+}
+.webinarWrapper .btn a{
+	display: block;
+	float: left;
+	margin-right: 20px;
+	padding-left: 20px;
+	line-height: 15px;
+}
+.webinarWrapper .btn a.vdetail, .webinarWrapper .btn a.vwatch{
+	background: transparent url(../i/webinar/linkIcon_arrow.png) 0 0 no-repeat;
+}
+.webinarWrapper .btn a.vdownload{
+	background: transparent url(../i/webinar/linkIcon_download.png) 0 0 no-repeat;
+}
+#content .webinarsPage .contentInner .navigation{
+	clear: both;
+	height: 31px;
+	overflow: hidden;
+	text-align: left;
+	padding: 10px 19px 0 4px;
+}
+#content .webinarsPage .contentInner .navigation p{
+	font:  normal 11px Tahoma,Arial,Helvetica,Tahoma,sans-serif;
+	color: #636373;
+	line-height: 31px;
+	float: left;
+}
+#content .webinarsPage .contentInner .navigation .wp-paginate{
+	float: right;	
+	margin: 0;
+}
+#content .webinarsPage .contentInner .navigation .wp-paginate li{
+	float: left;	
+} 
+#content .webinarsPage .contentInner .navigation .disabledPrev {
+	display: block;
+	float: left;
+	width: 31px;
+	height: 31px;
+	overflow: hidden;
+	background: transparent url(../i/webinar/paginationBtn.png) 0 0 no-repeat;
+}
+#content .webinarsPage .contentInner .navigation .disabledNext {
+	display: block;
+	float: left;
+	width: 31px;
+	height: 31px;
+	overflow: hidden;
+	background: transparent url(../i/webinar/paginationBtn.png) -31px 0 no-repeat;
+}
+#content .webinarsPage .contentInner .navigation a.prev {
+	height: 0;
+	padding: 31px 0 0 0;	
+	display: block;
+	float: left;
+	width: 31px;
+	overflow: hidden;
+	background: transparent url(../i/webinar/paginationBtn.png) 0 -31px no-repeat;
+}
+#content .webinarsPage .contentInner .navigation a.next {
+	height: 0;
+	padding: 31px 0 0 0;	
+	display: block;
+	float: left;
+	width: 31px;
+	overflow: hidden;
+	background: transparent url(../i/webinar/paginationBtn.png) -31px -31px no-repeat;
+}
+#content .webinarsPage .contentInner .navigation span.current {
+	color: #636373;
+}
+
+
+
+/*
+*
+*Right Side Links
+*
+*/
+#content .webinarsPage .rightSideLinks{
+	float: right;
+	width: 310px;
+	padding: 26px 4px 0 7px;	
+	min-height: 788px;
+	background: transparent url(../i/webinar/rightSideShadow.png) 0 0 no-repeat;
+}
+#content .webinarsPage .rightSideLinks li{
+	display: block;
+	padding: 15px 5px 17px 98px;
+	min-height: 100px;
+	position: relative;
+	overflow: hidden;
+	background: transparent url(../i/webinar/dotLine.png) 0 100% repeat-x;
+}
+#content .webinarsPage .rightSideLinks li img{
+	display: block;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 95px;
+	height: 130px;
+}
+#content .webinarsPage .rightSideLinks li h3{
+	font: normal 16px "Myriad Pro",Arial,Helvetica,Tahoma,sans-serif;
+	line-height: 20px;
+	padding: 0 0 3px 0;
+	margin: 0;
+	color: #000000;
+}
+#content .webinarsPage .rightSideLinks li p{
+	font-size: 11px;
+	color: #636373;
+	line-height: 14px;
+	padding: 0 0 13px 0;
+}
+#content .webinarsPage .rightSideLinks li .redBtnWithArrow{
+	float: right;
+}
+#content .webinarsPage .rightSideLinks .borderRemover{
+	height: 5px;
+	overflow: hidden;
+	position: relative;
+	z-index: 2;
+	top: -2px;
+	background-color: #ffffff;
+}
+/*
+*
+* Popup
+*
+*/
+.popMask{
+	background: transparent url(../i/webinar/popMask.png) 0 0 repeat;   
+    position: fixed;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: none;
+	z-index: 1000;
+}
+.popMask .popup{
+	width: 660px;
+}
+.popMask .popup .popTop{
+	width: 660px;
+	height: 34px;
+	background: transparent url(../i/webinar/popTop.png) 0 0 no-repeat;
+}
+.popMask .popup .popContent{
+	width: 620px;
+	background: transparent url(../i/webinar/popBg.png) 0 0 repeat-y;
+	padding: 0 23px 0 17px;
+	position: relative;
+}
+.popMask .popup .popContent{
+	width: 620px;
+	background: transparent url(../i/webinar/popBg.png) 0 0 repeat-y;
+	padding: 0 23px 0 17px;
+	position: relative;
+}
+.popMask .popup .popBottom{
+	width: 660px;
+	height: 31px;
+	background: transparent url(../i/webinar/popBottom.png) 0 0 repeat-y;
+}
+.popMask .smallPop{
+	width: 620px;
+}
+.popMask .smallPop .popTop{
+	width: 620px;
+	height: 34px;
+	background: transparent url(../i/webinar/smallPopTop.png) 0 0 no-repeat;
+}
+.popMask .smallPop .popContent{
+	width: 580px;
+	background: transparent url(../i/webinar/smallPopBg.png) 0 0 repeat-y;
+}
+.popMask .smallPop .popBottom{
+	width: 620px;
+	height: 31px;
+	background: transparent url(../i/webinar/smallPopBottom.png) 0 0 repeat-y;
+}
+.popMask .popup .closePopBtn{
+	display: block;	
+	width: 19px;
+	height: 19px;
+	overflow: hidden;
+	background: transparent url(../i/webinar/popupClose.png) 0 0 no-repeat;
+	position: absolute;
+	top: -18px;
+	right: 23px;
+}
+.popMask .popup .closePopBtn:hover{
+	background-position: 0 -19px;
+}
+.popMask .popup .upcomingTag{
+	display: block;
+	width: 62px;
+	height: 62px;
+	position: absolute;
+	right: 23px;
+	top: -18px;
+	background: transparent url(../i/webinar/upcomingTag.png) 0 0 repeat-y;
+}
+.popMask .popup .titleArea{
+	overflow: hidden;
+	padding: 4px 23px 15px 23px;
+}
+.popMask .popup .titleArea img{
+	display: block;
+	max-width: 91px;
+	float: left;
+	margin: 3px 0 0 0;
+}
+.popMask .popup .titleArea p.dateLine, .popMask .popup .titleArea h3{
+	float: right;
+	width: 468px;
+}
+.popMask .popup .titleArea p.dateLine{
+	color: #159bff;
+	font-size: 24px;
+	line-height: 24px;
+}
+.popMask .popup .titleArea h3{
+	color: #333333;
+	font-size: 34px;
+	line-height: 34px;
+}
+.popMask .smallPop .titleArea h3{
+	font-size: 26px;
+	padding-bottom: 7px;
+}
+.popMask .smallPop .titleArea p.dateLine, .popMask .smallPop .titleArea h3{
+	width: 428px;
+}
+.popMask .popup .detailsArea{
+	clear: both;
+	padding: 20px 0 15px 0;
+	position: relative;
+	font-size: 11px;
+	line-height: 13px;
+	color: #636373;
+}
+#scroll1{
+	clear: both;
+    height: 295px!important;
+}
+.popMask .popup .formArea{
+	position: relative;	
+	padding: 27px 0 24px 0;
+	background-color: #f7f7f8;
+	overflow: hidden
+}
+
+.popMask #downloadForm .formArea{
+	margin: 0 20px;
+}
+.popMask .popup .formArea form{
+	width: 300px;
+	float: left;
+	margin: 3px 0 0 30px;
+}
+.popMask .popup .formArea .inputWrapper{
+	width: 263px;
+	height: 20px;
+	padding: 8px 10px 17px 10px;
+	position: relative;
+	background: transparent url(../i/webinar/inputBg.png) 0 0 no-repeat;
+}
+.popMask .popup .formArea input{
+	background-color: #ececed;
+	border-width: 0;
+	width: 263px;
+	padding: 0;
+	height: 20px;
+	font-size: 12px;
+	color: #636373;
+}
+.popMask .popup .formArea .inputWrapper span{
+	display: block;
+	width: 12px;
+	height: 12px;
+	line-height: 12px;
+	font-size: 12px;
+	color: #636373;
+	position: absolute;
+	top: 0;
+	right: -12px;
+	text-align: center;
+}
+.popMask .popup .formArea .formNotes{
+	padding: 10px 0 0 0;
+	line-height: 18px;
+	color: #8f8f9b;
+	font-size: 11px;
+}
+.popMask .popup .formArea .infoError{
+	color: #ff0000;
+}
+.popMask .popup .formArea .benefitsInfo{
+	width: 200px;
+	float: right;
+	margin: 0 30px 0 0;
+}
+.popMask .popup .formArea .benefitsInfo h4{
+	color: #333333;
+	line-height: 26px;
+	font-size: 26px;
+	padding-bottom: 14px;
+}
+.popMask .popup .formArea .benefitsInfo li{
+	padding: 0 0 17px 20px;
+	background: transparent url(../i/webinar/liCheck.png) 0 0 no-repeat;
+	font-size: 12px;
+	color: #8f8f9b;
+	line-height: 16px;
+}
+.popMask .smallPop .bottomLine {
+	height: 35px;
+
+}
+.popMask .smallPop .bottomLine input {
+	margin: 11px 6px 0 10px;
+	display: block;
+	float: left;
+}
+.popMask .smallPop .bottomLine label{
+	display: block;
+	float: left;
+	color: #8f8f9b;
+	font-size: 11px;
+	line-height: 15px;
+	margin-top: 10px;
+}
+.popMask .smallPop .bottomLine .regBtn{
+	float: right;
+}
+.popMask .smallPop .bottomLine .downloadBtn{
+	float: right;
+	margin-right: 18px;
+}
+.popMask .smallPop .bottomLine a.backFromPopBtn{
+	margin: 10px 0 0 13px;
+	padding: 0 0 0 20px;
+	display: block;
+	line-height: 15px;
+	background: transparent url(../i/webinar/linkIcon_back.png) 0 0 no-repeat;
+	float: left;
+	
+}
+.popMask .popup .topShadow{
+	width: 100%;
+	position: absolute;
+	top: 0;
+	height: 8px;
+	background: transparent url(../i/webinar/topShadow.png) center 0 no-repeat;
+	overflow: hidden;
+}
+.popMask .popup .bottomShadow{
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	overflow: hidden;
+	height: 8px;
+	background: transparent url(../i/webinar/bottomShadow.png) center 0 no-repeat;
+}
+
+.popMask .smallPop .formArea .topShadow{
+	width: 100%;
+	position: absolute;
+	top: 0;
+	height: 8px;
+	background: transparent url(../i/webinar/topShadow.png) center 0 no-repeat;
+}
+.popMask .smallPop .formArea .bottomShadow{
+	width: 100%;
+	position: absolute;
+	bottom: 0;
+	height: 8px;
+	background: transparent url(../i/webinar/bottomShadow.png) center 0 no-repeat;
+}
+
+.popMask .popup .detailsArea h4{
+	color: #bb0000;
+	font-size: 20px;
+	line-height: 20px;
+	margin: 0;
+	padding: 0 20px 5px 20px;
+}
+.popMask .popup .detailsArea p{
+	margin: 0;
+	padding: 0 20px 13px 20px;
+}
+.popMask .popup .popContent p.infoLine{
+	padding: 0 20px;
+	line-height: 20px;
+	font-size: 12px;
+}
+.popMask #registerForm .popContent p.infoLine{
+	width: 428px;
+	padding: 0;
+	float: right;
+	color: #636373;
+}
+.popMask .popup .popContent p.infoLine .lineTitle{
+	display: block;
+	float: left;
+	width: 61px;
+	font-weight: bold;
+}
+.popMask .popup .popContent p.infoLine .lineSep{
+	display: block;
+	float: left;
+	padding: 0 35px 0 0;
+	background: transparent url(../i/webinar/infoLineSep.png) 100% 0 no-repeat;
+}
+.popMask .popup .popContent p.infoLine .lineMark{
+	display: block;
+	float: left;
+	width: 8px;
+	font-weight: bold;
+}
+
+.popMask .popup .detailsArea .detailDescription{
+	padding: 0 20px 0 20px;
+}
+.popMask .popup .detailsArea ul{
+	padding: 0 20px 15px 20px;
+}
+.popMask .popup .detailsArea .detailDescription ul{
+	padding: 0 0 15px 0;
+}
+.popMask .popup .detailsArea ul li{
+	padding: 0 0 0 20px;
+	background: transparent url(../i/webinar/liDot.png) 0 0 no-repeat;
+}
+.popMask .popup .detailsArea .hostInfo{
+	float: right;
+	width: 280px;
+	overflow: hidden;
+	margin: 10px 20px 10px 0;
+}
+.popMask .popup .detailsArea .hostInfo img{
+	float: left;
+	max-width: 78px;
+}
+.popMask .popup .detailsArea .hostInfo p{
+	float: right;
+	width: 190px;
+	padding: 0;
+}
+.popMask .popup .detailsArea .hostInfo p.hostName{
+	font-size: 12px;
+	line-height: 12px;
+	padding: 0 0 7px 0;
+	font-weight: bold;	
+}
+.popMask .popup .detailsArea .leftHost{
+	float: left;
+	width: 260px;
+	margin: 10px 0 10px 20px;
+}
+.popMask .popup .detailsArea .leftHost p{
+	width: 170px;
+}
+.popMask .popup .sepLine{
+	clear: both;
+	height: 22px;
+	background: transparent url(../i/webinar/popSepLine.png) 0 center repeat-x;
+	margin: 0 20px;
+}
+.popMask .popup .bottomLine{
+	padding: 20px 20px 13px 20px;	
+	overflow: hidden;
+}
+.popMask .popup .bottomLine .shareBtn{
+	line-height: 15px;
+	display: block;
+	float: left;
+	padding: 0 0 0 20px;
+	margin-top: 15px;	
+	background: transparent url(../i/webinar/linkIcon_add.png) 0 0 no-repeat;
+}
+.popMask .popup .bottomLine .bigRegBtn{
+	float: right;
+}
+.popMask #pastVideo .detailsArea {
+    padding: 0;
+}
+.popMask #externalVideo .detailsArea {
+    padding: 14px 0 6px 0;
+}
+.popMask #externalVideo .detailsArea a.shareBtn {
+	display: block;
+	height: 15px;
+	line-height: 15px;
+	font-size: 12px;
+	padding: 0 0 0 20px;
+    background: url(../i/webinar/linkIcon_add.png) 0 0 no-repeat;
+	position: absolute;
+	top: 14px;
+	right: 20px;
+}
+.popMask .popup .videoArea{
+	width:620px;
+	height: 318px;
+	background-color: #f2f2f2;
+	position: relative;
+}
+.popMask .popup .videoArea .highlight{
+	width:620px;
+	height: 318px;
+	overflow: hidden;
+	background: transparent url(../i/webinar/videoBigHighlight.png) 0 0 no-repeat;
+}
+
+.popMask .popup .videoArea .marker1{
+    display: block;
+	width: 81px;
+	height: 42px;
+    background: url(../i/webinar/videoTag.png) 0 0 no-repeat;
+	overflow: hidden;
+    position: absolute;
+    right: 0px;
+    top: -7px;
+	z-index: 111111;
+}
+.popMask .popup .videoArea .marker2{
+    display: block;
+	width: 81px;
+	height: 42px;
+    background: url(../i/webinar/videoTag.png) 0 -42px no-repeat;
+	overflow: hidden;
+    position: absolute;
+    right: 0px;
+    top: -7px;
+	z-index: 111111;
+}
+.popMask .popup .videoArea .playButton {
+    display: block;
+	width: 70px;
+	height: 70px;
+    background: url(../i/webinar/playBtn.png) 0 0 no-repeat;
+	overflow: hidden;
+    position: absolute;
+    left: 275px;
+    top: 124px;
+	z-index: 10;
+}
+.popMask .popup .videoArea .playButton:hover {
+    background-position: 0 -70px;
+}
+.popMask .popup .scrollArea{
+	min-height: 280px;
+	margin: 13px 0 0 0;
+	position: relative;
+    overflow: hidden;
+}
+.popMask .popup .scrollArea a.vdownload{
+	display: block;
+	height: 15px;
+	line-height: 15px;
+	font-size: 12px;
+	padding: 0 0 0 20px;
+    background: url(../i/webinar/linkIcon_download.png) 0 0 no-repeat;
+	position: absolute;
+	top: 0;
+	right: 85px;
+}
+.popMask .popup .scrollArea a.shareBtn{
+	display: block;
+	height: 15px;
+	line-height: 15px;
+	font-size: 12px;
+	padding: 0 0 0 20px;
+    background: url(../i/webinar/linkIcon_add.png) 0 0 no-repeat;
+	position: absolute;
+	top: 0;
+	right: 13px;
+}
+/*upcoming popup*/
+.popMask #upcomingVideo .detailsArea{
+	background-color: #f7f7f8
+
+
+}
+
+#video {
+    margin: 0 auto;
+}
+
+.onwebinar {
+    color: #d41c1c!important;
+}
+
+	.attendTitle {
+		font-family:"Myriad Pro",arial;
+		font-size:36px;
+		color:#2b2b2b;
+		font-weight:bold;
+		clear:both;
+	}
+.overflowHidden { overflow:hidden; }	
+.eventBoxWrapper {
+}
+	.eventBox {
+		float:left;
+		width:467px;
+		height:304px;
+		background: url(../i/event/event-item-box.png) top left no-repeat;
+		margin-bottom:20px;
+	}
+		.eventBoxWrapper .odd {
+			margin-right:28px;
+		}
+		.eventBox .eventTitle {
+			height:46px;
+			line-height:46px;
+			font-size:24px; 
+			color:#000000;
+			padding:0px 10px 0px 15px;
+			clear:both;
+		}
+		.eventBox .eventItemContent {
+			padding-top:20px;
+		}
+			.eventBox .eventThumb {
+				float:left;
+				width:150px;
+				height:200px;
+				margin-left:10px;
+				text-align:center;
+			}
+			.eventBox .detailWrapper {
+				float:left;
+				margin-left:15px;
+				width:270px;
+				height:230px;
+				position:relative;
+			}
+				.eventBox .eventTitle2 {
+					font-size:22px;
+					color:#ff0000;
+					max-height:50px;
+					margin-bottom:10px;
+				}
+				.eventBox .date {
+					font-size:12px;
+					color:#159bff;
+					font-weight:bold;
+				}
+				.eventBox .city {
+					font-size:12px;
+					color:#616161;
+					font-weight:bold;
+					border-bottom:1px #e3e3e3 solid;
+					padding-bottom:2px;
+				}
+				.eventBox .para {
+					margin-top:5px;
+					font-size:12px;
+					color:#5a5a5a;
+					line-height:16px;
+					height:96px;
+				}
+				.eventBox .moreButton {
+					position:absolute;
+					bottom:0px; left:0px;
+					width:143px;
+					height:31px;
+					background: url(../i/event/learn-more.png) top left no-repeat;
+				}
+				.eventBox .moreButton:hover {
+					background: url(../i/event/learn-more.png) bottom left no-repeat;
+				}
+				
+/*e book*/
+.eventBox.ebookWidget{
+    background: url(../i/event/event-item-box-ebook.png) repeat-x;
+}
+
+	.eventBox.ebookWidget .header{
+		margin: 15px 0 0 3px;
+		height: 75px;
+		width: 276px;
+		padding: 90px 0 0 185px;
+		background: url(../i/event/event-item-box-ebook-banner.png) no-repeat;
+	}
+
+		.eventBox.ebookWidget .header .text{
+			color: #003366;
+			font-size: 16px;
+			text-shadow:1px 1px 1px #5287B5;
+		}
+
+
+	.eventBox.ebookWidget .body{
+		margin: 16px 28px 0 33px;
+	
+	}
+		.eventBox.ebookWidget .body input[type='text']{
+		
+			padding-left: 8px;
+			width: 182px;
+			height: 22px;
+			line-height: 22px;
+			border: 1px solid #999999;
+			float: left;
+		}
+			.eventBox.ebookWidget .body input.grayWords{
+				color: #333333;
+			}
+			.eventBox.ebookWidget .body input.blackWords{
+				color: #000;
+			}
+			#txtName{
+				margin-right: 10px;
+			}
+			#txtEmail{
+			   float: right;
+			}
+			.eventBox.ebookWidget .body label{
+				margin-top: 12px;
+				float: left;
+			}
+			.chkWrapper{
+				width:15px;
+				height:15px;
+				float: left;
+				margin-top: 14px;
+				margin-right: 5px;
+			}
+			.errorInput{
+				border: 1px solid #FF0000 !important;
+			}
+				.eventBox.ebookWidget .body .unchecked{
+					background: url(../i/ebook/checkBox.png) no-repeat;
+				}
+				.eventBox.ebookWidget .body .checked{
+					background: url(../i/ebook/checkBox.png) 0 -15px no-repeat;
+				}
+				.eventBox.ebookWidget .body .checkError{
+					background: url(../i/ebook/checkBox.png) 0 -30px no-repeat;
+				}
+				.eventBox.ebookWidget .body a.btnGetEbook{
+					background: url(../i/ebook/btnGetEbook.png) no-repeat;
+					width: 168px;
+					height: 35px;
+					margin-top: 12px;
+					float: right;
+					margin-left: 15px;
+				}
+				
+				.eventBox.ebookWidget .body a.btnGetEbook:hover{
+					background: url(../i/ebook/btnGetEbook.png) 0 -35px no-repeat;
+				}
+				
+				.eventBox.ebookWidget .body div.shadow{
+					background: url(../i/ebook/shadow.png) no-repeat;
+					width: 168px;
+					height: 16px;
+					position:absolute;
+					right:28px;
+				}
+				.eventBox.ebookWidget .body .errorText{
+					color: #FF0000;
+					text-align: center;
+					font-size:14px;
+					margin-top:14px;
+				}
+				.clear{
+					clear: both;
+				}
+				.eventBox.ebookWidget .result {
+					display: none;
+					margin-top: 50px;
+					text-align: center;
+					color: #8bca35;
+					font-size: 16px;
+				}				
