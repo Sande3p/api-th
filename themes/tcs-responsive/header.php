@@ -50,38 +50,21 @@ $nav = array (
 		'walker' => new nav_menu_walker () 
 );
 
-// Print a cookie
-//echo $_COOKIE["tcsso"];
-
 //Get the TopCoder SSO Cookie
 $cookie = $_COOKIE["tcsso"];
 $cookie_parts = explode( "|", $cookie);
 $user_id = $cookie_parts[0];
 $tc_token = $cookie_parts[1];
-#$user_id = "22760600";
-#echo $user_id;
 
-// PEMULA - update this to correctly parts the "handle" from the json and set it to $handle
-		$url = "http://community.topcoder.com/tc?module=BasicData&c=get_handle_by_id&dsid=30&uid=".$user_id."&json=true";
-		$response = get_json_from_url ( $url );
-		$data = json_decode ( $response )->data;
-		#echo $url;
-		#print_r($data);
-	//	print_r( json_decode ( $response )->data[0]->handle );
-	
-//		if (is_wp_error ( $response ) || ! isset ( $response ['data'] )) {
-//			return "Error in processing";
-//		}
-			//$handle_obj = json_decode ( $response ['data'], true);
-			//echo print_r ($handle_obj);
-			//print_r($handle_obj->{'handle'});
+$url = "http://community.topcoder.com/tc?module=BasicData&c=get_handle_by_id&dsid=30&uid=".$user_id."&json=true";
+$response = get_json_from_url ( $url );
+$data = json_decode ( $response )->data;
 
-$handle = $data[0]->handle;  //Replace this with a call to http://community.topcoder.com/tc?module=BasicData&c=get_handle_by_id&dsid=30&uid=8547899&json=true and parse the handle from the result.
-#echo $handle;
-#$handle = "TonyJ";
+$handle = $data[0]->handle;
+
 if ( isset($_COOKIE["user"]) )
 {
-	$user = $handle;
+	$user = "";
 	$welcome = "hide";
 	$reg = "";
 }
@@ -94,7 +77,6 @@ else
 
 global $coder;
 $coder = get_raw_coder($handle);
-#print_r( $coder );
 $memberSince = explode(" ",$coder->memberSince);
 $memberSince = explode(".",$memberSince[0]);
 $memberEarning = '$'.$coder->overallEarning;
@@ -102,7 +84,6 @@ if ( $coder->photoLink != '')
 $photoLink = 'http://community.topcoder.com'.$coder->photoLink;
 else
 $photoLink = 'http://community.topcoder.com/i/m/nophoto_login.gif';
-#echo $handle;
 ?>
 
 <div id="wrapper">
@@ -118,9 +99,9 @@ $photoLink = 'http://community.topcoder.com/i/m/nophoto_login.gif';
 					<div class="userDetails">
 						<a href="<?php bloginfo('wpurl');?>/member-profile/<?php echo $coder->handle;?>" style="color:<?php echo $coder->colorStyle->color;?>" class="coder"><?php echo $handle ;?></a>
 						<p class="country"><?php echo $coder->country; ?></p>
-						<a href="#" class="link">My Profile</a>
-						<a href="#" class="link">My Dashboard </a>
-						<a href="https://topcoder.auth0.com/logout?returnTo=http://beta.topcoder.com" class="link actionLogout">Log Out </a>	
+						<a href="<?php bloginfo('wpurl');?>/member-profile/<?php echo $coder->handle;?>" class="link">My Profile</a>
+						<a href="http://community.topcoder.com/tc?module=MyHome" class="link">My Dashboard </a>
+						<a href="#" class="link actionLogout">Log Out </a>	
 					</div>
 				</div>
 			</li>
@@ -139,7 +120,7 @@ $photoLink = 'http://community.topcoder.com/i/m/nophoto_login.gif';
 						<?php wp_nav_menu ( $nav );	?>
 						
 						<?php if ( $user_id != '' ) : ?>
-						<li class="onReg"><a href="https://topcoder.auth0.com/logout?returnTo=http://somewhere" class="actionLogout">Log Out</a></li>
+						<li class="onReg"><a href="#" class="actionLogout">Log Out</a></li>
 						<?php else: ?>
 						<li class="noReg"><a href="javascript:;" class="actionLogin">Log In</a></li>
 						<?php endif; ?>
@@ -171,9 +152,9 @@ $photoLink = 'http://community.topcoder.com/i/m/nophoto_login.gif';
 						</div>
 					</div>
 					<div class="action">
-						<a href="#">My Profile</a>
-						<a href="#">My Dashboard </a>
-						<a href="https://topcoder.auth0.com/logout?returnTo=http://somewhere" class="linkAlt actionLogout">Log Out</a>
+						<a href="<?php bloginfo('wpurl');?>/member-profile/<?php echo $coder->handle;?>">My Profile</a>
+						<a href="http://community.topcoder.com/tc?module=MyHome">My Dashboard </a>
+						<a href="#" class="linkAlt actionLogout">Log Out</a>
 					</div>
 				</div>
 				<?php endif; ?>
