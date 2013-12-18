@@ -14,7 +14,9 @@
 <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/style-responsive.css" />
 <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/coder.css" />
 <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/register-login.css" />
-
+<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/blog-base.css" />
+<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/blog.css" />
+<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/blog-responsive.css" />
 
 
 <!-- External JS -->
@@ -23,13 +25,30 @@
   <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/ie.css" />
 <![endif]-->
 
-<!--[if IE 9]>
-	<script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/pie-ie9.js"></script>
+<!--[if IE 7]>
+  <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/ie7.css" />
 <![endif]-->
+
+<!--[if IE]>
+  <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/ie_all.css" />
+<![endif]-->
+
 <!-- 
 <script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/jQuery.js" type="text/javascript"></script>
  -->
+<script>
+	var base_url = '<?php echo bloginfo( 'stylesheet_directory' ); ?>';
+	var siteURL = '<?php echo get_bloginfo('siteurl');?>';
+	var ajaxUrl = "<?php bloginfo('wpurl') ?>/wp-admin/admin-ajax.php";
+</script>
+	
+<?php fixIERoundedCorder(); ?>
 <script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/jquery.bxslider.js" type="text/javascript"></script>
+<script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/jquery.customSelect.min.js" type="text/javascript"></script>
+<script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/swipe.js" type="text/javascript"></script>
+<script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/jquery.inputhints.js" type="text/javascript"></script>
 <script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/scripts.js" type="text/javascript"></script>
 <script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/register-login.js" type="text/javascript"></script>
+<script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/blog.js" type="text/javascript"></script>
+
 

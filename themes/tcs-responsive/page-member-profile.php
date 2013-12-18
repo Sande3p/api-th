@@ -1,78 +1,104 @@
+<?php get_header(); ?>
 <?php
-/*
- * Template Name: Member Profile
- */
-get_header ();
 
-$values = get_post_custom ( $post->ID );
-
-$userKey = get_option ( 'api_user_key' );
+global $activity;
+$activity = get_activity_summary ();
 $handle = get_query_var ( 'handle' );
-$siteURL = site_url ();
+$tab = get_query_var ( 'tab' );
+#echo $handle;
+$track= "data/srm";
+if ($tab == "algo") {
+	$track = "data/srm";
+}else if ($tab == "develop") {
+	$track = "develop";
+}else if ($tab == "design") {
+	$track = "design";
+}
+$coder = get_member_profile('',$handle);
 ?>
-<script>
-	$(document).ready(function() {
-		get_member_details("<?php echo $handle;?>");
-	});
-</script>			
-<div id="content" class="contestContent">
-	<div id="memberProfileContainer" class="container">
-		<div class="mainRail">
-
-			<div id="memberQuote" class="memberQuote">Member of the world largest global competitive community.</div>
-			<div id="copilotStats">
-				<h3 class="copilotAchievementsTitle copilotAchivementAjax">Copilot Achievements</h3>
-				<div class="copilot-pool copilotAchivementAjax"><div class="charts">
-					<div class="palisade">
-						<div class="palisade-control">
-							<div class="left-control">
-								<div class="leftControlMask">
-																							
+<div class="content">
+	<div id="main" class="coderProfile">
+		<div id="hero">
+			<div class="inner">
+				<div class="container">
+					<article class="aboutCoder">
+						<div class="details">
+							<figure class="coderPicWrap">
+								<img alt="<?php echo $coder->handle;?>" src="<?php echo 'http://community.topcoder.com'.$coder->photoLink;?>">
+							</figure>
+							<div class="info">
+								<div class="handle">
+									<a href="#"><?php echo $coder->handle;?></a>
+								</div>
+								<div class="country"><?php echo $coder->country; ?></div>
+								<div class="memberSince">
+									<label>Member Since:</label>
+									<div class="val"><?php 
+									$memSince = $coder->memberSince; 
+									$memSince = str_replace(".","/",$memSince);
+									echo date("M d, Y", strtotime($memSince)) ;
+									?></div>
+								</div>
+								<div class="memberSince">
+									<label>Total Earnings :</label>
+									<div class="val"><?php echo '$'.$coder->overallEarning;?></div>
 								</div>
 							</div>
-							<div class="right-area">
-								
-								
-
-																					
-							</div>
 						</div>
-					</div>
-				</div></div>
+						<blockquote class="coderQuote">“<?php echo $coder->quote;?>”</blockquote>
+						<ul class="social">
+							<li><a class="gp" href="#"></a></li>
+							<li><a class="mail" href="#"></a></li>
+							<li><a class="tw" href="#"></a></li>
+							<li><a class="fb" href="#"></a></li>
+						</ul>
+					</article>
+					<!-- /.aboutCoder -->
+				</div>
 			</div>
-			
 		</div>
-		<!-- End of .mainRail -->
-			
-		<aside class="rightRail">
-			
-			<div class="memberProfilePicture"><img src="<?php bloginfo( 'stylesheet_directory' ); ?>/i/member-placeholder.png" alt="" width="141" height="140" /></div>
-			<p class="memberProfile"><span class="handle" id="handle">handle</span></p>
-			<p id="memberSince" class="memberProfile"><label>Member Since</label><span class="alignRight"></span></p>
-			<p id="country" class="memberProfile"><label>Country</label><span class="alignCenter"></span></p>
-			
-			<div class="coderAchievementTop">Coder Achievements</div>
-			<table class="coderAchievementTable">
-				<thead>
-					<tr>
-						<th width="30%">Date</th>
-						<th width="70%">Description</th>
-					</tr>
-				</thead>
-				<tbody>
-				</tbody>
-			</table>
-		</aside>
-			
-		<div class="clear"></div>
-		
-		<div class="loadingOverlay"><div class="loadingGif"></div></div>
-	
-	</div>
-	<!-- End of .contentInner -->
-	
-	
-	
-</div>
-<!-- End of #content -->
+		<!-- /#hero -->
+<?php 
+$coder = get_member_statistics ( $handle, $track );
+?>
+
+
+		<article id="mainContent" class="noShadow">
+			<article class="coderRatings">
+				<div class="container">
+					<div class="actions track<?php echo $tab;?>">
+						<ul class="trackSwitch switchBtns">
+							<li class="first"><a href="./?tab=design" class="<?php if($tab == "design"){ echo "isActive";}?>">Design</a></li>
+							<li><a href="./?tab=develop" class="<?php if($tab == "develop"){ echo "isActive";}?>">Develop</a></li>
+							<li class="last"><a href="./?tab=algo" class="<?php if($tab == "algo" || $tab == null || $tab == ""){ echo "isActive";}?>">Algorithm</a></li>
+						</ul>
+						<!-- /.trackSwitch -->
+						<ul class="viewSwitch switchBtns">
+							<li class="graphView first"><a href="#graphView" class="isActive"></a></li>
+							<li class="tabularView last"><a href="#tabularView"></a></li>
+						</ul>
+					</div>
+					<!-- /.actions -->
+					<div class="dataTabs">
+						<?php 
+						if($tab=="design"){
+							get_template_part('content', 'member-design');
+						}else if($tab=="develop"){
+							get_template_part('content', 'member-develop');
+						}else{
+							get_template_part('content', 'member-algo');
+						}						
+						?>						
+					</div>
+					<!-- /.dataTabs -->
+				</div>
+				<div class="clear"></div>
+				<div class="forumWrap">
+						<?php get_template_part('content', 'forum');?>
+				</div>
+				<!-- /.forumWrap -->
+			</article>
+			<!-- /.coderRatings -->
+		</article>
+		<!-- /#mainContent -->
 <?php get_footer(); ?>

@@ -6,9 +6,9 @@ function get_contest_type($userKey = ''){
 	return $TCHOOK_plugin-> get_contest_type( $userKey );	
 }
 
-function get_active_contests($contestType = '', $contestID = '30000000', $page = 1, $post_per_page = 30, $userKey = ''){
+function get_active_contests($userKey = '', $contestType = '', $page = 1, $post_per_page = 30){
 	global $TCHOOK_plugin;
-	return $TCHOOK_plugin-> get_active_contests($contestType, $contestID, $page, $post_per_page, $userKey);
+	return $TCHOOK_plugin-> get_active_contests($userKey, $contestType, $page, $post_per_page);
 }
 
 function get_past_contests($userKey = '', $contestType = '', $page = 1, $post_per_page = 30){
@@ -41,11 +41,14 @@ function get_activity_summary($key=''){
 	return $TCHOOK_plugin-> tcapi_get_activitySummary('',$key);
 }
 
-function get_top_rank($key='',$topRankContestType){
+function get_member_statistics($handle, $track){
 	global $TCHOOK_plugin;
-	return $TCHOOK_plugin-> tcapi_get_top_rank('',$topRankContestType);
+	return $TCHOOK_plugin->tcapi_get_member_stats($handle, $track);
 }
 
-
+function get_json_from_url( $url ){
+	global $TCHOOK_plugin;
+	return $TCHOOK_plugin->get_json_from_url( $url );
+}
 
 ?>

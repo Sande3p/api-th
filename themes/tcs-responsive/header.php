@@ -1,4 +1,6 @@
 <?php
+
+
 require_once 'auth0/vendor/autoload.php';
 require_once 'auth0/src/Auth0.php';
 require_once 'auth0/vendor/adoy/oauth2/vendor/autoload.php';
@@ -28,13 +30,16 @@ $token = $auth0->getAccessToken();
 	<script type="text/javascript">
 		var ajaxUrl = "<?php  bloginfo('wpurl')?>/wp-admin/admin-ajax.php";		
 	</script>
+	
+	<script src="https://d19p4zemcycm7a.cloudfront.net/w2/auth0-1.2.2.min.js"></script>
+	<script src="http://code.jquery.com/jquery.js"></script>
+
 
 <?php get_template_part('header.assets'); ?>
   </head>
 
 <body>
 
-	
 <?php
 $nav = array (
 		'menu' => 'Main Navigation',
@@ -45,12 +50,38 @@ $nav = array (
 		'walker' => new nav_menu_walker () 
 );
 
+// Print a cookie
+//echo $_COOKIE["tcsso"];
 
-$cookie = get_cookie();
-	$handle = "lunarkid";
-if ( $cookie->handle_name == '' || $cookie->handle_id == '' )
+//Get the TopCoder SSO Cookie
+$cookie = $_COOKIE["tcsso"];
+$cookie_parts = explode( "|", $cookie);
+$user_id = $cookie_parts[0];
+$tc_token = $cookie_parts[1];
+#$user_id = "22760600";
+#echo $user_id;
+
+// PEMULA - update this to correctly parts the "handle" from the json and set it to $handle
+		$url = "http://community.topcoder.com/tc?module=BasicData&c=get_handle_by_id&dsid=30&uid=".$user_id."&json=true";
+		$response = get_json_from_url ( $url );
+		$data = json_decode ( $response )->data;
+		#echo $url;
+		#print_r($data);
+	//	print_r( json_decode ( $response )->data[0]->handle );
+	
+//		if (is_wp_error ( $response ) || ! isset ( $response ['data'] )) {
+//			return "Error in processing";
+//		}
+			//$handle_obj = json_decode ( $response ['data'], true);
+			//echo print_r ($handle_obj);
+			//print_r($handle_obj->{'handle'});
+
+$handle = $data[0]->handle;  //Replace this with a call to http://community.topcoder.com/tc?module=BasicData&c=get_handle_by_id&dsid=30&uid=8547899&json=true and parse the handle from the result.
+#echo $handle;
+#$handle = "TonyJ";
+if ( isset($_COOKIE["user"]) )
 {
-	$user = "";
+	$user = $handle;
 	$welcome = "hide";
 	$reg = "";
 }
@@ -63,11 +94,15 @@ else
 
 global $coder;
 $coder = get_raw_coder($handle);
+#print_r( $coder );
 $memberSince = explode(" ",$coder->memberSince);
 $memberSince = explode(".",$memberSince[0]);
 $memberEarning = '$'.$coder->overallEarning;
+if ( $coder->photoLink != '')
 $photoLink = 'http://community.topcoder.com'.$coder->photoLink;
-
+else
+$photoLink = 'http://community.topcoder.com/i/m/nophoto_login.gif';
+#echo $handle;
 ?>
 
 <div id="wrapper">
@@ -81,11 +116,11 @@ $photoLink = 'http://community.topcoder.com'.$coder->photoLink;
 						<img src="<?php echo $photoLink;?>" alt="<?php echo $coder->handle; ?>">
 					</div>
 					<div class="userDetails">
-						<a href="<?php bloginfo('wpurl');?>/member-profile/<?php echo $coder->handle;?>" class="coder"><?php echo $coder->handle;?></a>
+						<a href="<?php bloginfo('wpurl');?>/member-profile/<?php echo $coder->handle;?>" style="color:<?php echo $coder->colorStyle->color;?>" class="coder"><?php echo $handle ;?></a>
 						<p class="country"><?php echo $coder->country; ?></p>
 						<a href="#" class="link">My Profile</a>
 						<a href="#" class="link">My Dashboard </a>
-						<a href="javascript:;" class="link actionLogout">Log Out </a>	
+						<a href="https://topcoder.auth0.com/logout?returnTo=http://beta.topcoder.com" class="link actionLogout">Log Out </a>	
 					</div>
 				</div>
 			</li>
@@ -98,16 +133,26 @@ $photoLink = 'http://community.topcoder.com'.$coder->photoLink;
 					<a href="<?php bloginfo('wpurl');?>" title="<?php bloginfo('name'); ?>"></a>
 				</h1>
 				<nav id="mainNav" class="mainNav">
-					
+				
+				
 					<ul class="root">
 						<?php wp_nav_menu ( $nav );	?>
-						<li class="noReg"><a href="javascript:;" class="actionLogout">Log Out</a></li>
-						<li class="onReg"><a href="javascript:;" class="actionLogin">Log In</a></li>
+						
+						<?php if ( $user_id != '' ) : ?>
+						<li class="onReg"><a href="https://topcoder.auth0.com/logout?returnTo=http://somewhere" class="actionLogout">Log Out</a></li>
+						<?php else: ?>
+						<li class="noReg"><a href="javascript:;" class="actionLogin">Log In</a></li>
+						<?php endif; ?>
 					</ul>
 				</nav>
-				<a href="javascript:;" class="onMobi noReg linkLogout actionLogout">Log Out</a>
+				<?php if ( $user_id != '' ) : ?>
+						<a href="javascript:;" class="onMobi onReg linkLogout actionLogout">Log Out</a>
+				<?php else: ?>		
 				<a href="javascript:;" class="onMobi onReg linkLogin actionLogin">Log In</a>
-				<span class="btnRegWrap onReg"><a href="javascript:;" class="btn btnRegister">Register</a> </span> 
+				<?php endif; ?>
+				<?php if ( $user_id == '' ) : ?>
+				<span class="btnRegWrap noReg"><a href="javascript:;" class="btn btnRegister">Register</a> </span> 
+				<?php else: ?>	
 				<span class="btnAccWrap noReg"><a href="javascript:;" class="btn btnAlt btnMyAcc">
 						My Account<i></i>
 					</a></span>
@@ -128,9 +173,10 @@ $photoLink = 'http://community.topcoder.com'.$coder->photoLink;
 					<div class="action">
 						<a href="#">My Profile</a>
 						<a href="#">My Dashboard </a>
-						<a href="javascript:;" class="linkAlt actionLogout">Log Out</a>
+						<a href="https://topcoder.auth0.com/logout?returnTo=http://somewhere" class="linkAlt actionLogout">Log Out</a>
 					</div>
 				</div>
+				<?php endif; ?>
 				<!-- /.userWidget -->	
 			</div>
 		</header>

@@ -15,10 +15,11 @@ $values = get_post_custom ( $post->ID );
 $userkey = get_option ( 'api_user_key' );
 $siteURL = site_url ();
 
+
 $contestID = get_query_var('contestID');
-// hardcoded 30036134 for now
-$contest = get_contest_detail('',$contestID);
-#print_r($contest);
+//$contestType = get_query_var ( 'type' );
+$contestType = $_GET['type'];
+$contest = get_contest_detail('',$contestID, $contestType);
 ?>
 
 <?php
@@ -41,8 +42,8 @@ $contest = get_contest_detail('',$contestID);
 						<div class="container">
 							 
                              <div class="leftColumn">
-                             	<a class="btn btnRegisterDeac" href="javascript:;"><span>1</span> <strong>Register For This Contest</strong></a>
-                                <a class="btn btnSubmit" href="javascript:;"><span>2</span> <strong>Submit Your Entries</strong></a> 
+                             	<a class="btn btnRegisterDeac" href="http://community.topcoder.com/tc?module=ProjectDetail&pj=<?php echo $contest->challengeId ;?>"><span>1</span> <strong>Register For This Contest</strong></a>
+                                <a class="btn btnSubmit" href="http://community.topcoder.com/tc?module=ProjectDetail&pj=<?php echo $contest->challengeId ;?>"><span>2</span> <strong>Submit Your Entries</strong></a> 
                              </div>
                              
                              <div class="middleColumn">
@@ -125,20 +126,35 @@ $contest = get_contest_detail('',$contestID);
                                  <section class="tabsWrap"> 
 									<nav class="tabNav">
 										<ul>
-											<li><a href="#contest-overview" class="active link">Contest Overview</a></li>
-											<!-- <li><a href="#winner" class="link">Winner</a></li> -->
+											<li><a href="#contest-overview" class="active link">Challenge Overview</a></li>
+											<li><a href="#winner" class="link">Results</a></li>
 										</ul>
 									</nav>
 							  <div id="contest-overview" class="tableWrap tab">
 								
                                 <article id="contestOverview">
-                                <h1>Contest Overview</h1>
-                                         <h2>Detailed Requirements</h2>
+                                <h1>Challenge Overview</h1>
+									<p><?php echo $contest->detailedRequirements;?></p>
 
-<h3>Project Overview</h3>
-<p><?php echo $contest->detailedRequirements;?></p>
+<article id="technologies">
+	<h1>Technologies</h1>
+    <ul>
+    	<li><strong>Tech</strong></li>
+    </ul>
+</article>
+
 <h3>Final Submission Guidelines</h3>
 <?php echo $contest->finalSubmissionGuidelines;?>
+
+<article id="payments">
+	<h1>Payments</h1>
+    <p>TopCoder will compensate members with first and second place submissions. Initial payment for the winning member will be distributed in two installments. The first payment will be made at the closure of the approval phase. The second payment will be made at the completion of the support period.</p>
+
+<h2>Reliability Rating and Bonus</h2>
+<p>The reliability bonus for each particular project depends on the reliability rating at the moment of registration for that project. A participant with no previous projects is considered to have no reliability rating, and therefore gets no bonus.
+Reliability bonus does not apply to Digital Run winnings. Since reliability rating is based on the past 15 projects, it can only have 15 discrete values.<br>
+<a href="http://apps.topcoder.com/wiki/x/MQD9Ag">Read more.</a></p>
+</article>
 
 </article>
  
@@ -148,23 +164,8 @@ $contest = get_contest_detail('',$contestID);
 										 
                                          
                                          <article>
-                                         <h1>Submission Deliverables</h1>
-                                         <h2>Submission Deliverables</h2>
-                                         <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                                         
-                                         <h3>Submission Deliverables</h3>
-                                          <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                                          
-                                           <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                                           
-                                            <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                                            
-                                             <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                                             
-                                              <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                                              
-                                               <p>"Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum."</p>
-                                               </article>
+                                         Coming Soon...
+                                         </article>
                                          
 									</div>
                               
@@ -178,7 +179,7 @@ $contest = get_contest_detail('',$contestID);
 							<aside class="sideStream  grid-1-3">
 								  
                             <div class="topRightTitle"> 
-                            	<a href="#" class="contestForumIcon">Contest Forum</a> 
+                            	<a href="http://apps.topcoder.com/forums/?module=Category&categoryID=<?php echo $contest->forumId;?>" class="contestForumIcon" target="_blank">Contest Forum</a>  
 							</div>
                             
                             <div class="columnSideBar"> 

@@ -106,6 +106,8 @@ $(function(){
 		{
 			$(this).parents(".row").find("span.valid").css("display", "inline-block");
 			$(this).closest('.row').find('input:text').removeClass('invalid');
+			$(this).closest('.row').find('span.err1').hide();
+			$(this).closest('.row').find('span.err2').hide();
 		} else
 		{
 			$(this).parents(".row").find("span.valid").hide();
@@ -125,10 +127,34 @@ $(function(){
 		}
 	});
 	
+	$('#register form.register input:checkbox').on('change', function(){
+		if($(this).prop('checked'))
+		{
+			$(this).parents(".row").find("span.valid").css("display", "inline-block");
+			$(this).closest('.row').find('input:text').removeClass('invalid');
+			$(this).closest('.row').find('span.err1').hide();
+			$(this).closest('.row').find('span.err2').hide();
+		} else
+		{
+			$(this).parents(".row").find("span.valid").hide();
+		}
+	});
+	
 	$('#register input:password').on('keyup', function(){
 		var pwd = $('#register form.register input.pwd:password');
 		var confirm = $('#register form.register input.confirm:password');
-		
+		if($(this).hasClass('pwd'))
+		{
+			if($(this).val() != "")
+			{
+				$(this).closest('.row').find('span.err1').hide();
+				$(this).closest('.row').find('span.err2').hide();
+				$(this).closest('.row').find('input:password').removeClass('invalid');
+			} else
+			{
+				$(this).parents(".row").find("span.valid").hide();
+			}
+		}
 		if(pwd.val() == confirm.val())
 		{
 			confirm.parents(".row").find("span.valid").css("display", "inline-block");
@@ -141,6 +167,22 @@ $(function(){
 		}
 	});
 	
+	
+	$('select').on('change', function() {
+		if($(this).val()!="")
+		{
+			$(this).parents(".row").find("span.valid").css("display", "inline-block");
+			$(this).closest('.row').find('.err1').hide();
+			$(this).closest('.row').find('.err2').hide();
+			$(this).closest('.row').find('.customSelect').removeClass('invalid');
+		} else
+		{
+			$(this).parents(".row").find("span.valid").hide();
+		}
+	});
+	
+	$('select').customSelect();
+	
 	$('#register a.btnSubmit').on('click', function(){
 		var frm = $('#register form.register');
 		$('.invalid', frm).removeClass('invalid');
@@ -151,10 +193,17 @@ $(function(){
 				$(this).closest('.row').find('.err1').show();
 				$(this).closest('.row').find('input:text').addClass('invalid');
 				isValid = false;
-			}else if ($(this).hasClass("name") && $.trim($(this).val()) == "user01") {
+			}else if ($(this).hasClass("handle") && $.trim($(this).val()) == "user01") {
 				$(this).closest('.row').find('.err2').show();
 				$(this).closest('.row').find('input:text').addClass('invalid');
 				$(this).closest('.row').find('span.valid').hide();
+				isValid = false;
+			}
+		});
+		$('select',frm).each(function(){
+			if($.trim($(this).val()) == ""){
+				$(this).closest('.row').find('.err1').show();
+				$(this).closest('.row').find('.customSelect').addClass('invalid');
 				isValid = false;
 			}
 		});
@@ -193,21 +242,48 @@ $(function(){
 				$(this).closest('.row').find('input:password').addClass('invalid');
 				isValid = false;
 			}
+			if($('input.pwd:password',frm).val() != $('input.confirm:password',frm).val()) {
+				$('input.confirm:password').closest('.row').find('.err2').show();
+				$('input.confirm:password').closest('.row').find('input:password').addClass('invalid');
+				isValid = false;
+			}
+			else if($('input.confirm:password',frm).val() == "" ) {
+				$('input.confirm:password').closest('.row').find('.err1').show();
+				$('input.confirm:password').closest('.row').find('input:password').addClass('invalid');
+				isValid = false;
+			}
+			
 		});
 		
-		if($('input.pwd:password',frm).val() != $('input.confirm:password',frm).val()) {
-			$('input.confirm:password').closest('.row').find('.err2').show();
-			$('input.confirm:password').closest('.row').find('input:password').addClass('invalid');
-			isValid = false;
-		}
 		
 		
 		if(isValid){
-			$.post( ajaxUrl+'?action=post_register', { name: $('#registerForm input.name').val(), email: $('#registerForm input.email').val() ,password : $('#registerForm  input.pwd').val() },function( data ) {
-				$('.modal').hide();
-				$("#thanks p").html(data.description);
-				showModal('#thanks'); 
+			$('#register .btnSubmit').html('Please Wait');
+			$.post( ajaxUrl+'?action=post_register', { 
+			firstName: $('#registerForm input.firstName').val(),
+			lastName: $('#registerForm input.lastName').val(), 
+			handle: $('#registerForm input.handle').val(),
+			country: $('#registerForm select#selCountry').val(),			
+			email: $('#registerForm input.email').val() ,
+			password : $('#registerForm  input.pwd').val() 
+			},function( data ) {
+				if ( data.code == "200" ) {
+					$('.modal').hide();
+					$("#thanks h2").html('Thanks for Registering');
+					$("#thanks p").html('We have sent you an email with a activation instructions.<br>If you do not receive that email within 1 hour, please email <a href="mailto:support@topcoder.com">support@topcoder.com</a>');
+					showModal('#thanks'); 
+				}
+				else{
+					$('.modal').hide();
+					$("#thanks h2").html('Error');
+					$("#thanks p").html(data.description);
+					showModal('#thanks'); 
+					
+				}
 			}, "json");	
+			
+		$('#register .btnSubmit').html('Sign Up');
+				
 		}
 	});
 	
@@ -225,14 +301,13 @@ $(function(){
 		});
 		if(isValid)
 		$('input:text',frm).each(function(){
-			if($(this).val() == ""){
+			if($(this).val() != "OK"){
 				$(this).closest('.row').find('.err1').show();
 				$(this).closest('.row').find('input:text').addClass('invalid');
 				$(this).closest('.row').parent().find('input:password').addClass('invalid');
 				isValid = false;
 			}
 		});
-		
 		
 		
 		if(isValid){

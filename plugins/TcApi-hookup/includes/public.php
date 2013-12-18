@@ -12,6 +12,19 @@ class TCHOOK_Public extends TCHOOK_Plugin {
 		return $query;
 	}
 	
+	public function get_json_from_url( $url ) {
+		$response = wp_remote_get ( $url );
+		#echo $url;
+		if (is_wp_error ( $response ) || ! isset ( $response ['body'] )) {
+			return "Error in processing request";
+		}
+		if ($response ['response'] ['code'] == 200) {
+			return $response ['body'];
+		}
+		return "Error in processing request";
+	}
+	
+	
 	// returns contest type
 	public function get_contest_type($userKey = '') {
 		$response = wp_remote_get ( 'http://api.topcoder.com/rest/contestTypes?user_key=' . $userKey );
@@ -80,6 +93,7 @@ class TCHOOK_Public extends TCHOOK_Plugin {
 	// returns member profile details
 	public function get_member_profile($userKey = '', $handle = '') {
 		$url = "http://api.topcoder.com/rest/statistics/" . $handle . "?user_key=" . $userKey;
+		echo $url;
 		$args = array (
 				'httpversion' => get_option ( 'httpversion' ),
 				'timeout' => get_option ( 'request_timeout' ) 
@@ -117,8 +131,16 @@ class TCHOOK_Public extends TCHOOK_Plugin {
 	}
 	
 	// detail contest
-	public function get_contest_detail($userKey = '', $contestID = '') {
-		$url = "http://api.topcoder.com/v2/develop/challenges/$contestID";
+	public function get_contest_detail($userKey = '', $contestID = '', $contestType = '') {
+
+		// This IF isn't working. It's not getting the contestType var. We need to call the design vs. develop api based on the contest type.
+		echo '$contestType';		
+		if ($contestType == "design") {
+			$url = "http://api.topcoder.com/v2/design/challenges/$contestID";
+		} else {
+			$url = "http://api.topcoder.com/v2/develop/challenges/$contestID";
+		}		
+		
 		$args = array (
 				'httpversion' => get_option ( 'httpversion' ),
 				'timeout' => get_option ( 'request_timeout' ) 
@@ -315,37 +337,6 @@ class TCHOOK_Public extends TCHOOK_Plugin {
 	}
 	
 	
-	function tcapi_get_top_rank ($atts, $contestType="" ){
-		
-		switch ($contestType){
-		case  "develop" :
-			$url = "http://api.topcoder.com/v2/develop/statistics/tops/development?rankType=rank";
-			break;
-		case  "design" :
-			$url = "http://api.topcoder.com/v2/design/statistics/tops/development?rankType=rank";
-			break;
-		case  "data" :
-			$url = "http://api.topcoder.com/v2/data/srm/statistics/tops?rankType=rank";
-			break;
-		}	
-		#echo $url;
-		
-		$args = array (
-				'httpversion' => get_option ( 'httpversion' ),
-				'timeout' => get_option ( 'request_timeout' )
-		);
-		$response = wp_remote_get ( $url, $args );
-		if (is_wp_error ( $response ) || ! isset ( $response ['body'] )) {
-			return "Error in processing";
-		}
-		if ($response ['response'] ['code'] == 200) {
-			$activity = json_decode ( $response ['body']);
-			return $activity;
-		}
-		return "Error in processing request";
-	
-	}
-	
 	// Test Member Count
 	function tcapi_get_member_count ($atts, $key="") {
 		$url = "http://www.topcoder.com/tc?module=BasicData&c=member_count&dsid=30";
@@ -359,14 +350,28 @@ class TCHOOK_Public extends TCHOOK_Plugin {
 			return "Error in processing";
 		}
 		if ($response ['response'] ['code'] == 200) {
-			/*    */
 			preg_match('/<member_count\>([0-9]+)<\/member_count>/e',$response ['body'],$matches);
 			return number_format($matches[1]);
 		}
 		return "Error in processing request";
 	}
 	
-	/*  */
+	/* member stastics  */
+	function tcapi_get_member_stats($handle, $track){
+		$url = "http://api.topcoder.com/v2/$track/statistics/$handle";
+		$args = array (
+				'httpversion' => get_option ( 'httpversion' ),
+				'timeout' => get_option ( 'request_timeout' )
+		);
+		$response = wp_remote_get ( $url, $args );
+		if (is_wp_error ( $response ) || ! isset ( $response ['body'] )) {
+			return "Error in processing request";
+		}
+		if ($response ['response'] ['code'] == 200) {
+			return json_decode( $response ['body']);
+		}
+		return "Error in processing request";
+	}
 	
 }
 

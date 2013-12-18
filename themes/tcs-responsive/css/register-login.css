@@ -109,7 +109,7 @@ common
 	width: 950px;
 	border: rgba(0,0,0,0.2) solid 10px;
 	border-radius: 10px;
-	font-size: 16px;
+	font-size: 14px;
 }
 	.modal .btnClose {
 		background: transparent url(../i/closeModal.png) no-repeat top left;
@@ -164,13 +164,13 @@ Register modal
 	
 	#register .content h2,
 	#login .content h2 {
-		padding-bottom: 4px;
-		font-size: 24px;
+		padding-bottom: 3px;
+		font-size: 22px;
 	}
 
 	#register .content h3,
 	#login .content h3 {
-		padding: 6px 0 6px;
+		padding: 0px 0 3px;
 		border-bottom: 1px solid #e7e7e7;
 		font-size: 18px;
 		color: #333;
@@ -198,7 +198,8 @@ Register modal
 	#register form p.row,
 	#login form,
 	#login form p.row {
-		padding: 5px 0;
+		padding: 2px 0 0;
+		line-height: 26px;
 	}
 		
 		#register form p.row.lSpace {
@@ -213,6 +214,7 @@ Register modal
 			width: 349px;
 			font-size: 12px;
 			padding: 0;
+			line-height: 17px;
 		}
 		#register form p.row.btns,
 		#login form p.row.btns {
@@ -243,7 +245,8 @@ Register modal
 			#register form p.row input[type="text"],
 			#register form p.row input[type="password"],
 			#login form p.row input[type="text"],
-			#login form p.row input[type="password"] {
+			#login form p.row input[type="password"],
+			#login form p.row .customSelect{
 				width: 336px;
 				background: #fafafa;
 				border: 1px solid #e1e1e1;
@@ -262,7 +265,7 @@ Register modal
 			#register form p.row span.err2,
 			#login form p.row span.err1,
 			#login form p.row span.err2 {
-				margin-left: 15px;
+				margin-left: 14px;
 				color: #c00;
 				display: none;
 			}
@@ -301,7 +304,7 @@ Register modal
 					background: #f00;
 				}
 	#register  p.submitBtn {
-		margin: 10px auto;
+		margin: 2px auto;
 		text-align: center;
 	}	
 	
@@ -368,6 +371,45 @@ Thanks modal
 		padding-top: 20px;
 		padding-bottom: 60px;
 	}
+
+.customSelect { 
+    -webkit-border-radius: 4px;
+    border-radius: 4px;
+    padding: 6px 8px;
+    margin: 0;
+    vertical-align: top;
+	width: 332px;
+	background: #fafafa url(../i/selector.png) no-repeat right;
+	border: 1px solid #e1e1e1;
+	height: 14px;
+	line-height: 14px;
+	font-size: 14px;
+	color: #333;
+/* This is the default class that is used */
+/* Put whatever custom styles you want here */
+}
+.customSelect.invalid {
+	background-color: #ffedee;
+	border: 1px solid #c00;
+}
+.customSelect.customSelectHover {
+/* Styles for when the select box is hovered */
+background-color: #f1f1f1;
+}
+
+.customSelect.customSelectOpen {
+/* Styles for when the select box is open */
+}
+
+.customSelect.customSelectFocus {
+/* Styles for when the select box is in focus */
+}
+
+.customSelectInner {
+/* You can style the inner box too */
+	width: 300px;
+}
+
 
 /* width < 1010px  
 -----------------------------*/
@@ -482,4 +524,28 @@ Thanks modal
 	.modal input:-ms-input-placeholder {
 		color: #999;
 	}
+	select {
+		width: 90% !important;
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+	}
+	.customSelect { 
+		-webkit-border-radius: 4px;
+		border-radius: 4px;
+		padding: 6px 8px;
+		margin: 0;
+		vertical-align: top;
+		margin-left: auto;
+		margin-right: auto;
+		display: block;
+		box-sizing: border-box;
+		-moz-box-sizing: border-box;
+		width: 100%;
+		height: 30px;
+		line-height: 20px;
+	}
+	.customSelectInner {
+		width: 100%;
+	}
 }
+

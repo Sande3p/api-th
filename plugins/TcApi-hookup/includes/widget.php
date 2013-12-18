@@ -41,11 +41,98 @@ class Tops_Rank_Widget extends WP_Widget {
 	<nav class="tabNav">
 		<ul>
 			<li><a href="#design" class="active link">Design</a></li>
-			<li><a href="#software" class="link">Development </a></li>
+			<li><a href="#software" class="link">Develop </a></li>
 			<li><a href="#algorithum" class="link">Data</a></li>
 		</ul>
 	</nav>
-
+<?php
+		$topRankContestType = "Algorithm";
+		$userkey = get_option ( 'api_user_key' );
+		$arrTopRank = get_top_rank($userkey,$topRankContestType);
+		
+		/*$arrTopRank = json_decode ( '{
+								"total": 30,
+								"pageIndex": 1,
+								"pageSize": 3,
+								"data": 
+								[
+									{
+									"Rank": 1,
+									"Handle": "Petr",
+									"userId": 123457899,
+									"Color": "coderTextRed",
+									"Rating": 3674
+									},
+									{
+										"Rank": 2,
+										"Handle": "ACRush",
+										"userId": 123457892,
+										"Color": "coderTextRed",
+										"Rating": 3664
+									},
+									{
+										"Rank": 3,
+										"Handle": "Tourist",
+										"userId": 123457891,
+										"Color": "coderTextRed",
+										"Rating": 3654
+									},
+									{
+										"Rank": 4,
+										"Handle": "tomek",
+										"userId": 123457891,
+										"Color": "coderTextRed",
+										"Rating": 3654
+									},
+									{
+										"Rank": 5,
+										"Handle": "Burunduk1",
+										"userId": 123457891,
+										"Color": "coderTextRed",
+										"Rating": 3644
+									},
+									{
+										"Rank": 6,
+										"Handle": "Egor",
+										"userId": 123457891,
+										"Color": "coderTextRed",
+										"Rating": 3634
+									},
+									{
+										"Rank": 7,
+										"Handle": "lympanda",
+										"userId": 123457891,
+										"Color": "coderTextRed",
+										"Rating": 2000
+									},
+									{
+										"Rank": 8,
+										"Handle": "lympanda",
+										"userId": 123457891,
+										"Color": "coderTextYellow",
+										"Rating": 2000
+									},
+									{
+										"Rank": 9,
+										"Handle": "iwi",
+										"userId": 123457891,
+										"Color": "coderTextGreen",
+										"Rating": 3614
+									},
+									{
+										"Rank": 10,
+										"Handle": "meret",
+										"userId": 123457891,
+										"Color": "coderTextGray",
+										"Rating": 2000
+									}
+								]
+							}' );
+						
+		*/				
+		$arrRank = $arrTopRank->data;
+		
+		?>
 	<div id="design" class="tableWrap tab">
 		<table class="dataTable topsTable">
 			<thead>
@@ -56,24 +143,9 @@ class Tops_Rank_Widget extends WP_Widget {
 				</tr>
 			</thead>
 			<tbody>
-		<?php
-		// $arrTopRank = get_top_rank('','design'); still not avaiable
-		$arrRank = $arrTopRank->data;	
-		if ($arrRank != null):
-			foreach ( $arrRank as $row ) :
-				$handleLink = get_bloginfo ( "siteurl" ) . "/member-profile/" . $row->handle;
-				?>
-				<tr>
-					<td><?php echo $row->rank;?></td>
-					<td class="colHandle"><a href="<?php echo $handleLink;?>" class="coderText<?php echo $row->color;?>"><?php echo $row->handle;?></a></td>
-					<td><?php echo $row->rating;?></td>
+			<tr>
+					<td colspan="3">Coming Soon</td>
 				</tr>
-			<?php endforeach; 
-		else :
-			echo "<tr><td colspan=3>Coming Soon</td></tr>";	
-		endif;	
-		?>
-			
 			</tbody>
 		</table>
 	</div>
@@ -88,21 +160,18 @@ class Tops_Rank_Widget extends WP_Widget {
 			</thead>
 			<tbody>
 			<?php
-			$arrTopRank = get_top_rank('','develop');
+			$arrTopRank = get_top_rank($userkey,"develop");
 			$arrRank = $arrTopRank->data;
 			if ($arrRank != null)
 			foreach ( $arrRank as $row ) :
-				$handleLink = get_bloginfo ( "siteurl" ) . "/member-profile/" . $row->handle;
-				if ($row->rank <= 10 ) :
+				$handleLink = get_bloginfo ( "siteurl" ) . "/member-profile/" . $row->Handle;
 				?>
 				<tr>
 					<td><?php echo $row->rank;?></td>
 					<td class="colHandle"><a href="<?php echo $handleLink;?>" class="coderText<?php echo $row->color;?>"><?php echo $row->handle;?></a></td>
 					<td><?php echo $row->rating;?></td>
 				</tr>
-			<?php 
-			endif;
-			endforeach; ?>
+			<?php endforeach; ?>
 			</tbody>
 		</table>
 	</div>
@@ -118,21 +187,18 @@ class Tops_Rank_Widget extends WP_Widget {
 			</thead>
 			<tbody>
 			<?php
-			$arrTopRank = get_top_rank('','data');
-			$arrRank = $arrTopRank ->data;
+			$arrTopRank = get_top_rank($userkey,"data");
+			$arrRank = $arrTopRank->data;	
 			if ($arrRank != null)
 			foreach ( $arrRank as $row ) :
-				if ($row->Rank <= 10 ) :
-				
+				$handleLink = get_bloginfo ( "siteurl" ) . "/member-profile/" . $row->Handle;
 				?>
 				<tr>
 					<td><?php echo $row->Rank;?></td>
-					<td class="colHandle"><span class="coderText<?php echo $row->color;?>"><?php echo $row->Name;?></span></td>
+					<td class="colHandle"><span class="coderText<?php echo $row->Color;?>"><?php echo $row->Name;?></span></td>
 					<td><?php echo $row->Rating;?></td>
 				</tr>
-			<?php 
-			endif;
-			endforeach; ?>
+			<?php endforeach; ?>
 			</tbody>
 		</table>
 	</div>
@@ -145,11 +211,7 @@ class Tops_Rank_Widget extends WP_Widget {
 		echo $after_widget;
 	}
 }
-?>
-
-
-<?php
-class Stars_Of_Month_Widget extends WP_Widget {
+ class Stars_Of_Month_Widget extends WP_Widget {
 	
 	/* Widget setup */
 	function Stars_Of_Month_Widget() {
@@ -191,7 +253,7 @@ class Stars_Of_Month_Widget extends WP_Widget {
 		);
 		query_posts ( $query );
 		global $post;
-		$idx = 0;
+		$i=0;
 		if (have_posts ()) :
 			while ( have_posts () ) :
 				the_post ();
@@ -202,8 +264,8 @@ class Stars_Of_Month_Widget extends WP_Widget {
 				$contestLink = get_post_meta ( $postId, "Contest Link", true );
 				$contestLink = $contestLink == "" ? "javascript:;" : $contestLink;
 				$userkey = get_option ( 'api_user_key' );
-				// $data = get_member_profile ( $userkey, $handle );
-				$arrRating = $data->ratingsSummary;
+			#	$data = get_member_profile ( $userkey, $handle );
+			#	$arrRating = $data->ratingsSummary;
 				$ratingColor = "";
 				$rating = 0;
 				for($i = 0; $i < count ( $arrRating ); $i ++) {
@@ -216,16 +278,16 @@ class Stars_Of_Month_Widget extends WP_Widget {
 				$image = $image != null ? $image [0] : plugins_url ( "TcApi-hookup" ) . "/includes/i/no_pic.png";
 				$title = get_the_title ();
 				$profile = "";
-				/* if ($title == "Software Developers") {
+				/*if ($title == "Software Developers") {
 					$profile = "profileSD";
 				} elseif ($title == "Analytics") {
 					$profile = "profileAn";
 				}
 				*/
-				if  ( $idx % 3 == 0 )
-				$profile = "profileUX";
-				$idx++ ;
-				
+				if ( $i % 3 == 0 ){
+					$profile = "profileUX";
+				}
+				$i++;
 				
 				?>
 
@@ -234,7 +296,7 @@ class Stars_Of_Month_Widget extends WP_Widget {
 					<h3><?php echo $title;?></h3>
 					<div class="details">
 						<div class="memberPic">
-							<img src="<?php echo $image;?>" alt="<?php echo $handle;?>">
+							<img style="width:137px;height:138px" src="<?php echo $image;?>" alt="<?php echo $handle;?>">
 						</div>
 						<div class="row">
 							<label>Congratulations,</label>

@@ -1,34 +1,39 @@
 <?php
 function post_register_controller(){
 	global $_POST;
-	$url = "http://api.topcoder.com/v2/users/";
-	#$url = "http://api.topcoder.com/v2/develop/challenges/30036134";
-	$arg = array(
+	$url = "http://api.topcoder.com/v2/develop/users";
+	$response = wp_remote_post( $url, array(
 	'method' => 'POST',
-	'headers' => array("Content-Type: application/json"),
-	'body' => "{\n    \"firstname\" : \"".$_POST['name']."\",\n    \"lastname\" : \"Doe\",\n    \"handle\" : \"".$_POST['name']."\",\n    \"country\" : \"UK\",\n    \"email\" : \"".$_POST['password']."\",\n    \"password\" : \"HashedPassword\",\n    \"socialProvider\" : \"google\",\n    \"socialUserName\" : \"JohnsGoogleName\",\n    \"socialEmail\" : \"john@gmail.com\",\n    \"socialEmailVerified\" : \"true\"\n}"
-	);
-	$response = wp_remote_post ( $url, $args );
+	'timeout' => 45,
+	'redirection' => 5,
+	'httpversion' => '1.0',
+	'blocking' => true,
+	'headers' => array(),
+	'body' => array( 
+	'firstName' => $_POST['firstName'], 
+	'lastName' => $_POST['lastName'],
+	'handle' => $_POST['handle'],
+	'country' => $_POST['country'],
+	'email' => $_POST['email'],
+	'password' => $_POST['password']
+	),
+	'cookies' => array()
+    )
+);
+
+	#print_r($response );
+	$msg = json_decode($response['body']);
+	$code = $response['response']['code'];
+	#print_r($response['response']);
+	$mm = "";
+	if ( $msg->message )
+	foreach ( $msg->message as $m ):
+		$mm.= $m;
+	endforeach;
 	
-	
-	// harcoded message 
-	$description = 'We have sent you an email to<strong> '.$_POST['email'].'</strong> with a activation instructions.<br />If you do not receive that email within 1 hour, please email <a href="mailto:support@topcoder.com">support@topcoder.com</a>';
-	echo json_encode(array('description' => $description ));
+	echo json_encode(array("code" => $code, "description" => $mm ));	
 	exit;
-	/*
-	if (is_wp_error ( $response ) || ! isset ( $response ['body'] )) {
-		return "Error in processing request";
-	}
-	if ($response ['response'] ['code'] == 200) {
-		// $body = json_decode($response ['response'] ['body'] );
-		return $return->description;
-	}
-	*/
-	
 	return "Error in processing request";
-
-
-
 
 }
 add_action ( 'wp_ajax_post_register', 'post_register_controller' );
@@ -69,7 +74,8 @@ function get_active_contest_ajax_controller() {
 	$userkey = get_option ( 'api_user_key' );
 	$contest_type = $_GET ['contest_type'];
 	$page = get_query_var ( 'pages' );
-	$post_per_page = get_option ( 'contest_per_page' );
+	$post_per_page =  $_GET['pageSize'];
+	$page = $_GET ['pageIndex'];
 	$sortColumn = $_GET ['sortColumn'];
 	$sortOrder = $_GET ['sortOrder'];
 	
@@ -85,7 +91,7 @@ function get_past_contest_ajax_controller() {
 	$userkey = get_option ( 'api_user_key' );
 	$contest_type = $_GET ['contest_type'];
 	$page = get_query_var ( 'pages' );
-	$post_per_page = get_option ( 'contest_per_page' );
+	$post_per_page = $_GET ['pageSize'];
 	$sortColumn = $_GET ['sortColumn'];
 	$sortOrder = $_GET ['sortOrder'];
 	
@@ -165,11 +171,12 @@ function get_active_contests_ajax($userKey = '', $contestType = 'design', $page 
 	$contestType = str_replace ( " ", "+", $contestType );
 	$contestType = str_replace ( "-", "/", $contestType );
 	// $url = "http://api.topcoder.com/rest/contests?user_key=" . $userKey . "&listType=ACTIVE&type=" . $contestType . "&pageSize=10000";	
-	$url = "http://api.topcoder.com/v2/".$contestType."/challenges?listType=Active&pageIndex=1&pageSize=50";
+	$url = "http://api.topcoder.com/v2/".$contestType."/challenges?listType=Active&pageIndex=".$page."&pageSize=".$post_per_page;
+	#echo $url;
 	if ($contestType == "") {
 		// $url = "http://api.topcoder.com/rest/contests?user_key=" . $userKey . "&listType=ACTIVE&pageSize=10000";
 		//$url = "http://api.topcoder.com/v2/".$contestType."/challenges?listType=Active&pageIndex=1&pageSize=50&sortColumn=contestName&sortOrder=asc";
-		$url = "http://api.topcoder.com/v2/".$contestType."/challenges?listType=Active&pageIndex=1&pageSize=50";
+		$url = "http://api.topcoder.com/v2/".$contestType."/challenges?listType=Active&pageIndex=".$page."&pageSize=".$post_per_page;
 	}
 	if ($sortOrder) {
 		$url .= "&sortOrder=$sortOrder";
@@ -256,6 +263,7 @@ function get_review_opportunities_ajax($userKey = '', $contestType = '', $page =
 // returns member profile
 function get_member_profile($userKey = '', $handle = '') {
 	$url = "http://api.topcoder.com/rest/statistics/" . $handle . "?user_key=" . $userKey;
+	#echo $url;
 	$args = array (
 			'httpversion' => get_option ( 'httpversion' ),
 			'timeout' => get_option ( 'request_timeout' ) 
@@ -269,6 +277,7 @@ function get_member_profile($userKey = '', $handle = '') {
 		$coder_profile = json_decode ( $response ['body'] );
 		return $coder_profile;
 	}
+	#print_r($response);
 	return "Error in processing request";
 }
 
@@ -310,6 +319,36 @@ function get_copilot_stats($userKey = '', $handle = '') {
 	return "Error in processing request";
 }
 
+// returns top rank
+function get_top_rank($userKey = '', $contestType = 'Algorithm') {
+	$contestType = str_replace ( " ", "+", $contestType );
+	
+	switch($contestType){
+		case "develop":
+			$url = "http://api.topcoder.com/v2/develop/statistics/tops/development?rankType=rank";
+		break;
+		case "data":
+			$url = "http://api.topcoder.com/v2/data/srm/statistics/tops?rankType=rank";
+		break;	
+	
+	}
+		
+	$args = array (
+			'httpversion' => get_option ( 'httpversion' ),
+			'timeout' => get_option ( 'request_timeout' ) 
+	);
+	$response = wp_remote_get ( $url, $args );
+	
+	if (is_wp_error ( $response ) || ! isset ( $response ['body'] )) {
+		return "Error in processing request";
+	}
+	if ($response ['response'] ['code'] == 200) {
+		$arrTopRank = json_decode ( $response ['body'] );
+		return $arrTopRank;
+	}
+	return "Error in processing request";
+}
+
 /**
  * End of ajax functioning
  */
@@ -317,9 +356,8 @@ function get_copilot_stats($userKey = '', $handle = '') {
 /**
  * Start of load data functioning
  */
-function get_contest_info($user_key = '',$contestID = '') {
+function get_contest_info($contestID = '') {
 	$url = "http://api.topcoder.com/v2/software/contests/$contestID";
-	echo $url;
 	$args = array (
 			'httpversion' => get_option ( 'httpversion' ),
 			'timeout' => get_option ( 'request_timeout' ) 
