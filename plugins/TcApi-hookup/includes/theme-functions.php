@@ -21,9 +21,9 @@ function search_contest($userKey = '', $keyword = ''){
 	return $TCHOOK_plugin-> search_contest($userKey, $keyword);
 }
 
-function get_contest_detail($userKey = '', $contestID = ''){
+function get_contest_detail($userKey = '', $contestID = '',$contestType=''){
 	global $TCHOOK_plugin;
-	return $TCHOOK_plugin-> get_contest_detail($userKey, $contestID);
+	return $TCHOOK_plugin-> get_contest_detail($userKey, $contestID,$contestType);
 }
 
 function get_raw_coder($handle = ''){

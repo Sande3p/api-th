@@ -134,13 +134,13 @@ class TCHOOK_Public extends TCHOOK_Plugin {
 	public function get_contest_detail($userKey = '', $contestID = '', $contestType = '') {
 
 		// This IF isn't working. It's not getting the contestType var. We need to call the design vs. develop api based on the contest type.
-		echo '$contestType';		
+		#echo "	contest type ".$contestType;		
 		if ($contestType == "design") {
 			$url = "http://api.topcoder.com/v2/design/challenges/$contestID";
 		} else {
 			$url = "http://api.topcoder.com/v2/develop/challenges/$contestID";
-		}		
-		
+		}	
+	
 		$args = array (
 				'httpversion' => get_option ( 'httpversion' ),
 				'timeout' => get_option ( 'request_timeout' ) 

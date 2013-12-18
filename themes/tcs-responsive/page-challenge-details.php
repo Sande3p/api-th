@@ -76,7 +76,7 @@ $contest = get_contest_detail('',$contestID, $contestType);
                                 <div class="nextBoxContent nextDeadlineNextBoxContent">
                                 	<div class="icoTime">
                                         <span class="nextDTitle">Current Phase</span>
-                                        <span class="CEDate"><?php echo $contest->currentPhaseName;?></span>
+                                        <span class="CEDate"><?php echo $contest->currentStatus;?></span>
                                     </div>
                                     <span class="timeLeft">3<small>Days</small> 11<small>Hours</small> 5<small>Mins</small></span>
                                 </div>
