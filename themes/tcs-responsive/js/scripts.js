@@ -249,10 +249,10 @@ var app = {
 			/*
 			* get all contests data
 			*/	
-			app.getPartialContests(ajaxUrl,$('.challenges'), nRecords, 'design',false, function(){
-				app.getPartialContests(ajaxUrl,$('.challenges'), nRecords, 'develop',true, function(){
-					app.getPartialContests(ajaxUrl,$('.challenges'), nRecords, 'data-marathon',true, function(){
-						app.getPartialContests(ajaxUrl,$('.challenges'), nRecords, 'data-srm',true);
+			app.getPartialContests(ajaxUrl,$('.challenges'), 2, 'design',false, function(){
+				app.getPartialContests(ajaxUrl,$('.challenges'), 2, 'develop',true, function(){
+					app.getPartialContests(ajaxUrl,$('.challenges'), 1, 'data-marathon',true, function(){
+						app.getPartialContests(ajaxUrl,$('.challenges'), 1, 'data-srm',true);
 					});
 				});
 			});
@@ -1246,7 +1246,7 @@ var app = {
 				/*
 				* generate table row for contest type
 				*/			
-            	$('.contestName', row).html('<i></i>' + '<a href="/challenge-details/' + rec.challengeId + '">' + rec.challengeName + '</a>');
+            	$('.contestName', row).html('<i></i>' + '<a href="/challenge-details/' + rec.challengeId + '?type=design">' + rec.challengeName + '</a>');
 				
 				if (rec.startDate == null || rec.startDate == "") {
                 rec.startDate = "10.31.2013 10:10 EDT"; //dummy data

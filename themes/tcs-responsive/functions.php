@@ -125,6 +125,7 @@ function tcapi_query_vars($query_vars) {
 	$query_vars [] = 'post_per_page';
 	$query_vars [] = 'handle';
 	$query_vars [] = 'slug';
+	$query_vars [] = 'tab';
 	return $query_vars;
 }
 add_filter ( 'query_vars', 'tcapi_query_vars' );
@@ -153,6 +154,7 @@ add_rewrite_rule ( '^'.CONTEST_DETAILS_PERMALINK.'/([^/]*)/?$', 'index.php?pagen
 // Member Profile
 //add_rewrite_rule ( '^'.MEMBER_PROFILE_PERMALINK.'/([^/]*)/?$', 'index.php?pagename=member-profile&handle=$matches[1]', 'top' );
 add_rewrite_rule ( '^'.MEMBER_PROFILE_PERMALINK.'/([^/]*)/?([^/]*)$', 'index.php?pagename=member-profile&handle=$matches[1]&tab=$matches[2]', 'top' );
+
 // Blog Category
 //add_rewrite_rule ( '^'.BLOG_PERMALINK.'/([^/]*)/?$', 'index.php?pagename=blog-page&slug=$matches[1]', 'top' );
 //add_rewrite_rule ( '^'.BLOG_PERMALINK.'/([^/]*)/page/([0-9]*)/?$', 'index.php?pagename=blog-page&slug=$matches[1]&page=$matches[2]', 'top' );
@@ -166,9 +168,7 @@ add_rewrite_rule ( '^'.MEMBER_PROFILE_PERMALINK.'/([^/]*)/?([^/]*)$', 'index.php
 add_rewrite_rule( '^challenges/([^/]*)/?$', 'index.php?pagename=challenge-details&contestID=$matches[1]', 'top');
 /* flush */
 flush_rewrite_rules ();
-?>
 
-<?php 
 /* commonly used functions
  -----------------------------------*/
 /* excerpt */
@@ -216,10 +216,6 @@ function get_cookie() {
 	$meta->handle_name = $handleName;
 	return $meta;
 }
-
-?>
-
-<?php
 
 // add menu support
 add_theme_support ( 'menus' );
@@ -636,6 +632,11 @@ function themeoptions_page() {
 				<td width="150"><label for="<?php echo $field; ?>">API user key <i>(Enter TopCoder API user key)</i>:</label></td>
 				<td><input type="text" id="<?php echo $field; ?>" name="<?php echo $field; ?>" size="100" value="<?php echo get_option($field); ?>" /></td>
 			</tr>
+			<tr>
+				<?php $field = 'forumPostPerPage'; ?>
+				<td width="150"><label for="<?php echo $field; ?>">Forum post per page:</label></td>
+				<td><input type="text" id="<?php echo $field; ?>" name="<?php echo $field; ?>" size="100" value="<?php echo get_option($field); ?>" /></td>
+			</tr>
 		</table>
 		<br />
 		<h3>Blog</h3>
@@ -688,6 +689,10 @@ function themeoptions_page() {
 
 // Set default options
 if (is_admin () && isset ( $_GET ['activated'] ) && $pagenow == 'themes.php') {
+
+	// Other Options
+	update_option ( 'forumPostPerPage', '3' );	
+	
 	// Social Media
 	update_option ( 'facebookURL', 'http://www.facebook.com/topcoderinc' );
 	update_option ( 'twitterURL', 'http://www.twitter.com/topcoder' );
@@ -700,6 +705,7 @@ function themeoptions_update() {
 	// Other Options
 	update_option ( 'api_user_key', $_POST ['api_user_key'] );
 	update_option ( 'case_studies_per_page', $_POST ['case_studies_per_page'] );
+	update_option ( 'forumPostPerPage', $_POST ['forumPostPerPage'] );
 	
 	// blog 
 	update_option ( 'blog_page_title', $_POST ['blog_page_title'] );

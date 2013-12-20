@@ -26,9 +26,9 @@ function get_contest_detail($userKey = '', $contestID = '',$contestType=''){
 	return $TCHOOK_plugin-> get_contest_detail($userKey, $contestID,$contestType);
 }
 
-function get_raw_coder($handle = ''){
+function get_raw_coder($handle){
 	global $TCHOOK_plugin;
-	return $TCHOOK_plugin-> tcapi_get_raw_coder($handle);
+	return $TCHOOK_plugin->tcapi_get_raw_coder($handle);
 }
 
 function get_handle($handle = ''){

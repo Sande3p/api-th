@@ -262,14 +262,14 @@ function get_review_opportunities_ajax($userKey = '', $contestType = '', $page =
 
 // returns member profile
 function get_member_profile($userKey = '', $handle = '') {
+	#echo $userKey;
 	$url = "http://api.topcoder.com/rest/statistics/" . $handle . "?user_key=" . $userKey;
-	#echo $url;
 	$args = array (
 			'httpversion' => get_option ( 'httpversion' ),
 			'timeout' => get_option ( 'request_timeout' ) 
 	);
 	$response = wp_remote_get ( $url, $args );
-	
+	#print_r($response);
 	if (is_wp_error ( $response ) || ! isset ( $response ['body'] )) {
 		return "Error in processing request or Member dosen't exist";
 	}
@@ -328,7 +328,7 @@ function get_top_rank($userKey = '', $contestType = 'Algorithm') {
 			$url = "http://api.topcoder.com/v2/develop/statistics/tops/development?rankType=rank";
 		break;
 		case "data":
-			$url = "http://api.topcoder.com/v2/data/srm/statistics/tops?rankType=rank";
+			$url = "http://api.topcoder.com/v2/data/srm/statistics/tops";
 		break;	
 	
 	}

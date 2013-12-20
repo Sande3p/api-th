@@ -142,6 +142,7 @@ $(function(){
 		$(".nextDeadlineNextBoxContent").addClass("hide");
 		$(".allDeadlineNextBoxContent").removeClass("hide");
 		$(".contestEndedBox").addClass("hide");
+		
 	});
 	//switch the view all deadline and view next deadline
 	$(".viewNextDeadLineBtn").click(function(){

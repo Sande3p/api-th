@@ -4,10 +4,7 @@ function theme_load_widgets() {
 	register_widget ( 'Related_Content' );
 }
 
-?>
 
-
-<?php
 class Related_Content extends WP_Widget {
 	
 	/* Widget setup */

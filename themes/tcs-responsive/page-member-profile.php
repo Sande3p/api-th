@@ -1,31 +1,38 @@
 <?php get_header(); ?>
 <?php
 
+
+
 global $activity;
 $activity = get_activity_summary ();
+
 $handle = get_query_var ( 'handle' );
-$tab = $_GET['tab'];
+
+$tab = get_query_var ( 'tab' );
 $track= "data/srm";
+
 if ($tab == "algo") {
+
 	$track = "data/srm";
+
 }else if ($tab == "develop") {
 	$track = "develop";
 }else if ($tab == "design") {
 	$track = "design";
 }
 
-$coder = get_raw_coder($handle);
-
-if ( $coder->photoLink != '')
-$photoLink = 'http://community.topcoder.com'.$coder->photoLink;
-else
-$photoLink = 'http://community.topcoder.com/i/m/nophoto_login.gif';
-
-$quote = ($coder->quote == '' ) ? "Member of the world's largest global competitive community. ": $coder->quote;
+$userkey = get_option ( 'api_user_key' );
+$coder = get_member_profile ( $userkey, $handle );
 
 ?>
+<script type="text/javascript">
+<!--
+ $(document).ready(function(){
+	coder.initMemberEvents();
+})
+//-->
+</script>
 
-<script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/script-member.js" type="text/javascript"></script>
 <div class="content">
 	<div id="main" class="coderProfile">
 		<div id="hero">
@@ -34,7 +41,7 @@ $quote = ($coder->quote == '' ) ? "Member of the world's largest global competit
 					<article class="aboutCoder">
 						<div class="details">
 							<figure class="coderPicWrap">
-								<img alt="<?php echo $coder->handle;?>" src="<?php echo $photoLink;?>">
+								<img alt="<?php echo $coder->handle;?>" src="<?php echo 'http://community.topcoder.com/' . $coder->photoLink;?>">
 							</figure>
 							<div class="info">
 								<div class="handle">
@@ -55,7 +62,7 @@ $quote = ($coder->quote == '' ) ? "Member of the world's largest global competit
 								</div>
 							</div>
 						</div>
-						<blockquote class="coderQuote">“<?php echo $quote;?>”</blockquote>
+						<blockquote class="coderQuote">“<?php echo $coder->quote;?>”</blockquote>
 						<ul class="social">
 							<li><a class="gp" href="#"></a></li>
 							<li><a class="mail" href="#"></a></li>

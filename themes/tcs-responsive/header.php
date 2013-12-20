@@ -30,7 +30,23 @@ $token = $auth0->getAccessToken();
 	<script type="text/javascript">
 		var ajaxUrl = "<?php  bloginfo('wpurl')?>/wp-admin/admin-ajax.php";		
 	</script>
-	
+
+   <script>
+     $(function () {
+           $('.actionLogin').click( function () {
+                  ({ onestep: true, 
+                 						title: "TopCoder", 
+                 						icon: 'http://www.topcoder.com/i/24x24_brackets.png', 
+                 						showIcon: true,
+                 						showForgot: true,
+    									forgotText: "Forgot Password?",
+    									forgotLink: "https://www.topcoder.com/..."
+                 					});
+           });
+       });
+                          
+   </script>
+   	
 	<script src="https://d19p4zemcycm7a.cloudfront.net/w2/auth0-1.2.2.min.js"></script>
 	<script src="http://code.jquery.com/jquery.js"></script>
 
@@ -52,6 +68,7 @@ $nav = array (
 
 //Get the TopCoder SSO Cookie
 $cookie = $_COOKIE["tcsso"];
+#$cookie = "22760600|22554c24d30b15fd79289dd053a9a98e5ff385535dd6cc9b45e645fbabb0a4"; // Please  disable (#) this line on prod
 $cookie_parts = explode( "|", $cookie);
 $user_id = $cookie_parts[0];
 $tc_token = $cookie_parts[1];
@@ -120,16 +137,16 @@ $photoLink = 'http://community.topcoder.com/i/m/nophoto_login.gif';
 						<?php wp_nav_menu ( $nav );	?>
 						
 						<?php if ( $user_id != '' ) : ?>
-						<li class="onReg"><a href="#" class="actionLogout">Log Out</a></li>
+						<li class="noReg"><a href="#" class="actionLogout">Log Out</a></li>
 						<?php else: ?>
 						<li class="noReg"><a href="javascript:;" class="actionLogin">Log In</a></li>
 						<?php endif; ?>
 					</ul>
 				</nav>
 				<?php if ( $user_id != '' ) : ?>
-						<a href="javascript:;" class="onMobi onReg linkLogout actionLogout">Log Out</a>
+						<a href="javascript:;" class="onMobi noReg linkLogout actionLogout">Log Out</a>
 				<?php else: ?>		
-				<a href="javascript:;" class="onMobi onReg linkLogin actionLogin">Log In</a>
+				<a href="javascript:;" class="onMobi noReg linkLogin actionLogin">Log In</a>
 				<?php endif; ?>
 				<?php if ( $user_id == '' ) : ?>
 				<span class="btnRegWrap noReg"><a href="javascript:;" class="btn btnRegister">Register</a> </span> 

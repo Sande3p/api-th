@@ -46,7 +46,7 @@ class Tops_Rank_Widget extends WP_Widget {
 		</ul>
 	</nav>
 <?php
-		$topRankContestType = "Algorithm";
+		$topRankContestType = "data";
 		$userkey = get_option ( 'api_user_key' );
 		$arrTopRank = get_top_rank($userkey,$topRankContestType);
 		
@@ -191,12 +191,12 @@ class Tops_Rank_Widget extends WP_Widget {
 			$arrRank = $arrTopRank->data;	
 			if ($arrRank != null)
 			foreach ( $arrRank as $row ) :
-				$handleLink = get_bloginfo ( "siteurl" ) . "/member-profile/" . $row->Handle;
+				$handleLink = get_bloginfo ( "siteurl" ) . "/member-profile/" . $row->handle;
 				?>
 				<tr>
-					<td><?php echo $row->Rank;?></td>
-					<td class="colHandle"><span class="coderText<?php echo $row->Color;?>"><?php echo $row->Name;?></span></td>
-					<td><?php echo $row->Rating;?></td>
+					<td><?php echo $row->rank;?></td>
+					<td class="colHandle"><span class="coderTextRed"><?php echo $row->handle;?></span></td>
+					<td><?php echo $row->rating;?></td>
 				</tr>
 			<?php endforeach; ?>
 			</tbody>

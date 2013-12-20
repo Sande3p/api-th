@@ -42,9 +42,20 @@ $contest = get_contest_detail('',$contestID, $contestType);
 						<div class="container">
 							 
                              <div class="leftColumn">
-                             	<a class="btn btnRegisterDeac" href="http://community.topcoder.com/tc?module=ProjectDetail&pj=<?php echo $contest->challengeId ;?>"><span>1</span> <strong>Register For This Contest</strong></a>
-                                <a class="btn btnSubmit" href="http://community.topcoder.com/tc?module=ProjectDetail&pj=<?php echo $contest->challengeId ;?>"><span>2</span> <strong>Submit Your Entries</strong></a> 
-                             </div>
+                             	<?php 
+								if ( $_GET['type'] != 'design' ):
+								?>								
+									<a class="btn btnRegisterDeac" href="http://community.topcoder.com/tc?module=ProjectDetail&pj=<?php echo $contest->challengeId ;?>"><span>1</span> <strong>Register For This Contest</strong></a>
+									<a class="btn btnSubmit" href="http://community.topcoder.com/tc?module=ProjectDetail&pj=<?php echo $contest->challengeId ;?>"><span>2</span> <strong>Submit Your Entries</strong></a> 
+								<?php
+								else:
+								?>
+									<a class="btn btnRegisterDeac" href="http://studio.topcoder.com/?module=ViewRegistration&ct=<?php echo $contestID  ;?>"><span>1</span> <strong>Register For This Contest</strong></a>
+									<a class="btn btnSubmit" href="http://studio.topcoder.com/?module=ViewRegistration&ct=<?php echo $contestID  ;?>"><span>2</span> <strong>Submit Your Entries</strong></a> 
+								<?php
+								endif;
+								?>
+							 </div>
                              
                              <div class="middleColumn">
                              	<table> 
@@ -60,7 +71,20 @@ $contest = get_contest_detail('',$contestID, $contestType);
                                   </tr>
                                   <tr>
                                     <td>
-                                    	<p class="realibilityPara">Reliability Bonus <span>$<?php echo $contest->reliabilityBonus;?></span></p>
+                                    	<p class="realibilityPara">Reliability Bonus 
+
+											<?php
+											if ( empty($contest->reliabilityBonus) ):
+											?>								
+                        	            		<span>$<?php echo "0" ?></span>
+											<?php
+											else:
+											?>
+                                    			<span>$<?php echo $contest->reliabilityBonus; ?></span>
+											<?php
+											endif;
+											?>
+                                    	</p>
                                     </td>
                                     <td>
                                     	<p class="drPointsPara">DR Points <span><?php echo $contest->digitalRunPoints;?></span></p>
@@ -76,9 +100,9 @@ $contest = get_contest_detail('',$contestID, $contestType);
                                 <div class="nextBoxContent nextDeadlineNextBoxContent">
                                 	<div class="icoTime">
                                         <span class="nextDTitle">Current Phase</span>
-                                        <span class="CEDate"><?php echo $contest->currentStatus;?></span>
+                                        <span class="CEDate"><?php echo $contest->currentPhaseName;?></span>
                                     </div>
-                                    <span class="timeLeft">3<small>Days</small> 11<small>Hours</small> 5<small>Mins</small></span>
+                                    <span class="timeLeft"><?php echo (int)date("d", $contest->currentPhaseRemainingTime); ?><small>Days</small> <?php echo (int)date("H", $contest->currentPhaseRemainingTime); ?><small>Hours</small> <?php echo (int)date("i", $contest->currentPhaseRemainingTime); ?><small>Mins</small></span>
                                 </div>
                                 <!--End nextBoxContent-->
                                 <div class="nextBoxContent allDeadlineNextBoxContent hide">
@@ -136,12 +160,18 @@ $contest = get_contest_detail('',$contestID, $contestType);
                                 <h1>Challenge Overview</h1>
 									<p><?php echo $contest->detailedRequirements;?></p>
 
-<article id="technologies">
-	<h1>Technologies</h1>
-    <ul>
-    	<li><strong>Tech</strong></li>
-    </ul>
-</article>
+                             	<?php 
+								if ( $_GET['type'] != 'design' ):
+								?>								
+									<article id="technologies">
+										<h1>Technologies</h1>
+    									<ul>
+    									<li><strong>Tech</strong></li>
+    									</ul>
+									</article>
+								<?php
+								endif;
+								?>
 
 <h3>Final Submission Guidelines</h3>
 <?php echo $contest->finalSubmissionGuidelines;?>
@@ -179,7 +209,19 @@ Reliability bonus does not apply to Digital Run winnings. Since reliability rati
 							<aside class="sideStream  grid-1-3">
 								  
                             <div class="topRightTitle"> 
-                            	<a href="http://apps.topcoder.com/forums/?module=Category&categoryID=<?php echo $contest->forumId;?>" class="contestForumIcon" target="_blank">Contest Forum</a>  
+                            
+                             	<?php 
+								if ( $_GET['type'] != 'design' ):
+								?>								
+	                            	<a href="http://apps.topcoder.com/forums/?module=Category&categoryID=<?php echo $contest->forumId;?>" class="contestForumIcon" target="_blank">Challenge Forum</a>  
+								<?php
+								else:
+								?>
+	                            	<a href="http://studio.topcoder.com/forums?module=ThreadList&forumID=<?php echo $contest->forumId;?>" class="contestForumIcon" target="_blank">Challenge Forum</a>  
+								<?php
+								endif;
+								?>                            
+                            
 							</div>
                             
                             <div class="columnSideBar"> 
@@ -207,9 +249,15 @@ Reliability bonus does not apply to Digital Run winnings. Since reliability rati
                                              <div class="contestLinks slideBox">
                                                 <h3>Contest Links:</h3>
                                                 <div class="inner">
-                                                    <p><a href="https://software.topcoder.com/review/actions/ViewScorecard.do?method=viewScorecard&scid=<?php echo $contest->screeningScorecardId;?>">Screening Scorecard</a></p>
+                                                   <?php 
+													if ( $_GET['type'] != 'design' ):
+													?>	
+												   <p><a href="https://software.topcoder.com/review/actions/ViewScorecard.do?method=viewScorecard&scid=<?php echo $contest->screeningScorecardId;?>">Screening Scorecard</a></p>
                                                    <p><a href="http://software.topcoder.com/review/actions/ViewScorecard.do?method=viewScorecard&scid=<?php echo $contest->reviewScorecardId;?>">Review Scorecard</a></p> 
-                                                </div>
+													<?php
+													endif;
+													?>
+												</div>
                                                 
                                             </div>
                                              

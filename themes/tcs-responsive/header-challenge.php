@@ -65,11 +65,11 @@ $photoLink = 'http://community.topcoder.com'.$coder->photoLink;
 						<img src="<?php echo $photoLink;?>" alt="<?php echo $coder->handle; ?>">
 					</div>
 					<div class="userDetails">
-						<a href="<?php bloginfo('wpurl');?>/member-profile/<?php echo $coder->handle;?>" class="coder"><?php echo $coder->handle;?></a>
+						<a href="<?php bloginfo('wpurl');?>/member-profile/<?php echo $coder->handle;?>" style="color:<?php echo $coder->colorStyle->color;?>" class="coder"><?php echo $handle ;?></a>
 						<p class="country"><?php echo $coder->country; ?></p>
-						<a href="#" class="link">My Profile</a>
-						<a href="#" class="link">My Dashboard </a>
-						<a href="javascript:;" class="link actionLogout">Log Out </a>	
+						<a href="<?php bloginfo('wpurl');?>/member-profile/<?php echo $coder->handle;?>" class="link">My Profile</a>
+						<a href="http://community.topcoder.com/tc?module=MyHome" class="link">My Dashboard </a>
+						<a href="#" class="link actionLogout">Log Out </a>	
 					</div>
 				</div>
 			</li>
@@ -82,16 +82,27 @@ $photoLink = 'http://community.topcoder.com'.$coder->photoLink;
 					<a href="<?php bloginfo('wpurl');?>" title="<?php bloginfo('name'); ?>"></a>
 				</h1>
 				<nav id="mainNav" class="mainNav">
-					
+				
+				
 					<ul class="root">
 						<?php wp_nav_menu ( $nav );	?>
-						<li class="onReg"><a href="javascript:;" class="actionLogout">Log Out</a></li>
+						
+						<?php if ( $user_id != '' ) : ?>
+						<li class="onReg"><a href="#" class="actionLogout">Log Out</a></li>
+						<?php else: ?>
 						<li class="noReg"><a href="javascript:;" class="actionLogin">Log In</a></li>
+						<?php endif; ?>
 					</ul>
 				</nav>
-				<a href="javascript:;" class="onMobi onReg linkLogout actionLogout">Log Out</a>
-				<a href="javascript:;" class="onMobi noReg linkLogin actionLogin">Log In</a>
-				<span class="btnRegWrap noReg"><a href="javascript:;" class="btn btnRegister">Register</a> </span> <span class="btnAccWrap onReg"><a href="javascript:;" class="btn btnAlt btnMyAcc">
+				<?php if ( $user_id != '' ) : ?>
+						<a href="javascript:;" class="onMobi onReg linkLogout actionLogout">Log Out</a>
+				<?php else: ?>		
+				<a href="javascript:;" class="onMobi onReg linkLogin actionLogin">Log In</a>
+				<?php endif; ?>
+				<?php if ( $user_id == '' ) : ?>
+				<span class="btnRegWrap noReg"><a href="javascript:;" class="btn btnRegister">Register</a> </span> 
+				<?php else: ?>	
+				<span class="btnAccWrap noReg"><a href="javascript:;" class="btn btnAlt btnMyAcc">
 						My Account<i></i>
 					</a></span>
 				<div class="userWidget">
@@ -109,12 +120,12 @@ $photoLink = 'http://community.topcoder.com'.$coder->photoLink;
 						</div>
 					</div>
 					<div class="action">
-						<a href="#">My Profile</a>
-						<a href="#">My Dashboard </a>
-						<a href="javascript:;" class="linkAlt actionLogout">Log Out</a>
+						<a href="<?php bloginfo('wpurl');?>/member-profile/<?php echo $coder->handle;?>">My Profile</a>
+						<a href="http://community.topcoder.com/tc?module=MyHome">My Dashboard </a>
+						<a href="#" class="linkAlt actionLogout">Log Out</a>
 					</div>
 				</div>
+				<?php endif; ?>
 				<!-- /.userWidget -->	
 			</div>
 		</header>
-		<!-- /#header -->

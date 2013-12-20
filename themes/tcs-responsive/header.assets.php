@@ -10,9 +10,11 @@
 <link href="http://fonts.googleapis.com/css?family=Lato:400,300,700,i,300i" rel="stylesheet" type="text/css" />
 <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/base.css" />
 <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/style.css" />
+<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/style-profile.css" />
 <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/base-responsive.css" />
 <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/style-responsive.css" />
 <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/coder.css" />
+<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/profileBadges.css" />
 <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/register-login.css" />
 <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/blog-base.css" />
 <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/blog.css" />
@@ -44,11 +46,21 @@
 	
 <?php fixIERoundedCorder(); ?>
 <script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/jquery.bxslider.js" type="text/javascript"></script>
+
+<script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/jquery.easing.1.3.js" type="text/javascript"></script>
+<script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/jquery.mousewheel.js" type="text/javascript"></script>
+<script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/raphael-min.js" type="text/javascript"></script>
+<script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/jquery.carousel.js" type="text/javascript"></script>
+<!-- 
 <script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/jquery.customSelect.min.js" type="text/javascript"></script>
 <script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/swipe.js" type="text/javascript"></script>
 <script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/jquery.inputhints.js" type="text/javascript"></script>
+ -->
 <script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/scripts.js" type="text/javascript"></script>
+<script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/script-member.js" type="text/javascript"></script>
+<!-- 
 <script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/register-login.js" type="text/javascript"></script>
 <script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/blog.js" type="text/javascript"></script>
+ -->
 
 
