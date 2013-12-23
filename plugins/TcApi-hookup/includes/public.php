@@ -339,21 +339,8 @@ class TCHOOK_Public extends TCHOOK_Plugin {
 	
 	// Test Member Count
 	function tcapi_get_member_count ($atts, $key="") {
-		$url = "http://www.topcoder.com/tc?module=BasicData&c=member_count&dsid=30";
-		$args = array (
-				'httpversion' => get_option ( 'httpversion' ),
-				'timeout' => get_option ( 'request_timeout' )
-		);
-		$response = wp_remote_get ( $url, $args );
 		
-		if (is_wp_error ( $response ) || ! isset ( $response ['body'] )) {
-			return "Error in processing";
-		}
-		if ($response ['response'] ['code'] == 200) {
-			preg_match('/<member_count\>([0-9]+)<\/member_count>/e',$response ['body'],$matches);
-			return number_format($matches[1]);
-		}
-		return "Error in processing request";
+		return get_activity_summary("member_count");
 	}
 	
 	/* member stastics  */

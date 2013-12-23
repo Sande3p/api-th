@@ -40,8 +40,8 @@ class Tops_Rank_Widget extends WP_Widget {
 	<h1>Top 10</h1>
 	<nav class="tabNav">
 		<ul>
-			<li><a href="#design" class="active link">Design</a></li>
-			<li><a href="#software" class="link">Develop </a></li>
+			<li><a href="#design" class="link">Design</a></li>
+			<li><a href="#software" class="active link">Develop </a></li>
 			<li><a href="#algorithum" class="link">Data</a></li>
 		</ul>
 	</nav>
@@ -133,7 +133,7 @@ class Tops_Rank_Widget extends WP_Widget {
 		$arrRank = $arrTopRank->data;
 		
 		?>
-	<div id="design" class="tableWrap tab">
+	<div id="design" class="tableWrap hide tab">
 		<table class="dataTable topsTable">
 			<thead>
 				<tr>
@@ -149,7 +149,7 @@ class Tops_Rank_Widget extends WP_Widget {
 			</tbody>
 		</table>
 	</div>
-	<div id="software" class="tableWrap hide tab">
+	<div id="software" class="tableWrap tab">
 		<table class="dataTable topsTable">
 			<thead>
 				<tr>
