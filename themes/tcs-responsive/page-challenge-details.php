@@ -178,13 +178,40 @@ $contest = get_contest_detail('',$contestID, $contestType);
 
 <article id="payments">
 	<h1>Payments</h1>
-    <p>TopCoder will compensate members with first and second place submissions. Initial payment for the winning member will be distributed in two installments. The first payment will be made at the closure of the approval phase. The second payment will be made at the completion of the support period.</p>
+    <p>TopCoder will compensate members in accordance with the payment structure of this challenge.  
+    Initial payment for the winning member will be distributed in two installments. The first payment 
+    will be made at the closure of the approval phase. The second payment will be made at the 
+    completion of the support period.</p>
 
 <h2>Reliability Rating and Bonus</h2>
-<p>The reliability bonus for each particular project depends on the reliability rating at the moment of registration for that project. A participant with no previous projects is considered to have no reliability rating, and therefore gets no bonus.
-Reliability bonus does not apply to Digital Run winnings. Since reliability rating is based on the past 15 projects, it can only have 15 discrete values.<br>
+<p>The reliability bonus for each particular project depends on the reliability rating at 
+	the moment of registration for that project. A participant with no previous projects is 
+	considered to have no reliability rating, and therefore gets no bonus.
+	Reliability bonus does not apply to Digital Run winnings. Since reliability rating is 
+	based on the past 15 projects, it can only have 15 discrete values.<br>
 <a href="http://apps.topcoder.com/wiki/x/MQD9Ag">Read more.</a></p>
 </article>
+
+
+<article id="eligibility">
+	<h1>Eligibility</h1>
+    <p>You must be a TopCoder member, at least 18 years of age, meeting all of the membership requirements. In addition, you must fit into one of the following categories.</p>
+
+	<p>If you reside in the United States, you must be either:</p>
+	<p>
+		<ul>A US Citizen
+			<li>A Lawful Permanent Resident of the US</li>
+			<li>A temporary resident, asylee, refugee of the U.S., or have a lawfully issued work authorization card permitting unrestricted employment in the U.S.</li>
+		</ul>
+	</p>
+	<p>If you do not reside in the United States:</p>
+	<ul><li>You must be authorized to perform services as an independent contractor.
+	(Note: In most cases you will not need to do anything to become authorized)
+	</li></ul>
+
+</article>
+
+
 
 </article>
  
