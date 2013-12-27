@@ -22,6 +22,7 @@ $siteURL = site_url ();
 	var siteurl = "<?php bloginfo('siteurl');?>";
 	var activePastContest = "active";
 	$(document).ready(function() {
+		ajax.postPerPage = <?php echo get_option ( 'contest_per_page' ) ;?>;
 		app.buildRequestData("activeContest", "<?php echo $contest_type;?>");
 		app.challenges.init();
 		//listActiveContest("activeContest","activeContest","<?php // echo $contest_type;?>");
@@ -84,6 +85,7 @@ $siteURL = site_url ();
 									<thead>
 										<tr class="head">
 											<th class="colCh asc" char="contestName" >Challenges</th>
+											<th class="colType" char="contestType">Type</th>
 											<th class="colTime" char="startDate" >Timeline</th>
 											<th class="colTLeft" char="">Time Left</th>
 											<th class="colPur" char="purse" >Purse</th>

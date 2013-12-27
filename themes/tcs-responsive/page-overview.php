@@ -99,27 +99,29 @@ $siteURL = site_url ();
 								</ul>
 						</div>
 						<!-- /.sideFindRelatedContent -->
+						<?php if($quote != ""):?>
 						<div class="sideQuote">
 							<p class="quoteTxt">“<?php echo $quote;?>”</p>
 							<p class="quoterName"><?php echo $qAuthor;?></p>
-						</div>
+						</div>						
 						<!-- /.sideQuote -->
+						<?php endif;?>
 
 						<div class="sideMostRecentChallenges">
 							<h3>Most Recent Challenges</h3>
 							<?php 
-								$contest= get_active_contests('develop','30000000');								
+								$devContest= get_most_recent_contest('develop');
+								$devContest = $devContest->data[0];
+								$designContest = get_most_recent_contest('design');		
+								$designContest = $designContest->data[0];
 							?>
 							<ul>									
-								<li><a class="contestName contestType1" href="<?php bloginfo('wpurl');?>/challenges/<?php echo $contest->contestId?>">
-										<i></i><?php echo $contest->contestName ?>
+								<li><a class="contestName contestType1" href="<?php bloginfo('wpurl');?>/challenge-details/<?php echo $devContest->challengeId?>">
+										<i></i><?php echo $devContest->challengeName ?>
 									</a></li>
-								<li class="alt"><a class="contestName contestType2" href="<?php bloginfo('wpurl');?>/challenges/<?php echo $contest->contestId?>">
-										<i></i><?php echo $contest->contestName ?>
-									</a></li>
-								<li><a class="contestName contestType3" href="<?php bloginfo('wpurl');?>/challenges/<?php echo $contest->contestId?>">
-										<i></i><?php echo $contest->contestName ?>
-									</a></li>
+								<li class="alt"><a class="contestName contestType2" href="<?php bloginfo('wpurl');?>/challenge-details/<?php echo $designContest->challengeId?>/?type=design">
+										<i></i><?php echo $designContest->challengeName ?>
+									</a></li>								
 							</ul>
 						</div>
 						<!-- /.sideMostRecentChallenges -->						

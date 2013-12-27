@@ -541,7 +541,7 @@ em{
             float: left;
             border-radius: 0 4px 4px 0;
             height: 28px;
-        
+        	cursor: pointer;
             line-height: 30px;
             width: 104px;
             vertical-align: top;

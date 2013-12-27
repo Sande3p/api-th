@@ -5,7 +5,7 @@ define('WP_DEBUG_DISPLAY', true);
 #include 'auth0/src/Auth0.php';
 #include 'auth0/vendor/adoy/oauth2/vendor/autoload.php';
 #include 'auth0/client/config.php';
-include("functions-widget.php");
+//include("functions-widget.php");
 
 define("BLOG","blog");
 
@@ -626,12 +626,7 @@ function themeoptions_page() {
 	<form method="POST" action="" enctype="multipart/form-data">
 		<input type="hidden" name="update_themeoptions" value="true" />
 		<h3>TopCoder API settings</h3>
-		<table width="100%">
-			<tr>
-				<?php $field = 'api_user_key'; ?>
-				<td width="150"><label for="<?php echo $field; ?>">API user key <i>(Enter TopCoder API user key)</i>:</label></td>
-				<td><input type="text" id="<?php echo $field; ?>" name="<?php echo $field; ?>" size="100" value="<?php echo get_option($field); ?>" /></td>
-			</tr>
+		<table width="100%">			
 			<tr>
 				<?php $field = 'forumPostPerPage'; ?>
 				<td width="150"><label for="<?php echo $field; ?>">Forum post per page:</label></td>

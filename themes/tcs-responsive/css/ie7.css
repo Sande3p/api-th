@@ -1,0 +1,30 @@
+/* ie 7 css */
+.searchBox {
+	
+}
+.searchBox .text{
+	width:auto;
+	height: auto;
+	margin-bottom:20px;
+	border-right: 15px solid transparent;
+	line-height:18px;
+	height:18px;
+	overflow:hidden;
+}
+.subscribeBox {
+	clear:both;
+}
+
+
+.subscribeBox .text{
+	width:auto;
+	height:28px;
+	line-height:28px;
+	padding:0px 10px;
+	width:265px;
+	overflow:hidden;
+} 
+
+.categoriesWidget {
+	clear:both;
+}

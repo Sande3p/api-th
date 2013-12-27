@@ -1,0 +1,164 @@
+/**
+ * 5.0 Alignment
+ * ----------------------------------------------------------------------------
+ */
+
+.alignleft {
+	float: left;
+	margin: 5px 20px 5px 0;
+}
+
+.alignright {
+	float: right;
+	margin: 5px 0 5px 20px;
+}
+
+.aligncenter {
+	display: block;
+	margin: 5px auto;
+}
+
+img.alignnone {
+	margin: 5px 0;
+}
+
+/**
+ * 7.0 Images
+ * ----------------------------------------------------------------------------
+ */
+
+img {
+	height: auto;
+	max-width: 100%;
+	vertical-align: middle;
+}
+
+.wp-caption {
+	background: transparent;
+	border: none;
+	margin: 0;
+	padding: 0;
+	text-align: left;
+}
+
+.wp-caption.alignleft {
+	margin: 5px 10px 5px 0; 
+}
+
+.wp-caption.alignright {
+	margin: 5px 0 5px 10px;
+}
+.wp-caption.aligncenter {
+	margin:0px auto;
+	display:block;
+}
+
+
+.wp-caption-dt {
+	margin: 0;
+}
+
+.wp-caption .wp-caption-text,
+.wp-caption-dd {
+	color: #666666;
+	font-size: 14px;
+	font-weight: normal;
+	line-height: 18px;
+	margin-top:10px;
+	padding:10px;
+	border-top:1px #e1e3e3 solid;
+	border-bottom:1px #e1e3e3 solid;
+}
+
+.mceTemp + ul,
+.mceTemp + ol  {
+	list-style-position: inside;
+}
+
+.pageContent{
+	font-weight: 300;
+	line-height:24px;
+	clear:both;
+}
+	.pageContent h3{
+		font-size: 24px;
+		line-height: 24px;
+		padding: 21px 0 21px 0;
+		color: #0071bc;
+		font-weight: normal;
+	}
+	.pageContent h3:first-child{
+		padding-top: 0;
+	}
+	.pageContent blockquote{
+		clear:both;
+		font-weight:normal;
+		margin-bottom: 30px;
+		min-height:44px;
+		padding: 5px 0 0px 50px;
+		background: url(../i/quote-mark.png) 0 0 no-repeat;
+		font-size:24px;
+		line-height:32px;
+		color:#474747;
+	}
+	.pageContent p{
+		line-height: 24px;
+		padding-bottom: 24px;
+		font-size: 14px;
+	}
+	.pageContent a {
+		color: #0071BC;
+	}
+	.pageContent a:hover {
+		color: #FFB800;
+	}
+	.pageContent strong {
+		font-weight: bold;
+	}
+	.pageContent em {
+		font-style:italic;
+	}
+	.pageContent ul{
+		padding: 22px 0 2px 34px;
+		overflow:hidden;
+	}
+		.pageContent ul li{
+			float:left;
+			padding: 0 0 24px 22px;
+			line-height: 24px;
+			background: url(../i/content-list-dot.png) 0 0 no-repeat;
+		}
+	.pageContent ol{
+		padding: 22px 0 2px 34px;
+		overflow:hidden;
+	}
+		.pageContent ol li{
+			float:left;
+			padding: 0 0 24px 22px;
+			line-height: 24px;
+			list-style-type:decimal;
+		}		
+
+.pageContent table{    
+	font-weight:normal;
+	font-family: lato,Arial,Helvetica,sans-serif;
+	width:100%;
+	margin:22px 0;
+	font-size:12px;
+	color:#333333;
+}
+	.pageContent table th{
+		background: #f1f1f1; /* Old browsers */
+		color:#333;
+		font-weight:normal;
+		text-align:left;
+		vertical-align:middle;
+		height:30px;
+		padding-left:16px;
+	}
+	.pageContent table td{
+		border-bottom:1px solid #cccccc;
+		background:#f9f9f9;
+		padding:5px 7px;
+		vertical-align:middle;
+	}

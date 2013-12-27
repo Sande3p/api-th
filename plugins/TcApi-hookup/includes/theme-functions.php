@@ -6,9 +6,9 @@ function get_contest_type($userKey = ''){
 	return $TCHOOK_plugin-> get_contest_type( $userKey );	
 }
 
-function get_active_contests($userKey = '', $contestType = '', $page = 1, $post_per_page = 30){
+function get_active_contests($contestType = '', $page = 1, $post_per_page = 30){
 	global $TCHOOK_plugin;
-	return $TCHOOK_plugin-> get_active_contests($userKey, $contestType, $page, $post_per_page);
+	return $TCHOOK_plugin-> get_active_contests( $contestType, $page, $post_per_page);
 }
 
 function get_past_contests($userKey = '', $contestType = '', $page = 1, $post_per_page = 30){
@@ -51,4 +51,8 @@ function get_json_from_url( $url ){
 	return $TCHOOK_plugin->get_json_from_url( $url );
 }
 
+function get_most_recent_contest($contestType = ''){
+	global $TCHOOK_plugin;
+	return $TCHOOK_plugin-> get_most_recent_contest( $contestType);
+}
 ?>

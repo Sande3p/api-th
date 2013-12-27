@@ -12,6 +12,15 @@
    height: 355px;
    background: url(../i/bg-banner-m.png) 50% 0 repeat-x;
 }
+
+#banner .inner .container {
+    background: url(../i/banner-1-m.png) 50% 0 no-repeat;
+}
+
+#banner .inner .container .bx-wrapper{
+    margin: 0;
+    max-width: 100% !important;
+}
     
 
 /* slider */
@@ -92,7 +101,7 @@
         right: auto;
     
         top: auto;
-        padding-top: 78px;
+        padding-top: 28px;
         margin: 0 10px;
         width: auto;
 }
