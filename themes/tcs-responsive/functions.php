@@ -5,8 +5,9 @@ define('WP_DEBUG_DISPLAY', true);
 #include 'auth0/src/Auth0.php';
 #include 'auth0/vendor/adoy/oauth2/vendor/autoload.php';
 #include 'auth0/client/config.php';
-//include("functions-widget.php");
 
+
+include("functions-widget.php");
 define("BLOG","blog");
 
 // add featured image

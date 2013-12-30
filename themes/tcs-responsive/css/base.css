@@ -75,8 +75,10 @@ input[type="email"], input[type="number"], input[type="password"], input[type="t
     margin: 0;    
     height: 20px;
     line-height: 20px;
-    background: #3f4143;
     border-radius: 4px;
+}
+#footer input[type="email"], #footer input[type="number"], #footer input[type="password"], #footer input[type="tel"], #footer input[type="url"], #footer input[type="text"]{	
+    background: #3f4143;
 }
 /* heading */
  h1, h2, h3, h4, h5, h6 {

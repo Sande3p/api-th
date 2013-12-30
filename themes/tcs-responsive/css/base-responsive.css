@@ -191,10 +191,10 @@ em{
         }
         .sidebarNav .root li.isActive > a i,
         .sidebarNav .root .child li.isActive > a{
-            background-position: 3px 13px;
+            background-position: 2px 13px;
         }
      .sidebarNav .root  .child a{
-            padding-left: 47px;                    
+            padding-left: 35px;                    
             background-position: 21px -41px;
             font-size: 12px;
 }

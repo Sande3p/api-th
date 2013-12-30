@@ -506,7 +506,6 @@ class Download_banner_widget extends WP_Widget {
 		$html_content = trim($html_content) == "" ? 
 		'
 		<a class="downloadWidget" href="javascript:;">
-			<img class="banner" src="site_url/i/download-bg.png" width="319" height="171" alt="" />
 			<p class="download">download :</p>
 			<p class="para1">THE TALENT WAR SURVIVAL GUIDE:</p>
 			<p class="para2">MASTERING APPLICATION</p>
