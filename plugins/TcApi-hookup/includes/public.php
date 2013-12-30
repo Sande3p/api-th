@@ -93,6 +93,8 @@ class TCHOOK_Public extends TCHOOK_Plugin {
 		return "Error in processing request";
 	}
 	
+	
+	
 	// returns past contest list
 	// currently v2 api don't support this
 	public function get_past_contests($userKey = '', $contestType = '', $page = 1, $post_per_page = 30) {
@@ -124,7 +126,7 @@ class TCHOOK_Public extends TCHOOK_Plugin {
 		$response = wp_remote_get ( $url, $args );
 		
 		if (is_wp_error ( $response ) || ! isset ( $response ['body'] )) {
-			return "Error in processing request or Member dosen't exist";
+			return "Error in processing request";
 		}
 		if ($response ['response'] ['code'] == 200) {
 			$coder_profile = json_decode ( $response ['body'] );
@@ -245,8 +247,7 @@ class TCHOOK_Public extends TCHOOK_Plugin {
 	
 	
 	// Test Member Count
-	function tcapi_get_member_count ($atts, $key="") {
-		
+	function tcapi_get_member_count ($atts, $key="") {		
 		return get_activity_summary("member_count");
 	}
 	

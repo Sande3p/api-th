@@ -140,6 +140,9 @@
     padding-top: 8px;
     padding-bottom: 32px;
 }
+#mainContent.noShadow{
+	background: none;
+}
 #mainContent.layChallenges{
     padding-top: 30px;
     padding-bottom: 20px;
@@ -830,11 +833,11 @@
         .dataTable .colCh a{
             color: #666;
             line-height: 22px;
-            padding-left: 35px;
             display: inline-block;
         
             cursor: pointer;
             position: relative;
+            padding-left: 65px;
 }
             .dataTable .colCh a i{
                 position: absolute;
@@ -989,7 +992,9 @@
         }
         .contestGrid .cgTime .val{
             margin-left: 92px; 
-        }
+        
+            white-space: nowrap;
+}
     .contestGrid .genInfo{
         background: #f7f7f7;
             

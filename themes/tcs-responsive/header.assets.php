@@ -16,9 +16,6 @@
 <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/coder.css" />
 <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/profileBadges.css" />
 <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/register-login.css" />
-<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/blog-base.css" />
-<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/blog.css" />
-<link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/blog-responsive.css" />
 
 
 <!-- External JS -->
@@ -49,18 +46,13 @@
 
 <script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/jquery.easing.1.3.js" type="text/javascript"></script>
 <script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/jquery.mousewheel.js" type="text/javascript"></script>
-<script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/raphael-min.js" type="text/javascript"></script>
-<script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/jquery.carousel.js" type="text/javascript"></script>
 
 <script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/jquery.customSelect.min.js" type="text/javascript"></script>
 <script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/swipe.js" type="text/javascript"></script>
 <script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/jquery.inputhints.js" type="text/javascript"></script>
 
 <script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/scripts.js" type="text/javascript"></script>
-<script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/script-member.js" type="text/javascript"></script>
-
 <script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/register-login.js" type="text/javascript"></script>
-<script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/blog.js" type="text/javascript"></script>
 
 <!-- auth -->
 <script src="https://d19p4zemcycm7a.cloudfront.net/w2/auth0-1.2.2.min.js"></script>

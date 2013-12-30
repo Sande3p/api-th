@@ -68,10 +68,7 @@ add_action ( 'wp_ajax_post_login', 'post_login_controller' );
 add_action ( 'wp_ajax_nopriv_post_login', 'post_login_controller' );
 
 
-
-
 function get_active_contest_ajax_controller() {
-	$userkey = get_option ( 'api_user_key' );
 	$contest_type = $_GET ['contest_type'];
 	$page = get_query_var ( 'pages' );
 	$post_per_page =  $_GET['pageSize'];
@@ -79,14 +76,18 @@ function get_active_contest_ajax_controller() {
 	$sortColumn = $_GET ['sortColumn'];
 	$sortOrder = $_GET ['sortOrder'];
 	
-	$contest_list = get_active_contests_ajax ( $userkey, $contest_type, $page, $post_per_page, $sortColumn, $sortOrder );
+	$contest_list = get_active_contests_ajax ($contest_type, $page, $post_per_page, $sortColumn, $sortOrder );
 	if ($contest_list->data != null) {
 		echo json_encode ( $contest_list->data );
+	}else{
+		echo "[{error: No data}]";
 	}
 	die ();
 }
 add_action ( 'wp_ajax_get_active_contest', 'get_active_contest_ajax_controller' );
 add_action ( 'wp_ajax_nopriv_get_active_contest', 'get_active_contest_ajax_controller' );
+
+
 function get_past_contest_ajax_controller() {
 	$userkey = get_option ( 'api_user_key' );
 	$contest_type = $_GET ['contest_type'];
@@ -167,17 +168,12 @@ add_action ( 'wp_ajax_nopriv_get_copilot_stats', 'get_copilot_stats_controller' 
  */
 
 // returns active contest list
-function get_active_contests_ajax($userKey = '', $contestType = 'design', $page = 1, $post_per_page = 30, $sortColumn = '', $sortOrder = '') {
+function get_active_contests_ajax($contestType = 'design', $page = 1, $post_per_page = 30, $sortColumn = '', $sortOrder = '') {
 	$contestType = str_replace ( " ", "+", $contestType );
 	$contestType = str_replace ( "-", "/", $contestType );
 	// $url = "http://api.topcoder.com/rest/contests?user_key=" . $userKey . "&listType=ACTIVE&type=" . $contestType . "&pageSize=10000";	
 	$url = "http://api.topcoder.com/v2/".$contestType."/challenges?listType=Active&pageIndex=".$page."&pageSize=".$post_per_page;
 	#echo $url;
-	if ($contestType == "") {
-		// $url = "http://api.topcoder.com/rest/contests?user_key=" . $userKey . "&listType=ACTIVE&pageSize=10000";
-		//$url = "http://api.topcoder.com/v2/".$contestType."/challenges?listType=Active&pageIndex=1&pageSize=50&sortColumn=contestName&sortOrder=asc";
-		$url = "http://api.topcoder.com/v2/".$contestType."/challenges?listType=Active&pageIndex=".$page."&pageSize=".$post_per_page;
-	}
 	if ($sortOrder) {
 		$url .= "&sortOrder=$sortOrder";
 	}
@@ -261,9 +257,10 @@ function get_review_opportunities_ajax($userKey = '', $contestType = '', $page =
 }
 
 // returns member profile
-function get_member_profile($userKey = '', $handle = '') {
+function get_member_profile($handle = '') {
 	#echo $userKey;
-	$url = "http://api.topcoder.com/rest/statistics/" . $handle . "?user_key=" . $userKey;
+	$url = "http://api.topcoder.com/rest/statistics/$handle?user_key=68a1d84e471ba90ac8a55b01b75af6b7";
+	// http://api.topcoder.com/v2/users/" . $handle;
 	$args = array (
 			'httpversion' => get_option ( 'httpversion' ),
 			'timeout' => get_option ( 'request_timeout' ) 
@@ -271,7 +268,7 @@ function get_member_profile($userKey = '', $handle = '') {
 	$response = wp_remote_get ( $url, $args );
 	#print_r($response);
 	if (is_wp_error ( $response ) || ! isset ( $response ['body'] )) {
-		return "Error in processing request or Member dosen't exist";
+		return "Error in processing request";
 	}
 	if ($response ['response'] ['code'] == 200) {
 		$coder_profile = json_decode ( $response ['body'] );

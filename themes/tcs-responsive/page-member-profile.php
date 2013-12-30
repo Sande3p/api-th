@@ -1,7 +1,28 @@
 <?php get_header(); ?>
 <?php
 
+/**
+ * Enqueue scripts and styles exclusive to this template
+ */
 
+
+wp_register_style ( 'style-profile.css', get_bloginfo ( 'stylesheet_directory' ) . '/css/style-profile.css' );
+wp_enqueue_style ( 'style-profile.css' );
+
+
+$script = 'raphael-min.js';
+wp_register_script ( $script, get_bloginfo ( 'stylesheet_directory' ) . '/js/'.$script );
+wp_enqueue_script ( $script );
+
+$script = 'jquery.carousel.js';
+wp_register_script ( $script, get_bloginfo ( 'stylesheet_directory' ) . '/js/'.$script );
+wp_enqueue_script ( $script );
+
+$script = 'script-member.js';
+wp_register_script ( $script, get_bloginfo ( 'stylesheet_directory' ) . '/js/'.$script );
+wp_enqueue_script ( $script );
+?>
+<?php
 
 global $activity;
 $activity = get_activity_summary ();
@@ -9,20 +30,18 @@ $activity = get_activity_summary ();
 $handle = get_query_var ( 'handle' );
 
 $tab = get_query_var ( 'tab' );
-$track= "data/srm";
+$track = "data/srm";
 
 if ($tab == "algo") {
-
+	
 	$track = "data/srm";
-
-}else if ($tab == "develop") {
+} else if ($tab == "develop") {
 	$track = "develop";
-}else if ($tab == "design") {
+} else if ($tab == "design") {
 	$track = "design";
 }
 
-$userkey = get_option ( 'api_user_key' );
-$coder = get_member_profile ( $userkey, $handle );
+$coder = get_member_profile ($handle );
 
 ?>
 <script type="text/javascript">
@@ -41,7 +60,7 @@ $coder = get_member_profile ( $userkey, $handle );
 					<article class="aboutCoder">
 						<div class="details">
 							<figure class="coderPicWrap">
-								<img alt="<?php echo $coder->handle;?>" src="<?php echo 'http://community.topcoder.com/' . $coder->photoLink;?>">
+								<img alt="<?php echo $coder->handle;?>" src="<?php echo 'http://community.topcoder.com'.$coder->photoLink;?>">
 							</figure>
 							<div class="info">
 								<div class="handle">
@@ -50,10 +69,10 @@ $coder = get_member_profile ( $userkey, $handle );
 								<div class="country"><?php echo $coder->country; ?></div>
 								<div class="memberSince">
 									<label>Member Since:</label>
-									<div class="val"><?php 
-									$memSince = $coder->memberSince; 
-									$memSince = str_replace(".","/",$memSince);
-									echo date("M d, Y", strtotime($memSince)) ;
+									<div class="val"><?php
+									$memSince = $coder->memberSince;
+									$memSince = str_replace ( ".", "/", $memSince );
+									echo date ( "M d, Y", strtotime ( $memSince ) );
 									?></div>
 								</div>
 								<div class="memberSince">
@@ -75,7 +94,7 @@ $coder = get_member_profile ( $userkey, $handle );
 			</div>
 		</div>
 		<!-- /#hero -->
-<?php 
+<?php
 $coder = get_member_statistics ( $handle, $track );
 ?>
 
@@ -97,14 +116,14 @@ $coder = get_member_statistics ( $handle, $track );
 					</div>
 					<!-- /.actions -->
 					<div class="dataTabs">
-						<?php 
-						if($tab=="design"){
-							get_template_part('content', 'member-design');
-						}else if($tab=="develop"){
-							get_template_part('content', 'member-develop');
-						}else{
-							get_template_part('content', 'member-algo');
-						}						
+						<?php
+						if ($tab == "design") {
+							get_template_part ( 'content', 'member-design' );
+						} else if ($tab == "develop") {
+							get_template_part ( 'content', 'member-develop' );
+						} else {
+							get_template_part ( 'content', 'member-algo' );
+						}
 						?>						
 					</div>
 					<!-- /.dataTabs -->

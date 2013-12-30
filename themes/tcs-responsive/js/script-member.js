@@ -8,7 +8,7 @@ var coder = {
 		// tab navs
 		
 		
-        $('.subTrackTabs .tabNav a').on(ev, function() {
+        $('.subTrackTabs .tabNav a').off().on(ev, function() {
             $('.isActive', $(this).closest('.tabNav')).removeClass('isActive');
             $(this).addClass('isActive');
         });       

@@ -3,9 +3,26 @@
  * Template Name: Category Blog
  */
 ?>
-<?php
+<?php 
 
 get_header ();
+/**
+ * Enqueue scripts and styles exclusive to this template/module
+ */
+
+wp_register_style ( 'blog-base.css',  get_bloginfo( 'stylesheet_directory' ).'/css/blog-base.css');
+wp_register_style ( 'blog.css',  get_bloginfo( 'stylesheet_directory' ).'/css/blog.css');
+wp_register_style ( 'blog-responsive.css',  get_bloginfo( 'stylesheet_directory' ).'/css/blog-responsive.css');
+wp_enqueue_style ( 'blog-base.css' );	
+wp_enqueue_style ( 'blog.css' );
+wp_enqueue_style ( 'blog-responsive.css' );
+
+$script = 'blog.js';
+wp_register_script ( $script, get_bloginfo ( 'stylesheet_directory' ) . '/js/'.$script );
+wp_enqueue_script ( $script );
+?>
+<?php
+
 
 $values = get_post_custom ( $post->ID );
 

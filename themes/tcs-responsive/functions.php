@@ -136,7 +136,6 @@ add_filter ( 'query_vars', 'tcapi_query_vars' );
 add_rewrite_rule ( '^'.ACTIVE_CONTESTS_PERMALINK.'/([^/]*)/?$', 'index.php?pagename=challenges&contest_type=$matches[1]', 'top' );
 add_rewrite_rule ( '^'.ACTIVE_CONTESTS_PERMALINK.'/([^/]*)/([0-9]*)/?$', 'index.php?pagename=active-contests&contest_type=$matches[1]&pages=$matches[2]', 'top' );
 
-
 add_rewrite_rule ( '^'.DESIGN_CONTESTS_PERMALINK.'/([^/]*)/?$', 'index.php?pagename=$matches[1]&contest_type=design', 'top' );
 add_rewrite_rule ( '^'.DEVELOP_CONTESTS_PERMALINK.'/([^/]*)/?$', 'index.php?pagename=$matches[1]&contest_type=develop', 'top' );
 add_rewrite_rule ( '^'.DATA_CONTESTS_PERMALINK.'/([^/]*)/?$', 'index.php?pagename=$matches[1]&contest_type=data', 'top' );

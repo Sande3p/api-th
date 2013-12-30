@@ -55,4 +55,5 @@ function get_most_recent_contest($contestType = ''){
 	global $TCHOOK_plugin;
 	return $TCHOOK_plugin-> get_most_recent_contest( $contestType);
 }
+
 ?>

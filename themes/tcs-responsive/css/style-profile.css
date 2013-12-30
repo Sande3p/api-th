@@ -764,7 +764,8 @@
     font-size: 11px;
     font-weight: bold;
     color: #ffffff;
-    background: rgba(0, 0, 0, 0) url(../i/toolTipsBg.png) 0 0 repeat;
+    background: #191919;
+    background: rgba(25, 25, 25, 0.95);
     border: 1px solid #000000;
     border-bottom-color: #474747;
 }
@@ -773,7 +774,7 @@
     line-height: 14px;
     font-size: 11px;
     color: #ffffff;
-    background: rgba(0, 0, 0, 0) url(../i/toolTipsBg.png) 0 0 repeat;
+    background: #191919;  background: rgba(25, 25, 25, 0.95);
     border-left: 1px solid #000000;
     border-right: 1px solid #000000;
 }

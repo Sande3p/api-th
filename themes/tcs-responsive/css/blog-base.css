@@ -34,7 +34,9 @@
 		}
 		.pageTitleWrapper .pageTitle h2.overviewPageTitle{
 			background-position: 0 0;
-		}
+		
+			right: 0;
+}
 		.pageTitleWrapper .pageTitle h2.casePageTitle{
 			background-position: 0 -90px;
 		}
