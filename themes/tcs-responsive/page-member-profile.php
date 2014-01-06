@@ -60,7 +60,11 @@ $coder = get_member_profile ($handle );
 					<article class="aboutCoder">
 						<div class="details">
 							<figure class="coderPicWrap">
+								<?php if($coder->photoLink != null && $coder->photoLink !=""):?>
 								<img alt="<?php echo $coder->handle;?>" src="<?php echo 'http://community.topcoder.com'.$coder->photoLink;?>">
+								<?php else:?>
+								<img alt="Image not found" src="<?php echo get_bloginfo( 'stylesheet_directory' ); ?>/i/profile-pic.png">
+								<?php endif;?>
 							</figure>
 							<div class="info">
 								<div class="handle">

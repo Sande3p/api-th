@@ -3,12 +3,12 @@
 	
 }
 .searchBox .text{
-	width:auto;
-	height: auto;
+	width:auto !important;
+	height: auto ;
 	margin-bottom:20px;
-	border-right: 15px solid transparent;
+	border-right: 15px solid transparent !important;
 	line-height:18px;
-	height:18px;
+	height:18px !important;
 	overflow:hidden;
 }
 .subscribeBox {
@@ -17,8 +17,8 @@
 
 
 .subscribeBox .text{
-	width:auto;
-	height:28px;
+	width: 265px !important;
+	height:28px !important;
 	line-height:28px;
 	padding:0px 10px;
 	width:265px;

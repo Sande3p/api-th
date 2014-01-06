@@ -268,7 +268,6 @@ function promo_register() {
 	register_post_type ( 'promo', $args );
 	flush_rewrite_rules ( false );
 	$strPostName = 'Blog';
-	$strPostName = 'Blog';
 
 	$labels = array (
 			'name' => _x ( $strPostName . 's', 'post type general name' ),
@@ -736,14 +735,6 @@ if (function_exists ( 'register_sidebar' )) {
 	'after_widget' => ''
 			) );
 	
-	// overview template sidebar
-	register_sidebar ( array (
-	'name' => 'Case studies sidebar',
-	'id' => 'case_studies_sidebar',
-	'description' => 'Sidebar widget on Case studies single page',
-	'before_widget' => '',
-	'after_widget' => ''
-			) );
 	
 	// blog sidebar
 	register_sidebar ( array (
@@ -780,7 +771,7 @@ class nav_menu_walker extends Walker_Nav_Menu {
 		$class_names = esc_attr( implode( ' ', apply_filters( 'nav_menu_css_class', array_filter( $classes ), $item ) ) );
 	
 		// build html
-		$output .= $indent . '<li id="nav-menu-item-'. $item->ID . '">';
+		$output .= $indent . '<li>';
 	
 		// link attributes
 		$attributes  = ! empty( $item->attr_title ) ? ' title="'  . esc_attr( $item->attr_title ) .'"' : '';

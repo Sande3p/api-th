@@ -63,12 +63,11 @@
 }
      #banner .bx-controls{
          position: absolute;
-         left: 50%;
+         right: 0;
      
          bottom: 13px;
          z-index: 60;
          width: auto;
-         margin-left: 452px;
 }
         #banner .bx-controls .bx-pager{
             overflow: hidden;

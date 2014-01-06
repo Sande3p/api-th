@@ -17,6 +17,7 @@ wp_enqueue_style ( 'blog-base.css' );
 wp_enqueue_style ( 'blog.css' );
 wp_enqueue_style ( 'blog-responsive.css' );
 
+
 $script = 'blog.js';
 wp_register_script ( $script, get_bloginfo ( 'stylesheet_directory' ) . '/js/'.$script );
 wp_enqueue_script ( $script );

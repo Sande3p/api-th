@@ -700,12 +700,12 @@ var app = {
     },    
     
 	formatDate: function(date){
-		return date.replace(/ /g, '&nbsp;').replace(/[.]/g, '/');
+		date = new Date(date.replace(/-/g,'/').replace(/T/,' ').replace(/Z/,' ').replace(/\./,' +'));
+		return date.toDateString() + ' ' + date.getHours() + ':' + date.getMinutes();
 	},
 
 	formatDate2: function(date){
-		//return date.replace(/ /g, '&nbsp;').replace(/[.]/g, '/');
-
+		date = new Date(date.replace(/-/g,'/').replace(/T/,' ').replace(/Z/,' ').replace(/\./,' +'));
 		return date.toDateString() + ' ' + date.getHours() + ':' + date.getMinutes();
 	},
 
@@ -760,22 +760,22 @@ var app = {
 			//	$('.contestName', row).attr('href',  challengeDetailsUrl + rec.roundId);
 				
 				if (rec.startDate == null || rec.startDate == "") {
-                rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.startDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
 				//$('.vStartDate', row).html(app.formatDate(rec.startDate));
-				$('.vStartDate', row).html(app.formatDate2(new Date(rec.startDate)));
+				$('.vStartDate', row).html(app.formatDate2(rec.startDate));
 				
 				if (rec.round1EndDate == null || rec.round1EndDate == "") {
-                rec.round1EndDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.round1EndDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
 				//$('.vEndRound', row).html(app.formatDate(rec.round1EndDate));
-				$('.vEndRound', row).html(app.formatDate2(new Date(rec.endDate)));
+				$('.vEndRound', row).html(app.formatDate2(rec.round1EndDate));
 				
 				if (rec.endDate == null || rec.endDate == "") {
-                rec.endDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.endDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
 				//$('.vEndDate', row).html(app.formatDate(rec.endDate));
-				$('.vEndDate', row).html(app.formatDate2(new Date(rec.endDate)));
+				$('.vEndDate', row).html(app.formatDate2(rec.endDate));
 				
 				if (rec.timeLeft == null || rec.timeLeft == "") {
 					rec.timeLeft = "3 days"; //dummy data
@@ -810,17 +810,17 @@ var app = {
             	$('.contestName', row).html('<i></i>' + rec.fullName);
 				
 				if (rec.startDate == null || rec.startDate == "") {
-                rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.startDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
 				$('.vStartDate', row).html(app.formatDate(rec.startDate));
 				
 				if (rec.round1EndDate == null || rec.round1EndDate == "") {
-                rec.round1EndDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.round1EndDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
 				$('.vEndRound', row).html(app.formatDate(rec.round1EndDate));
 				
 				if (rec.endDate == null || rec.endDate == "") {
-                rec.endDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.endDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
 				$('.vEndDate', row).html(app.formatDate(rec.endDate));
 				
@@ -859,17 +859,17 @@ var app = {
 				if (rec.startDate == null || rec.startDate == "") {
                 rec.startDate = "--"; //dummy data
 				}
-				$('.vStartDate', row).html(app.formatDate2(new Date(rec.postingDate)));
+				$('.vStartDate', row).html(app.formatDate2(rec.postingDate));
 				
 				if (rec.round1EndDate == null || rec.round1EndDate == "") {
 					rec.round1EndDate = "--"; //dummy data
 				}
-				$('.vEndRound', row).html(app.formatDate2(new Date(rec.checkpointSubmissionEndDate)));
+				$('.vEndRound', row).html(app.formatDate2(rec.checkpointSubmissionEndDate));
 				
 				if (rec.endDate == null || rec.endDate == "") {
 					rec.endDate = "--"; //dummy data
 				}
-				$('.vEndDate', row).html(app.formatDate2(new Date(rec.submissionEndDate)));
+				$('.vEndDate', row).html(app.formatDate2(rec.submissionEndDate));
 				
 				if (rec.timeLeft == null || rec.timeLeft == "") {
 					rec.timeLeft = "--"; //dummy data
@@ -907,19 +907,19 @@ var app = {
 //           		$('.contestName', row).html('<i></i>' + rec.contestName);
             	$('.contestName', row).html('<i></i>' + rec.challengeName).attr('href','/challenge-details/' + rec.challengeId);
 				if (rec.startDate == null || rec.startDate == "") {
-                rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.startDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
-				$('.vStartDate', row).html(app.formatDate2(new Date(rec.postingDate)));
+				$('.vStartDate', row).html(app.formatDate2(rec.postingDate));
 				
 				if (rec.round1EndDate == null || rec.round1EndDate == "") {
-					rec.round1EndDate = "10.31.2013 10:10 EDT"; //dummy data
+					rec.round1EndDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
-				$('.vEndRound', row).html(app.formatDate2(new Date(rec.checkpointSubmissionEndDate)));
+				$('.vEndRound', row).html(app.formatDate2(rec.checkpointSubmissionEndDate));
 				
 				if (rec.endDate == null || rec.endDate == "") {
-					rec.endDate = "10.31.2013 10:10 EDT"; //dummy data
+					rec.endDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
-				$('.vEndDate', row).html(app.formatDate2(new Date(rec.submissionEndDate)));
+				$('.vEndDate', row).html(app.formatDate2(rec.submissionEndDate));
 				
 				if (rec.timeLeft == null || rec.timeLeft == "") {
 					rec.timeLeft = "3 days"; //dummy data
@@ -958,19 +958,19 @@ var app = {
 //           		$('.contestName', row).html('<i></i>' + rec.contestName);
             	$('.contestName', row).html('<i></i>' + rec.challengeName).attr('href','/challenge-details/' + rec.challengeId);
 				if (rec.startDate == null || rec.startDate == "") {
-                rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.startDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
-				$('.vStartDate', row).html(app.formatDate2(new Date(rec.postingDate)));
+				$('.vStartDate', row).html(app.formatDate2(rec.postingDate));
 				
 				if (rec.round1EndDate == null || rec.round1EndDate == "") {
-					rec.round1EndDate = "10.31.2013 10:10 EDT"; //dummy data
+					rec.round1EndDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
-				$('.vEndRound', row).html(app.formatDate2(new Date(rec.checkpointSubmissionEndDate)));
+				$('.vEndRound', row).html(app.formatDate2(rec.checkpointSubmissionEndDate));
 				
 				if (rec.endDate == null || rec.endDate == "") {
-					rec.endDate = "10.31.2013 10:10 EDT"; //dummy data
+					rec.endDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
-				$('.vEndDate', row).html(app.formatDate2(new Date(rec.submissionEndDate)));
+				$('.vEndDate', row).html(app.formatDate2(rec.submissionEndDate));
 				
 				if (rec.timeLeft == null || rec.timeLeft == "") {
 					rec.timeLeft = "3 days"; //dummy data
@@ -1038,17 +1038,17 @@ var app = {
 			$('.contestName', con).html('<i></i>' + rec.name);
 			
 			if (rec.startDate == null || rec.startDate == "") {
-                rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.startDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
 			$('.vStartDate', con).html(app.formatDate(rec.startDate));
 				
             if (rec.round1EndDate == null || rec.round1EndDate == "") {
-                rec.round1EndDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.round1EndDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
             $('.vEndRound', con).html(app.formatDate(rec.round1EndDate));
 			
 			if (con.endDate == null || con.endDate == "") {
-                con.endDate = "10.31.2013 10:10 EDT"; //dummy data
+                con.endDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
             $('.vEndDate', con).html(app.formatDate(rec.endDate));
 			
@@ -1083,19 +1083,19 @@ var app = {
             //$('.contestName', con).html('<i></i>' + '<a href="/challenge-details/' + rec.roundId + '">' + rec.fullName + '</a>');
 				
 			if (rec.startDate == null || rec.startDate == "") {
-                rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.startDate = "2014-01-03T21:00:05.000Z"; //dummy data
 			}
-			$('.vStartDate', con).html(app.formatDate2(new Date(rec.startDate)));
+			$('.vStartDate', con).html(app.formatDate2(rec.startDate));
 
             if (rec.round1EndDate == null || rec.round1EndDate == "") {
-                rec.round1EndDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.round1EndDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
-			$('.vEndRound', con).html(app.formatDate2(new Date(rec.endDate)));
+			$('.vEndRound', con).html(app.formatDate2(rec.endDate));
 			
 			if (con.endDate == null || con.endDate == "") {
-                con.endDate = "10.31.2013 10:10 EDT"; //dummy data
+                con.endDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
-			$('.vEndDate', con).html(app.formatDate2(new Date(rec.endDate)));
+			$('.vEndDate', con).html(app.formatDate2(rec.endDate));
 			
 			if (rec.timeLeft == null || rec.timeLeft == "") {
 					rec.timeLeft = "3 days"; //dummy data
@@ -1130,20 +1130,20 @@ var app = {
             
 
 			if (rec.startDate == null || rec.startDate == "") {
-            	rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
+            	rec.startDate = "2014-01-03T21:00:05.000Z"; //dummy data
 			}
-			$('.vStartDate', con).html(app.formatDate2(new Date(rec.postingDate)));
+			$('.vStartDate', con).html(app.formatDate2(rec.postingDate));
             
 			if (rec.round1EndDate == null || rec.round1EndDate == "") {
-                rec.round1EndDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.round1EndDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
-			$('.vEndRound', con).html(app.formatDate2(new Date(rec.checkpointSubmissionEndDate)));
+			$('.vEndRound', con).html(app.formatDate2(rec.checkpointSubmissionEndDate));
 			
 			if (con.endDate == null || con.endDate == "") {
-                con.endDate = "10.31.2013 10:10 EDT"; //dummy data
+                con.endDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
             $('.vEndDate', con).html(app.formatDate(rec.endDate));
-			$('.vEndDate', con).html(app.formatDate2(new Date(rec.submissionEndDate)));
+			$('.vEndDate', con).html(app.formatDate2(rec.submissionEndDate));
 			
 			if (rec.timeLeft == null || rec.timeLeft == "") {
 					rec.timeLeft = "3 days"; //dummy data
@@ -1200,19 +1200,19 @@ var app = {
             	$('.contestName', row).html('<i></i>' + rec.name);
 				
 				if (rec.startDate == null || rec.startDate == "") {
-                rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.startDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
-				$('.vStartDate', row).html(app.formatDate2(new Date(rec.startDate)));
+				$('.vStartDate', row).html(app.formatDate2(rec.startDate));
 				
 				if (rec.round1EndDate == null || rec.round1EndDate == "") {
-                rec.round1EndDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.round1EndDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
-				$('.vEndRound', row).html(app.formatDate2(new Date(rec.round1EndDate)));
+				$('.vEndRound', row).html(app.formatDate2(rec.round1EndDate));
 				
 				if (rec.endDate == null || rec.endDate == "") {
-                rec.endDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.endDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
-				$('.vEndDate', row).html(app.formatDate2(new Date(rec.endDate)));
+				$('.vEndDate', row).html(app.formatDate2(rec.endDate));
 				
 				if (rec.timeLeft == null || rec.timeLeft == "") {
 					rec.timeLeft = "3 days"; //dummy data
@@ -1232,19 +1232,19 @@ var app = {
             	$('.contestName', row).html('<i></i>' + rec.fullName);
 				
 				if (rec.startDate == null || rec.startDate == "") {
-                rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.startDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
-				$('.vStartDate', row).html(app.formatDate2(new Date(rec.startDate)));
+				$('.vStartDate', row).html(app.formatDate2(rec.startDate));
 				
 				if (rec.round1EndDate == null || rec.round1EndDate == "") {
-                rec.round1EndDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.round1EndDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
-				$('.vEndRound', row).html(app.formatDate2(new Date(rec.round1EndDate)));
+				$('.vEndRound', row).html(app.formatDate2(rec.round1EndDate));
 				
 				if (rec.endDate == null || rec.endDate == "") {
-                rec.endDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.endDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
-				$('.vEndDate', row).html(app.formatDate2(new Date(rec.endDate)));
+				$('.vEndDate', row).html(app.formatDate2(rec.endDate));
 				
 				if (rec.timeLeft == null || rec.timeLeft == "") {
 					rec.timeLeft = "3 days"; //dummy data
@@ -1263,19 +1263,19 @@ var app = {
             	$('.contestName', row).html('<i></i>' + rec.challengeName).attr('href','/challenge-details/' + rec.challengeId + '?type=design');
 				
 				if (rec.startDate == null || rec.startDate == "") {
-                rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.startDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
-				$('.vStartDate', row).html(app.formatDate2(new Date(rec.postingDate)));
+				$('.vStartDate', row).html(app.formatDate2(rec.postingDate));
 				
 				if (rec.round1EndDate == null || rec.round1EndDate == "") {
-                rec.round1EndDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.round1EndDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
-				$('.vEndRound', row).html(app.formatDate2(new Date(rec.checkpointSubmissionEndDate)));
+				$('.vEndRound', row).html(app.formatDate2(rec.checkpointSubmissionEndDate));
 				
 				if (rec.endDate == null || rec.endDate == "") {
-                rec.endDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.endDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
-				$('.vEndDate', row).html(app.formatDate2(new Date(rec.submissionEndDate)));
+				$('.vEndDate', row).html(app.formatDate2(rec.submissionEndDate));
 				
 				if (rec.timeLeft == null || rec.timeLeft == "") {
 					rec.timeLeft = "3 days"; //dummy data
@@ -1295,19 +1295,19 @@ var app = {
             	$('.contestName', row).html('<i></i>' + rec.challengeName + '</a>').attr('href','<a href="/challenge-details/' + rec.challengeId);
 				
 				if (rec.startDate == null || rec.startDate == "") {
-                rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.startDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
-				$('.vStartDate', row).html(app.formatDate2(new Date(rec.postingDate)));
+				$('.vStartDate', row).html(app.formatDate2(rec.postingDate));
 				
 				if (rec.round1EndDate == null || rec.round1EndDate == "") {
-                rec.round1EndDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.round1EndDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
-				$('.vEndRound', row).html(app.formatDate2(new Date(rec.checkpointSubmissionEndDate)));
+				$('.vEndRound', row).html(app.formatDate2(rec.checkpointSubmissionEndDate));
 				
 				if (rec.endDate == null || rec.endDate == "") {
-                rec.endDate = "10.31.2013 10:10 EDT"; //dummy data
+                rec.endDate = "2014-01-03T21:00:05.000Z"; //dummy data
 				}
-				$('.vEndDate', row).html(app.formatDate2(new Date(rec.submissionEndDate)));
+				$('.vEndDate', row).html(app.formatDate2(rec.submissionEndDate));
 				
 				if (rec.timeLeft == null || rec.timeLeft == "") {
 					rec.timeLeft = "3 days"; //dummy data

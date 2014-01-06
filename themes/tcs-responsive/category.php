@@ -256,4 +256,4 @@ $blogPageTitle = get_option("blog_page_title") == "" ? "Welcome to the TopCoder-
 			</div>
 		</article>
 		<!-- /#mainContent -->
-<?php get_footer(); ?>
+<?php get_footer(blog); ?>

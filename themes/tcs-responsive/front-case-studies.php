@@ -137,14 +137,14 @@ $siteURL = site_url ();
 					<?php
 							
 if (($current_page > 1)) {
-								echo '<a class="prevLink" href="' . get_site_url () . '/case-studies/page/' . ($current_page - 1) . '"><i></i> Prev</a>';
+								echo '<a class="prevLink" href="' . get_page_link_by_slug ('case-studies') . 'page/' . ($current_page - 1) . '"><i></i> Prev</a>';
 							}
 							?>
 					
 					<?php
 							
 if ($current_page < $total_pages) {
-								echo '<a class="nextLink" href="' . get_site_url () . '/case-studies/page/' . ($current_page + 1) . '">Next <i></i></a>';
+								echo '<a class="nextLink" href="' . get_page_link_by_slug ('case-studies') . 'page/' . ($current_page + 1) . '">Next <i></i></a>';
 							}
 							;
 							?>
