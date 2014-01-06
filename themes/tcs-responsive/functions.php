@@ -85,12 +85,20 @@ function curPageURL() {
 }
 
 function get_page_link_by_slug($page_slug) {
-$page = get_page_by_path($page_slug);
-if ($page) :
-return get_permalink( $page->ID );
-else :
-return "#";
-endif;
+	$page = get_page_by_path($page_slug);
+	if ($page) :
+	return get_permalink($page );
+	else :
+	return "#";
+	endif;
+}
+function get_page_link_by_title($page_slug) {
+	$page = get_page_by_title($page_slug);
+	if ($page) :
+	return get_permalink( $page );
+	else :
+	return "#";
+	endif;
 }
 function wpb_set_post_views($postID) {
     $count_key = 'wpb_post_views_count';
@@ -127,6 +135,7 @@ function tcapi_query_vars($query_vars) {
 	$query_vars [] = 'handle';
 	$query_vars [] = 'slug';
 	$query_vars [] = 'tab';
+	$query_vars [] = 'show';
 	return $query_vars;
 }
 add_filter ( 'query_vars', 'tcapi_query_vars' );
@@ -160,9 +169,7 @@ add_rewrite_rule ( '^'.MEMBER_PROFILE_PERMALINK.'/([^/]*)/?([^/]*)$', 'index.php
 //add_rewrite_rule ( '^'.BLOG_PERMALINK.'/([^/]*)/page/([0-9]*)/?$', 'index.php?pagename=blog-page&slug=$matches[1]&page=$matches[2]', 'top' );
 
 // Case studies Category
-//add_rewrite_rule ( '^'.CASE_STUDIES_PERMALINK.'/([^/]*)/?$', 'index.php?pagename=case-studies&slug=$matches[1]', 'top' );
-//add_rewrite_rule ( '^'.CASE_STUDIES_PERMALINK.'/([^/]*)/?$', 'index.php?pagename=case-studies&page=$matches[1]', 'top' );
-//add_rewrite_rule ( '^'.CASE_STUDIES_PERMALINK.'/([^/]*)/page/([0-9]*)/?$', 'index.php?pagename=case-studies&slug=$matches[1]&page=$matches[2]', 'top' );
+add_rewrite_rule ( '^case-studies/?show=([^/]*)$', 'index.php?pagename=case-studies&show=$matches[1]', 'top' );
 
 // challenges
 add_rewrite_rule( '^challenges/([^/]*)/?$', 'index.php?pagename=challenge-details&contestID=$matches[1]', 'top');

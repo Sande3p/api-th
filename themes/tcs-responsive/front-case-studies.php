@@ -34,14 +34,12 @@ $siteURL = site_url ();
 					$thumbHtml = "";
 					$detailHtml = "";
 					
-					if (get_query_var ( 'page' )) {
-						$paged = get_query_var ( 'page' );
-					} else {
-						$paged = 1;
-					}
-					$num = $paged = get_query_var ( 'num' );
+					
+					//$paged = get_query_var ( 'page' ) ? absint ( get_query_var ( 'page' ) ) : 1;
+					$paged = get_query_var ( 'paged' ) ? absint ( get_query_var ( 'paged' ) ) : 1;
+					$num =  get_query_var ( 'num' );
 					$post_per_page = get_option ( 'case_studies_per_page' );
-					if ($paged == 'all') {
+					if (get_query_var('show') == 'all') {
 						$post_per_page = - 1;
 					}
 					
@@ -128,23 +126,23 @@ $siteURL = site_url ();
 						}
 						?>
 			</div>
-			<?php if ($paged !='all'){?>
+			<?php if ($post_per_page != -1){?>
 			<div class="dataChanges container">
 				<div class="lt">
-					<a class="btn" href="<?php echo get_site_url().'/case-studies/page/all';?>">Show All</a>
+					<a class="btn" href="<?php echo get_page_link_by_title ('Case Studies').'?show=all';?>">Show All</a>
 				</div>
 				<div class="rt">
 					<?php
 							
 if (($current_page > 1)) {
-								echo '<a class="prevLink" href="' . get_page_link_by_slug ('case-studies') . 'page/' . ($current_page - 1) . '"><i></i> Prev</a>';
+								echo '<a class="prevLink" href="' . get_page_link_by_title ('Case Studies') . 'page/' . ($current_page - 1) . '"><i></i> Prev</a>';
 							}
 							?>
 					
 					<?php
 							
 if ($current_page < $total_pages) {
-								echo '<a class="nextLink" href="' . get_page_link_by_slug ('case-studies') . 'page/' . ($current_page + 1) . '">Next <i></i></a>';
+								echo '<a class="nextLink" href="' . get_page_link_by_title ('Case Studies') . 'page/' . ($current_page + 1) . '">Next <i></i></a>';
 							}
 							;
 							?>

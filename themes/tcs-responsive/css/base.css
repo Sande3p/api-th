@@ -207,7 +207,7 @@ em{
     text-align: center;
     font-size: 14px;
     border-radius: 6px;
-    behavior: url(./wp-content/themes/tcs-responsive/css/PIE.htc);
+    behavior: url(./css/PIE.htc);
     position: relative;
 }
     .btn:hover{
@@ -242,7 +242,7 @@ em{
     top: 0;
     right: 0;
     background: #fffffe;
-    behavior: url(./wp-content/themes/tcs-responsive/css/PIE.htc);
+    behavior: url(./css/PIE.htc);
 }
 #navigation, #navigation > .container{
     height: 94px;
@@ -536,7 +536,7 @@ em{
             width: 193px;
             vertical-align: top;
             color: #a1a1a1;
-            behavior: url(./wp-content/themes/tcs-responsive/css/PIE.htc);
+            behavior: url(./css/PIE.htc);
             box-shadow: none;
 }
         #footer .updates .btn{

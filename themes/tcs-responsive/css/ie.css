@@ -5,22 +5,22 @@ body{
 .userWidget{
 	top: 81px;
 	box-shadow: 0 1px 3px #ccc;
-	behavior: url(./wp-content/themes/tcs-responsive/css/PIE.htc);
+	behavior: url(./css/PIE.htc);
 }
 #navigation{
 	box-shadow: 0 2px 3px #aaa;
-	behavior: url(./wp-content/themes/tcs-responsive/css/PIE.htc);
+	behavior: url(./css/PIE.htc);
 }
 #hero .trackInfo{
 	box-shadow: 0 1px 1px #888;
-	behavior: url(./wp-content/themes/tcs-responsive/css/PIE.htc);
+	behavior: url(./css/PIE.htc);
 }
 .teamView .members .member img {
     border:0;
 }
 .btn, a.btn {
     border-radius:6px;
-    behavior: url("/css/PIE.htc");
+    behavior: url(./css/PIE.htc);
 
 }
 .ie7 #whatsHappening .slider .bx-pager{

@@ -22,17 +22,16 @@ $script = 'blog.js';
 wp_register_script ( $script, get_bloginfo ( 'stylesheet_directory' ) . '/js/'.$script );
 wp_enqueue_script ( $script );
 ?>
-<?php
 
-get_header ();
+<?php
 
 $values = get_post_custom ( $post->ID );
 
 $currUrl = curPageURL();
 $userkey = get_option ( 'api_user_key' );
-$currPage = (int) get_query_var ( 'pages' ) != "" ? (int) get_query_var ( 'pages' ) : 1;
+$currPage = (int) get_query_var ( 'page' ) != "" ? (int) get_query_var ( 'page' ) : 1;
 $postPerPage = get_option("posts_per_page") == "" ? 5 : get_option("posts_per_page");
-$siteURL = site_url();
+$siteURL = site_url ();
 
 $blogPageTitle = get_option("blog_page_title") == "" ? "Welcome to the TopCoder-CloudSpokes Blog" : get_option("blog_page_title");
 ?>
@@ -44,7 +43,7 @@ $blogPageTitle = get_option("blog_page_title") == "" ? "Welcome to the TopCoder-
 <div class="content">
 	<div id="main">
 	<?php
-		$searchKey = urldecode(get_query_var("searchKey"));
+		$searchKey = $_GET["s"];
 	?>
 	<!-- Start Overview Page-->
 		
@@ -52,7 +51,7 @@ $blogPageTitle = get_option("blog_page_title") == "" ? "Welcome to the TopCoder-
 		<div class="pageTitleWrapper">
 			<div class="pageTitle container">
 				<h2 class="blogPageTitle"><?php echo $blogPageTitle;?></h2>
-				<span class="blogIcon searchBlogIcon"></span>
+				<span class="blogIcon"></span>
 			</div>
 			<div class="blogCategoryWrapper">
 				<div class="container">
@@ -89,7 +88,7 @@ $blogPageTitle = get_option("blog_page_title") == "" ? "Welcome to the TopCoder-
 			<div class="container blogPageMainContent">
 				<div class="rightSplit  grid-3-3">
 					<div class="mainStream grid-2-3">
-						<section id="blogPageContent">
+						<section id="blogPageContent" class="pageContent">
 						<div class="subscribeTopWrapper">
 							<?php
 								wp_reset_query();
@@ -98,7 +97,7 @@ $blogPageTitle = get_option("blog_page_title") == "" ? "Welcome to the TopCoder-
 								$wpQueryAll = query_posts($args);
 								$postCount = count($wpQueryAll);
 							?>
-							<a class="currentCatLink searchFoundTitle"><span class="showMobile">Search Results</span><span class="hideMobile"><?php echo $postCount?> results for '<?php echo $searchKey;?>'</span></a>
+							<a class="currentCatLink searchFoundTitle"><?php echo $postCount?> results for '<?php echo $searchKey;?>'</a>
 						</div>
 						<div id="searchBlogsWrapper" class="blogsWrapper">
 							<input type="hidden" class="pageNo" value="<?php echo $currPage; ?>" />
@@ -123,16 +122,15 @@ $blogPageTitle = get_option("blog_page_title") == "" ? "Welcome to the TopCoder-
 									else $imageUrl = get_bloginfo('stylesheet_directory')."/i/story-side-pic.png";
 									
 									$dateObj = DateTime::createFromFormat('Y-m-d H:i:s', $post->post_date);
-									$dateStr = $dateObj->format('F j, Y');
+									$dateStr = $dateObj->format('M j, Y');
 									
 									$twitterText = urlencode(wrap_content_strip_html(wpautop($post->post_content), 130, true,'\n\r',''));
 									$title = htmlspecialchars($post->post_title);
 									$subject = htmlspecialchars(get_bloginfo('name')).' : '.$title;
 									$body = htmlspecialchars($post->post_content);
-									$emailBody = get_permalink();
-									$email_article = 'mailto:?subject='.rawurlencode($subject).'&amp;body='.$emailBody;
+									$email_article = 'mailto:?subject='.rawurlencode($subject).'&body='.rawurlencode($body);
 									$twitterShare = "http://twitter.com/home?status=".$twitterText;
-									$fbShare = "http://www.facebook.com/sharer/sharer.php?s=100&amp;p[url]=".get_permalink()."&amp;p[images][0]=".$imageUrl."&amp;p[title]=".get_the_title()."&amp;p[summary]=".$twitterText;
+									$fbShare = "http://www.facebook.com/sharer/sharer.php?s=100&p[url]=".get_permalink()."&p[images][0]=".$imageUrl."&p[title]=".get_the_title()."&p[summary]=".$twitterText;
 									$gplusShare = "https://plus.google.com/share?url=".get_permalink();
 									
 									$authorObj = get_user_by("id",$post->post_author);
@@ -145,12 +143,12 @@ $blogPageTitle = get_option("blog_page_title") == "" ? "Welcome to the TopCoder-
 								
 								<!-- Blog Desc -->
 								<div class="blogDescBox">
-									<div class="postDate"><span><?php echo $dateStr;?> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; By:&nbsp;&nbsp;</span></div>
+									<div class="postDate"><?php echo $dateStr;?> &nbsp;&nbsp;&nbsp;|&nbsp;&nbsp;&nbsp; By:&nbsp;&nbsp;</div>
 									<div class="postAuthor"><a href="<?php echo $authorLink; ?>" class="author blueLink"><?php the_author();?></a></div>
-									<div class="postCategory"><span>In : </span> 
+									<div class="postCategory">In : 
 									<?php
 										$categories = get_the_category();
-										$separator = '<span>, </span>';
+										$separator = ', ';
 										$output = '';
 										if($categories){
 											foreach($categories as $key=>$category) {
@@ -158,16 +156,16 @@ $blogPageTitle = get_option("blog_page_title") == "" ? "Welcome to the TopCoder-
 													$output .= '<a href="'.get_category_link( $category->term_id ).'" title="' . esc_attr( sprintf( __( "View all posts in %s" ), $category->name ) ) . '">'.$category->cat_name.'</a>'.$separator;
 											}
 										}
-										echo rtrim($output, $separator);
+										echo trim($output, $separator);
 									?>									
 									</div>
 								</div>
 								<!-- Blog Desc End -->
 								
 								<!-- content wrapper -->
-								<div class="contentWrapper pageContent">
+								<div class="contentWrapper">
 									<?php 
-										$excerpt = wrap_content_strip_html(wpautop($post->post_content), 400, true,'\n\r','','<a>');
+										$excerpt = wrap_content_strip_html(wpautop($post->post_content), 400, true,'\n\r','');
 										echo $excerpt;
 									?>
 								</div>
@@ -192,15 +190,16 @@ $blogPageTitle = get_option("blog_page_title") == "" ? "Welcome to the TopCoder-
 							endif;
 						?>
 						<?php
-							$searchUrl = get_bloginfo("wpurl")."/blog/search/".$searchKey."/";
-							$prevLink = $searchUrl.($currPage-1);
-							$nextLink = $searchUrl.($currPage+1);
+							$arrPrev = array("page"=>($currPage-1));
+							$arrNext = array("page"=>($currPage+1));
+							$prevLink = add_query_arg($currentUrl,$arrPrev);
+							$nextLink = add_query_arg($currentUrl,$arrNext);
 							
 							if($postCount > $postPerPage) :
 						?>
 							<div class="pagingWrapper">
-								<?php if($currPage>1) :?><a class="prev" href="<?php echo $prevLink;?>">Older Posts</a><?php endif; ?>
-								<?php if( $postCount > ($currPage * $postPerPage)) : ?><a class="next" href="<?php echo $nextLink;?>">Newer Posts</a><?php endif;?>
+								<?php if($currPage>1) :?><a class="prev" href="<?php echo $prevLink;?>">Older Post</a><?php endif; ?>
+								<?php if( $postCount > ($currPage * $postPerPage)) : ?><a class="next" href="<?php echo $nextLink;?>">Newer Post</a><?php endif;?>
 							</div>
 						<?php endif; ?>	
 							

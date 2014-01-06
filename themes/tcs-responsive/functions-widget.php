@@ -48,9 +48,8 @@ class Search_blog_widget extends WP_Widget {
 		?>
 		<div class="searchBox">
 			<div class="group">
-				<form id="formSearchContest" action="javascript:;" method="GET">
-					<input type="hidden" class="searchUrl" value="<?php bloginfo("wpurl");?>/blog/search/" />
-					<input type="text" class="text isBlured searchKey" />
+				<form id="formSearchContest" action="<?php bloginfo("wpurl");?>" method="GET">
+					<input type="text" name="s" class="text isBlured" />
 					<input type="submit" style="display:none" />
 					<a class="btn" href="javascript:$('#formSearchContest').submit();">Find</a>
 				</form>
@@ -137,7 +136,7 @@ class Blog_category_widget extends WP_Widget {
 		/* Before widget (defined by themes). */
 		echo $before_widget;
 	
-		$blogCategoryId = getCategoryId(BLOG);
+		$blogCategoryId = getCategoryId('blog');
 		$args = array(
 			'type'                     => 'blog',
 			'child_of'                 => $blogCategoryId,
@@ -298,16 +297,10 @@ class Popular_post_widget extends WP_Widget {
 			<?php	
 				while ( have_posts() ) : the_post();
 					$post;
-					
-					$postId = $post->ID;
-					$imageMobile = wp_get_attachment_image_src( get_post_thumbnail_id( $postId ), 'thumbnail' );
-					if($imageMobile!=null) $imageUrlMobile = $imageMobile[0];
-					else $imageUrlMobile = get_bloginfo('stylesheet_directory')."/i/content-thumb.png";
-					
 					?>
 					<li>
 						<a class="contentLink" href="<?php the_permalink() ?>">
-						<img class="contentThumb" src="<?php echo $imageUrlMobile; ?>" alt="<?php the_title(); ?>">
+						<img class="contentThumb" src="<?php bloginfo( 'stylesheet_directory' ); ?>/i/content-thumb.png" alt="<?php the_title(); ?>">
 						<?php the_title(); ?>
 						</a> <span class="contentBrief"><?php echo wrap_content_strip_html(wpautop(get_the_content()), 70, true,'\n\r','...') ?></span>
 					</li>
@@ -417,7 +410,7 @@ class Subscribe_widget extends WP_Widget {
 		<div class="subscribeBox">
 			<h3><?php echo $title;?></h3>
 			<div class="group">
-				<input type="email" class="text isBlured subscribeInput" placeholder="Enter Your Email Address : " />
+				<input type="text" class="text isBlured subscribeInput" placeholder="Enter Your Email Address : " />
 				<span class="errorInput"></span>
 				<p class="subscribeSuccess">Thanks for subscription our blog</p>
 			</div>
@@ -500,25 +493,26 @@ class Download_banner_widget extends WP_Widget {
 		extract ( $args );
 		
 		/* Our variables from the widget settings. */
-		$downloadLink = $instance ['download_link'];
+		$downloadLink = $instance ['downloadLink'];
 		$downloadLink = $downloadLink == "" ? "javascript:;" : $downloadLink;
-		$html_content = $instance ['html_content'];
-		$html_content = trim($html_content) == "" ? 
-		'
-		<a class="downloadWidget" href="javascript:;">
-			<p class="download">download :</p>
-			<p class="para1">THE TALENT WAR SURVIVAL GUIDE:</p>
-			<p class="para2">MASTERING APPLICATION</p>
-			<p class="para3">DEVELOPMENT</p>
-		</a>
-		' : $html_content;
-		
-		$html_content = str_replace("site_url", get_bloginfo("stylesheet_directory"), $html_content);
+		$download = $instance ['download'];
+		$download = $download == "" ? "download :" : $download;
+		$para1 = $instance ['para1'];
+		$para1 = $para1 == "" ? "THE TALENT WAR SURVIVAL GUIDE:" : $para1;
+		$para2 = $para2 ['para2'];
+		$para2 = $para2 == "" ? "MASTERING APPLICATION" : $para2;
+		$para3 = $para3 ['para3'];
+		$para3 = $para3 == "" ? "DEVELOPMENT" : $para3;
 		
 		/* Before widget (defined by themes). */
 		echo $before_widget;
-		echo $html_content;
 		?>
+		<a class="downloadWidget" href="<?php echo $downloadLink;?>">
+			<span class="download"><?php echo $download;?></span>
+			<span class="para1"><?php echo $para1;?></span>
+			<span class="para2"><?php echo $para2;?></span>
+			<span class="para3"><?php echo $para3;?></span>
+		</a>
 
 	<?php
 		/* After widget (defined by themes). */
@@ -532,8 +526,10 @@ class Download_banner_widget extends WP_Widget {
 		$instance = $old_instance;
 		
 		/* Strip tags for title and name to remove HTML (important for text inputs). */
-		$instance ['download_link'] = strip_tags ( $new_instance ['download_link'] );
-		$instance ['html_content'] = $new_instance['html_content'];
+		$instance ['download'] = strip_tags ( $new_instance ['download'] );
+		$instance ['para1'] = strip_tags ( $new_instance ['para1'] );
+		$instance ['para2'] = strip_tags ( $new_instance ['para2'] );
+		$instance ['para3'] = strip_tags ( $new_instance ['para3'] );
 		
 		return $instance;
 	}
@@ -547,26 +543,35 @@ class Download_banner_widget extends WP_Widget {
 		
 		/* Set up some default widget settings. */
 		$defaults = array (
-				'html_content' => __ ( 
-				'<a class="downloadWidget" href="">
-						<img class="banner" src="site_url/i/download-bg.png" width="319" height="171" alt="" />
-						<p class="download">download :</p>
-						<p class="para1">THE TALENT WAR SURVIVAL GUIDE:</p>
-						<p class="para2">MASTERING APPLICATION</p>
-						<p class="para3">DEVELOPMENT</p>
-					</a>
-				', event_widget )
+				'download_link' => __ ( 'javascript:;', event_widget ),
+				'download' => __ ( 'download :', event_widget ),
+				'para1' => __ ( 'THE TALENT WAR SURVIVAL GUIDE:', event_widget ),
+				'para2' => __ ( 'MASTERING APPLICATION', event_widget ),
+				'para3' => __ ( 'DEVELOPMENT', event_widget ),
 		);
 		$instance = wp_parse_args ( ( array ) $instance, $defaults );
 		?>
 
 		<!-- Title: Text Input -->
 		<p>
-			<label for="<?php echo $this->get_field_id( 'html_content' ); ?>"><?php _e('HTML Content:', 'event_widget'); ?></label>
-			<p><strong>Note:</strong> site_url will automatic change to the host ip/domain name, e,g: href=site_url/i/download-bg.png</p>
-			<textarea id="<?php echo $this->get_field_id( 'html_content' ); ?>" name="<?php echo $this->get_field_name( 'html_content' ); ?>" rows="10" value="" style="width: 100%;">
-				<?php echo $instance['html_content']; ?>
-			</textarea>
+			<label for="<?php echo $this->get_field_id( 'download_link' ); ?>"><?php _e('Download Link:', 'event_widget'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'download_link' ); ?>" name="<?php echo $this->get_field_name( 'download_link' ); ?>" value="<?php echo $instance['download_link']; ?>" style="width: 100%;" />
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'download' ); ?>"><?php _e('Download text:', 'event_widget'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'download' ); ?>" name="<?php echo $this->get_field_name( 'download' ); ?>" value="<?php echo $instance['download']; ?>" style="width: 100%;" />
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'para1' ); ?>"><?php _e('Paragraph 1 Text:', 'event_widget'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'para1' ); ?>" name="<?php echo $this->get_field_name( 'para1' ); ?>" value="<?php echo $instance['para1']; ?>" style="width: 100%;" />
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'para2' ); ?>"><?php _e('Paragraph 2 Text:', 'event_widget'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'para2' ); ?>" name="<?php echo $this->get_field_name( 'para2' ); ?>" value="<?php echo $instance['para2']; ?>" style="width: 100%;" />
+		</p>
+		<p>
+			<label for="<?php echo $this->get_field_id( 'para3' ); ?>"><?php _e('Paragraph 3 Text:', 'event_widget'); ?></label>
+			<input id="<?php echo $this->get_field_id( 'para3' ); ?>" name="<?php echo $this->get_field_name( 'para3' ); ?>" value="<?php echo $instance['para3']; ?>" style="width: 100%;" />
 		</p>
 		<?php
 	}

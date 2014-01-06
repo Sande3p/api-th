@@ -29,7 +29,7 @@
     
         height: 209px;
         border: 3px solid #FFF;  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.3);
-        behavior: url(./wp-content/themes/tcs-responsive/css/PIE.htc);
+        behavior: url(./css/PIE.htc);
         overflow: hidden;
 }
     .aboutCoder .info{
@@ -90,7 +90,7 @@
         background-position: 0 0;
         display: inline-block;
         border-radius: 18px;
-        behavior: url(./wp-content/themes/tcs-responsive/css/PIE.htc);
+        behavior: url(./css/PIE.htc);
     }
     .aboutCoder .social a:hover{        
         box-shadow: 0 0 10px #fff;
@@ -145,7 +145,7 @@
         margin-left: 0;
         position: relative;
         border-radius: 4px 0 0 4px;
-        behavior: url(../../wp-content/themes/tcs-responsive/css/PIE.htc);  
+        behavior: url(../../css/PIE.htc);  
     }
     .trackdesign .switchBtns .first a{
         border: 1px solid #00aeff;
@@ -153,7 +153,7 @@
     .switchBtns .last a{
         position: relative;
         border-radius: 0 4px 4px 0;
-        behavior: url(../../wp-content/themes/tcs-responsive/css/PIE.htc);        
+        behavior: url(../../css/PIE.htc);        
     
     }
     .viewSwitch a{
@@ -597,7 +597,7 @@
         background-color: #7AB800;
         background-image: url(../i/ico-tracks.png);
         background-repeat: no-repeat;
-        behavior: url(./wp-content/themes/tcs-responsive/css/PIE.htc);     
+        behavior: url(./css/PIE.htc);     
         
 }
     .designLayout .winInfo .contestTitle:hover{

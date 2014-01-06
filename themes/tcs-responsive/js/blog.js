@@ -1,12 +1,4 @@
-$(document).ready(function() {	
-	$( "#formSearchContest" ).submit(function( event ) {
-		var url = $("#formSearchContest .searchUrl").val();
-		var searchKey = $("#formSearchContest .searchKey").val();
-		var gotoUrl = url+searchKey;
-		location.href=gotoUrl;
-		event.preventDefault();
-	});
-	
+$(document).ready(function() {
 	/* swipe slider for category widget */
 	window.mySwipe = $('#mySwipe').Swipe(
 		{

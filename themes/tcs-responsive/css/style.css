@@ -398,7 +398,7 @@
         border-radius: 68px;
         border: 2px solid #D2D2D2;
         overflow: hidden;
-        behavior: url(./wp-content/themes/tcs-responsive/css/PIE.htc);
+        behavior: url(./css/PIE.htc);
         text-align: center;
 }
     .userWidget .details .userPic img{
