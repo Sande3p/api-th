@@ -61,4 +61,14 @@ function get_member_badges( $handle ){
 	return $TCHOOK_plugin->get_member_badges($handle);
 }
 
+function get_member_achievements( $handle){
+	global $TCHOOK_plugin;
+	return $TCHOOK_plugin->tcapi_get_member_achievements( $handle);
+}
+
+function get_forum_posts(){
+	global $TCHOOK_plugin;
+	return $TCHOOK_plugin->tcapi_get_forum_posts();
+}
+
 ?>

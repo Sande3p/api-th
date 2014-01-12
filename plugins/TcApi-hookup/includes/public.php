@@ -281,6 +281,44 @@ class TCHOOK_Public extends TCHOOK_Plugin {
 		return "Error in processing request";
 	}
 	
+	/* member achievements  */
+	function tcapi_get_member_achievements($handle= ''){
+		$url = "http://api.topcoder.com/rest/statistics/" . $handle . "/achievements?user_key=68a1d84e471ba90ac8a55b01b75af6b7";
+		$args = array (
+				'httpversion' => get_option ( 'httpversion' ),
+				'timeout' => get_option ( 'request_timeout' )
+		);
+		$response = wp_remote_get ( $url, $args );
+	
+		if (is_wp_error ( $response ) || ! isset ( $response ['body'] )) {
+			return "Error in processing request or Member dosen't exist";
+		}
+		if ($response ['response'] ['code'] == 200) {
+			$coder_achievements = json_decode ( $response ['body'] );
+			return $coder_achievements;
+		}
+		return "Error in processing request";
+	}
+	
+	/* forum posts  */
+	function tcapi_get_forum_posts(){
+		// Old Forum Posts API
+		$url = "http://apps.topcoder.com/forums/?module=RSS&categoryID=13";
+		$response = wp_remote_get ( $url, array() );
+	
+		if (is_wp_error ( $response ) || ! isset ( $response ['body'] )) {
+			return "Error in processing request";
+		}
+		if ($response ['response'] ['code'] == 200) {
+			$body = wp_remote_retrieve_body($response);
+			$xml  = simplexml_load_string($body);
+			// Convert to JSON as the new API will respond with JSON
+			$json = json_encode(new SimpleXMLElement($xml->asXML(), LIBXML_NOCDATA));
+			return json_decode($json);
+		}
+		return "Error in processing request";
+	}
+	
 }
 
 add_shortcode ( 'h', array (

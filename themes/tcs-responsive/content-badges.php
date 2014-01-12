@@ -78,7 +78,7 @@ $achievements = array(
 	"Digital Run Top Five" => false,
 	"Two Hundred Successful Challenges" => false
 );
-$coder_achievements = get_member_achievements ( get_option ( 'api_user_key' ), $handle );
+$coder_achievements = get_member_achievements (  $handle );
 foreach($coder_achievements as $achievement){
 	$achievements[$achievement->description] = true;
 }
