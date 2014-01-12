@@ -32,9 +32,7 @@
   <link rel="stylesheet" href="<?php bloginfo( 'stylesheet_directory' ); ?>/css/ie_all.css" />
 <![endif]-->
 
-<!-- 
-<script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/jQuery.js" type="text/javascript"></script>
- -->
+
 <script>
 	var base_url = '<?php echo bloginfo( 'stylesheet_directory' ); ?>';
 	var siteURL = '<?php echo get_bloginfo('siteurl');?>';
@@ -54,6 +52,7 @@
 
 <script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/scripts.js" type="text/javascript"></script>
 <script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/register-login.js" type="text/javascript"></script>
+<script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/init-header.js" type="text/javascript"></script>
 
 <!-- auth -->
 <script id="auth0" src="https://sdk.auth0.com/auth0.js#client=<?php echo auth0_client_id;?>"></script>

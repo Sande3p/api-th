@@ -178,6 +178,14 @@ flush_rewrite_rules ();
 
 /* commonly used functions
  -----------------------------------*/
+/* dateformat */
+function dateformat($date){
+	$tz = new DateTimeZone('America/New_York');
+	$dt = new DateTime($date);
+	$dt->setTimezone($tz);
+	return $dt->format("M d, Y H:i T"); 
+}
+
 /* excerpt */
 function new_excerpt_more( $more ) {
 	return '...<br/>'.'<a href="'. get_permalink( get_the_ID() ) . '" class="more">Read More</a>';

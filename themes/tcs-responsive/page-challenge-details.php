@@ -4,10 +4,29 @@
  */
 ?>
 <?php
+get_header();
+
+/**
+ * Enqueue scripts and styles exclusive to this template
+ */
+$enqueCSS = "challenge-detail-software.css";
+wp_register_style ( $enqueCSS,  get_bloginfo( 'stylesheet_directory' ).'/css/'.$enqueCSS);
+wp_enqueue_style ( $enqueCSS );
+
+$enqueScript = "challenge-detail-software.js";
+wp_register_script ( $enqueScript, get_bloginfo ( 'stylesheet_directory' ) . '/js/'.$enqueScript );
+wp_enqueue_script ( $enqueScript );
+$enqueScript = "jquery.mousewheel.js";
+wp_register_script ( $enqueScript, get_bloginfo ( 'stylesheet_directory' ) . '/js/'.$enqueScript );
+wp_enqueue_script ( $enqueScript );
+$enqueScript = "jquery.jscrollpane.min.js";
+wp_register_script ( $enqueScript, get_bloginfo ( 'stylesheet_directory' ) . '/js/'.$enqueScript );
+wp_enqueue_script ( $enqueScript );
+?>
+<?php
 
 $isChallengeDetails = true;
 
-get_header('challenge'); 
 
 
 $values = get_post_custom ( $post->ID );
@@ -29,7 +48,7 @@ $contest = get_contest_detail('',$contestID, $contestType);
 	$postPerPage = get_option("contest_per_page") == "" ? 30 : get_option("contest_per_page");
 ?>
 
-<div class="content" >
+<div class="content challenge-detail" >
 	<div id="main">
 	
 	<div class="container">
@@ -106,14 +125,14 @@ $contest = get_contest_detail('',$contestID, $contestType);
                                 </div>
                                 <!--End nextBoxContent-->
                                 <div class="nextBoxContent allDeadlineNextBoxContent hide">
-                                    <p><label>Posted On:</label><span><?php echo $contest->postingDate;?></span></p>
+                                    <p><label>Posted On:</label><span><?php echo dateformat($contest->postingDate);?></span></p>
                     
                                     
                                         <p><label>Register By:</label>
-                                           <span><?php echo $contest->registrationEndDate ;?>
+                                           <span><?php echo dateformat($contest->registrationEndDate) ;?>
                                            </span>
                                         </p>
-                                    <p class="last"><label>Submit By:</label><span><?php echo $contest->submissionEndDate ;?></span></p>
+                                    <p class="last"><label>Submit By:</label><span><?php echo dateformat($contest->submissionEndDate) ;?></span></p>
                     
                                 </div>
                                 <!--End nextBoxContent-->
