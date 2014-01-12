@@ -34,9 +34,6 @@ $postPerPage = get_option ( "contest_per_page" ) == "" ? 30 : get_option ( "cont
 	<?php if(have_posts()) : the_post();?>
 		<?php the_content();?>
 	<?php endif; wp_reset_query();?>
-
-
-
 		<article id="mainContent" class="splitLayout ">
 			<input type="hidden" class="contestType" value="activeContest"/>
 			<input type="hidden" class="postPerPage" value="<?php echo $postPerPage;?>"/>
@@ -51,7 +48,7 @@ $postPerPage = get_option ( "contest_per_page" ) == "" ? 30 : get_option ( "cont
 										<tr>
 											<th class="colCh">Challenges</th>
 											<th class="colTime">Timeline</th>
-											<th class="colPur">Purse</th>
+											<th class="colPur">Prizes</th>
 										</tr>
 									</thead>
 									<tbody>

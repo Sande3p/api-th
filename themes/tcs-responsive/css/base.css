@@ -528,6 +528,7 @@ em{
             overflow: hidden;
         
             width: 310px;
+            position: relative;
 }
         #footer .updates .email{
             float: left;
@@ -547,4 +548,13 @@ em{
             line-height: 30px;
             width: 104px;
             vertical-align: top;
+}
+	#footer .updates .btnSubmit{
+		position: absolute;
+		right: 0;
+		top: 0;
+		opacity: 0;
+	
+		border: 0;
+		height: 32px;
 }

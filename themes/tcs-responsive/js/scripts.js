@@ -92,8 +92,13 @@ var app = {
     initEvents: function() {
 		
 		/* post email data */
-		$('#emailForm .btnSubmit').on(ev,function(){
-			$.get($('#emailForm').attr('action'),$('#emailForm').serialize());
+		$('#footer #emailForm .btn').on(ev,function(){
+			var emailAddress = $('#footer #emailForm input[name=EMAIL]').val();
+			var pattern = new RegExp(/^((([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+(\.([a-z]|\d|[!#\$%&'\*\+\-\/=\?\^_`{\|}~]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])+)*)|((\x22)((((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(([\x01-\x08\x0b\x0c\x0e-\x1f\x7f]|\x21|[\x23-\x5b]|[\x5d-\x7e]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(\\([\x01-\x09\x0b\x0c\x0d-\x7f]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF]))))*(((\x20|\x09)*(\x0d\x0a))?(\x20|\x09)+)?(\x22)))@((([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|\d|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.)+(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])|(([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])([a-z]|\d|-|\.|_|~|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])*([a-z]|[\u00A0-\uD7FF\uF900-\uFDCF\uFDF0-\uFFEF])))\.?$/i);
+			//alert(emailAddress);	
+			if(pattern.test(emailAddress))
+			{ $('#footer #emailForm').submit(); }
+			
 		});
 		
         $('.btnMyAcc').on(ev, function() {
@@ -248,7 +253,7 @@ var app = {
 		getAllPartialContests: function(nRecords){
 			/*
 			* get all contests data
-			*/
+			*/	
 			app.getPartialContests(ajaxUrl,$('.challenges'), 2, 'design',false, function(){
 				app.getPartialContests(ajaxUrl,$('.challenges'), 2, 'develop',true, function(){
 					app.getPartialContests(ajaxUrl,$('.challenges'), 1, 'data-marathon',true, function(){
@@ -256,7 +261,6 @@ var app = {
 					});
 				});
 			});
-			
 		}
     
     },
@@ -275,12 +279,18 @@ var app = {
 	
 	
 	xhr = $.getJSON(url, ajax.data, function(data) {
-			app.getPartialContestTable(table, data, pageSize, isAppend);			
+			app.getPartialContestTable(table, data, pageSize, isAppend);
 		}).always(function(){
 			if(callback != null && callback !=""){
 				callback();
 			}
-		});
+		}).fail(function() { /* add failure handler */				
+			if(callback == null || callback ==""){
+				$('.loading').hide();
+			}
+				$('body').append('<div class="errorLoading">Oops... we had trouble loading ' +challenge_type+ ' Challenges.</div>');
+				 setTimeout( "jQuery('.errorLoading').fadeOut();",5000 );
+			});
 	},
 	
     /*
@@ -470,7 +480,7 @@ var app = {
 						app.getContests(ajaxUrl, $('.dataTable'), ajax.postPerPage, 'data-srm',true);
 					});
 				});	
-				if(typeof(callback)!='undefined'){
+				if(callback != null && callback !=""){
 					callback();
 				}
 			});
@@ -487,11 +497,54 @@ var app = {
 						app.getContests(ajaxUrl, $('.dataTable'), ajax.postPerPage, 'data-srm',true);
 					});
 				});	
-				callback();
+				if(callback != null && callback !=""){
+					callback();
+				}
 			});
-		}
+		},
+	
 		
     },
+	getTrackSymbol: function(type){
+		 var trackName = "o";
+		 switch (type) {
+                case "Web Design":
+                    trackName = "w";
+                    break;
+                case "Widget or Mobile Screen Design":
+                    trackName = "wi";
+                    break;
+                case "Logo Design":
+					trackName = "l";
+					break;
+				case "Banners/Icons":
+					trackName = "bi";
+					break;						
+				case "Wireframes":
+                    trackName = "wf";
+                    break;
+                case "Idea Generation":
+                    trackName = "ig";
+                    break;
+                case "Other":
+                    trackName = "o";
+                    break;
+				 case "UI Prototype Competition":
+                    trackName = "p";
+                    break;
+				case "Content Creation":
+					trackName = "cc";
+					break;
+				case "Assembly Competition":
+					trackName = "as";
+					break;
+				case "Conceptualization":
+					trackName = "c";
+					break;		
+				
+            }
+		return trackName;
+	},
 
 	/*
 	 * 0verview page functions
@@ -606,8 +659,6 @@ var app = {
 				if ($(this).hasClass("isShow")){
 					$(".jsCloseCaseDetails:visible").trigger("click");
 				}else{
-					var ofY=$(this).offset().top-20;
-					$("html, body").animate({ scrollTop: ofY });
 					if ($(".isShow").length > 0){
 						$(".jsShowCaseDetails").removeClass("isShow");
 						$(".caseDetailItem").hide();
@@ -700,19 +751,20 @@ var app = {
     },    
     
 	formatDate: function(date){
-		date = new Date(date.replace(/-/g,'/').replace(/T/,' ').replace(/Z/,' ').replace(/\./,' +'));
-		return date.toDateString() + ' ' + date.getHours() + ':' + date.getMinutes();
+		return date.replace(/ /g, '&nbsp;').replace(/[.]/g, '/');
 	},
 
 	formatDate2: function(date){
-		date = new Date(date.replace(/-/g,'/').replace(/T/,' ').replace(/Z/,' ').replace(/\./,' +'));
-		return date.toDateString() + ' ' + date.getHours() + ':' + date.getMinutes();
+		//return date.replace(/ /g, '&nbsp;').replace(/[.]/g, '/');
+
+		return date.toDateString() + ' ' + ( (date.getHours()<10?'0':'') + date.getHours() ) + ':' + ( (date.getMinutes()<10?'0':'') + date.getMinutes() );
 	},
 
 	
     // get contests tableView & gridView data
     getContests: function(url, table, pageSize, challenge_type, isAppend, callback) {
-        if (url == null || url == "") {
+      //  $('.errorLoading').remove();
+		if (url == null || url == "") {
             return false;
         }
         ajax.data["contest_type"] = challenge_type;
@@ -723,15 +775,20 @@ var app = {
 			xhr.abort();
 		}		
 		
-        xhr = $.getJSON(url, ajax.data, function(data) {
-            app.getContestTable(table, data, pageSize, isAppend);
+        xhr = $.getJSON(url, ajax.data, function(data) {            
+			app.getContestTable(table, data, pageSize, isAppend);
             app.getContestGrid($('#gridView .contestGrid'), data, (pageSize), isAppend);
-			
         }).always(function(){
 			if(callback != null && callback !=""){
 				callback();
-			}			
-		});
+			}
+		}).fail(function() { /* add failure handler */
+			if(callback == null || callback ==""){
+				$('.loading').hide();
+			}
+				$('body').append('<div class="errorLoading">Oops... we had trouble loading ' +challenge_type+ ' Challenges.</div>');
+				 setTimeout( "jQuery('.errorLoading').fadeOut();",5000 );
+			});
     },
     // generate contest view table
     getContestTable: function(table, data, records2Disp, isAppend) {
@@ -757,25 +814,25 @@ var app = {
 			* generate table row for contest type SRM
 			*/			
             	$('.contestName', row).html('<i></i>' + rec.name);
-			//	$('.contestName', row).attr('href',  challengeDetailsUrl + rec.roundId);
+				$('.contestName', row).attr('href',  challengeDetailsUrl + rec.roundId);
 				
 				if (rec.startDate == null || rec.startDate == "") {
-                rec.startDate = "2014-01-03T21:00:05.000Z"; //dummy data
+                rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
 				//$('.vStartDate', row).html(app.formatDate(rec.startDate));
-				$('.vStartDate', row).html(app.formatDate2(rec.startDate));
+				$('.vStartDate', row).html(app.formatDate2(new Date(rec.startDate)));
 				
 				if (rec.round1EndDate == null || rec.round1EndDate == "") {
-                rec.round1EndDate = "2014-01-03T21:00:05.000Z"; //dummy data
+                rec.round1EndDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
 				//$('.vEndRound', row).html(app.formatDate(rec.round1EndDate));
-				$('.vEndRound', row).html(app.formatDate2(rec.round1EndDate));
+				$('.vEndRound', row).html(app.formatDate2(new Date(rec.endDate)));
 				
 				if (rec.endDate == null || rec.endDate == "") {
-                rec.endDate = "2014-01-03T21:00:05.000Z"; //dummy data
+                rec.endDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
 				//$('.vEndDate', row).html(app.formatDate(rec.endDate));
-				$('.vEndDate', row).html(app.formatDate2(rec.endDate));
+				$('.vEndDate', row).html(app.formatDate2(new Date(rec.endDate)));
 				
 				if (rec.timeLeft == null || rec.timeLeft == "") {
 					rec.timeLeft = "3 days"; //dummy data
@@ -785,7 +842,7 @@ var app = {
 				if (rec.purse == null || rec.purse == "") {
 					rec.purse = "1500"; //dummy data
 				}
-				$('.colPur', row).html("$" + rec.purse);
+				$('.colPur', row).html("$" + numberWithCommas(rec.purse));
 				
 				if (rec.registrants == null || rec.registrants == "") {
 					rec.registrants = "10"; //dummy data
@@ -796,13 +853,13 @@ var app = {
 					rec.submissions = "10"; //dummy data
 				}
 				$('.colSub', row).html(rec.submissions);
-				
+/*				
 				if (rec.isRegistered === "true") {
 					$('.action', row).html('<a href="javascript:;" class="btn">Submit</a>');
 				} else {
 					$('.action', row).html('<a href="javascript:;" class="btn btnAlt">Register</a>');
 				}
-				
+*/				
 			}else if(ajax.data["contest_type"]=="data-marathon"){
 				/*
 				* generate table row for contest type Marathon
@@ -810,17 +867,17 @@ var app = {
             	$('.contestName', row).html('<i></i>' + rec.fullName);
 				
 				if (rec.startDate == null || rec.startDate == "") {
-                rec.startDate = "2014-01-03T21:00:05.000Z"; //dummy data
+                rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
 				$('.vStartDate', row).html(app.formatDate(rec.startDate));
 				
 				if (rec.round1EndDate == null || rec.round1EndDate == "") {
-                rec.round1EndDate = "2014-01-03T21:00:05.000Z"; //dummy data
+                rec.round1EndDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
 				$('.vEndRound', row).html(app.formatDate(rec.round1EndDate));
 				
 				if (rec.endDate == null || rec.endDate == "") {
-                rec.endDate = "2014-01-03T21:00:05.000Z"; //dummy data
+                rec.endDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
 				$('.vEndDate', row).html(app.formatDate(rec.endDate));
 				
@@ -832,7 +889,7 @@ var app = {
 				if (rec.purse == null || rec.purse == "") {
 					rec.purse = "1500"; //dummy data
 				}
-				$('.colPur', row).html("$" + rec.purse);
+				$('.colPur', row).html("$" + numberWithCommas(rec.purse));
 				
 				if (rec.registrants == null || rec.registrants == "") {
 					rec.registrants = "10"; //dummy data
@@ -843,88 +900,111 @@ var app = {
 					rec.submissions = "10"; //dummy data
 				}
 				$('.colSub', row).html(rec.submissions);
-				
+/*				
 				if (rec.isRegistered === "true") {
 					$('.action', row).html('<a href="http://community.topcoder.com/tc?module=MatchDetails&rd=' + rec.roundId + '" class="btn">Submit</a>');
 				} else {
 					$('.action', row).html('<a href="http://community.topcoder.com/tc?module=MatchDetails&rd=' + rec.roundId + '" class="btn btnAlt">Register</a>');
 				}
+*/
 			}else if(ajax.data["contest_type"]=="design"){
 				
 				/*
 				* generate table row for other contest type
 				*/	
-           		
-            	$('.contestName', row).html('<i></i>' +rec.challengeName).attr('href','/challenge-details/' + rec.challengeId + '?type=design');
+           		//$('.contestName', row).html('<i></i>' + rec.challengeName);
+            	
+				var trackName = app.getTrackSymbol(rec.challengeType);				
+            
+            	$('.contestName', row).html('<i></i>' + '<a href="/challenge-details/' + rec.challengeId + '?type=design">' + rec.challengeName + '</a>');
+				row.addClass('track-' + trackName);
+				
 				if (rec.startDate == null || rec.startDate == "") {
-                rec.startDate = "--"; //dummy data
+                rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
-				$('.vStartDate', row).html(app.formatDate2(rec.postingDate));
+				$('.vStartDate', row).html(app.formatDate2(new Date(rec.postingDate)));
 				
-				if (rec.round1EndDate == null || rec.round1EndDate == "") {
-					rec.round1EndDate = "--"; //dummy data
+				if (rec.checkpointSubmissionEndDate == null || rec.checkpointSubmissionEndDate == "") {
+					rec.checkpointSubmissionEndDate = ""; // no checkpoint
+					$('.lEndRound', row).html("");
+					$('.vEndRound', row).html("");
+				} else {
+					//$('.lEndRound').show();			
+					$('.vEndRound', row).html(app.formatDate2(new Date(rec.checkpointSubmissionEndDate)));
 				}
-				$('.vEndRound', row).html(app.formatDate2(rec.checkpointSubmissionEndDate));
-				
+
+							
 				if (rec.endDate == null || rec.endDate == "") {
-					rec.endDate = "--"; //dummy data
+					rec.endDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
-				$('.vEndDate', row).html(app.formatDate2(rec.submissionEndDate));
+				$('.vEndDate', row).html(app.formatDate2(new Date(rec.submissionEndDate)));
 				
 				if (rec.timeLeft == null || rec.timeLeft == "") {
-					rec.timeLeft = "--"; //dummy data
+					rec.timeLeft = "3 days"; //dummy data
 				}
-				$('.colTLeft', row).html(((new Number(rec.currentPhaseRemainingTime)) / 60 / 60 / 24).toPrecision(1).toString() + ' Days');
+				//$('.colTLeft', row).html(((new Number(rec.currentPhaseRemainingTime)) / 60 / 60 / 24).toPrecision(1).toString() + ' Days');
+				$('.colTLeft', row).html(secondsToString(rec.currentPhaseRemainingTime));
 				
 				if (rec.isEnding === "true") {
 					$('.colTLeft', row).addClass('imp');
 				}
 				
 				if (rec.purse == null || rec.purse == "") {
-					rec.purse = "--"; //dummy data
+					rec.purse = "1500"; //dummy data
 				}
-				$('.colPur', row).html("$" + rec.prize[0]);
+				$('.colPur', row).html("$" + numberWithCommas(rec.prize[0]));
 				
 				if (rec.registrants == null || rec.registrants == "") {
-					rec.registrants = "--"; //dummy data
+					rec.registrants = "10"; //dummy data
 				}
 				$('.colReg', row).html(rec.numRegistrants);
 				
 				if (rec.submissions == null || rec.submissions == "") {
-					rec.submissions = "--"; //dummy data
+					rec.submissions = "10"; //dummy data
 				}
 				$('.colSub', row).html(rec.numSubmissions);
-				
+/*				
 				if (rec.isRegistered === "true") {
 					$('.action', row).html('<a href="/challenge-details/' + rec.challengeId + '" class="btn">Submit</a>');
 				} else {
 					$('.action', row).html('<a href="/challenge-details/' + rec.challengeId + '" class="btn btnAlt">Register</a>');
 				}
+*/
 			}else if(ajax.data["contest_type"]=="develop"){
 				/*
 				* generate table row for other contest type
 				*/	
 //           		$('.contestName', row).html('<i></i>' + rec.contestName);
-            	$('.contestName', row).html('<i></i>' + rec.challengeName).attr('href','/challenge-details/' + rec.challengeId);
-				if (rec.startDate == null || rec.startDate == "") {
-                rec.startDate = "2014-01-03T21:00:05.000Z"; //dummy data
-				}
-				$('.vStartDate', row).html(app.formatDate2(rec.postingDate));
+				var trackName = app.getTrackSymbol(rec.challengeType);				
+            
+            	$('.contestName', row).html('<i></i>' + '<a href="/challenge-details/' + rec.challengeId + '">' + rec.challengeName + '</a>' );
+				row.addClass('track-' + trackName);
 				
-				if (rec.round1EndDate == null || rec.round1EndDate == "") {
-					rec.round1EndDate = "2014-01-03T21:00:05.000Z"; //dummy data
+				if (rec.startDate == null || rec.startDate == "") {
+                rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
-				$('.vEndRound', row).html(app.formatDate2(rec.checkpointSubmissionEndDate));
+				$('.vStartDate', row).html(app.formatDate2(new Date(rec.postingDate)));
+				
+				if (rec.checkpointSubmissionEndDate == null || rec.checkpointSubmissionEndDate == "") {
+					rec.checkpointSubmissionEndDate = ""; // no checkpoint
+					$('.lEndRound', row).html("");
+					$('.vEndRound', row).html("");
+				} else {
+					//$('.lEndRound').show();			
+					$('.vEndRound', row).html(app.formatDate2(new Date(rec.checkpointSubmissionEndDate)));
+				}
+
 				
 				if (rec.endDate == null || rec.endDate == "") {
-					rec.endDate = "2014-01-03T21:00:05.000Z"; //dummy data
+					rec.endDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
-				$('.vEndDate', row).html(app.formatDate2(rec.submissionEndDate));
+				$('.vEndDate', row).html(app.formatDate2(new Date(rec.submissionEndDate)));
 				
 				if (rec.timeLeft == null || rec.timeLeft == "") {
 					rec.timeLeft = "3 days"; //dummy data
 				}
-				$('.colTLeft', row).html(((new Number(rec.currentPhaseRemainingTime)) / 60 / 60 / 24).toPrecision(1).toString() + ' Days');
+				//$('.colTLeft', row).html(((new Number(rec.currentPhaseRemainingTime)) / 60 / 60 / 24).toPrecision(1).toString() + ' Days');
+				$('.colTLeft', row).html(secondsToString(rec.currentPhaseRemainingTime));
 				
 				if (rec.isEnding === "true") {
 					$('.colTLeft', row).addClass('imp');
@@ -933,7 +1013,7 @@ var app = {
 				if (rec.purse == null || rec.purse == "") {
 					rec.purse = "1500"; //dummy data
 				}
-				$('.colPur', row).html("$" + rec.prize[0]);
+				$('.colPur', row).html("$" + numberWithCommas(rec.prize[0]));
 				
 				if (rec.registrants == null || rec.registrants == "") {
 					rec.registrants = "10"; //dummy data
@@ -944,38 +1024,43 @@ var app = {
 					rec.submissions = "10"; //dummy data
 				}
 				$('.colSub', row).html(rec.numSubmissions);
-				
+/*				
 				if (rec.isRegistered === "true") {
 					$('.action', row).html('<a href="/challenge-details/' + rec.challengeId + '" class="btn">Submit</a>');
 				} else {
 					$('.action', row).html('<a href="/challenge-details/' + rec.challengeId + '" class="btn btnAlt">Register</a>');
 				}
-
+*/
 			}else{
 				/*
 				* generate table row for other contest type
 				*/	
 //           		$('.contestName', row).html('<i></i>' + rec.contestName);
-            	$('.contestName', row).html('<i></i>' + rec.challengeName).attr('href','/challenge-details/' + rec.challengeId);
+            	$('.contestName', row).html('<i></i>' + '<a href="/challenge-details/' + rec.challengeId + '">' + rec.challengeName + '</a>');
 				if (rec.startDate == null || rec.startDate == "") {
-                rec.startDate = "2014-01-03T21:00:05.000Z"; //dummy data
+                rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
-				$('.vStartDate', row).html(app.formatDate2(rec.postingDate));
+				$('.vStartDate', row).html(app.formatDate2(new Date(rec.postingDate)));
 				
-				if (rec.round1EndDate == null || rec.round1EndDate == "") {
-					rec.round1EndDate = "2014-01-03T21:00:05.000Z"; //dummy data
+				if (rec.checkpointSubmissionEndDate == null || rec.checkpointSubmissionEndDate == "") {
+					rec.checkpointSubmissionEndDate = ""; // no checkpoint
+					$('.lEndRound', row).html("");
+					$('.vEndRound', row).html("");
+				} else {
+					//$('.lEndRound').show();			
+					$('.vEndRound', row).html(app.formatDate2(new Date(rec.checkpointSubmissionEndDate)));
 				}
-				$('.vEndRound', row).html(app.formatDate2(rec.checkpointSubmissionEndDate));
 				
 				if (rec.endDate == null || rec.endDate == "") {
-					rec.endDate = "2014-01-03T21:00:05.000Z"; //dummy data
+					rec.endDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
-				$('.vEndDate', row).html(app.formatDate2(rec.submissionEndDate));
+				$('.vEndDate', row).html(app.formatDate2(new Date(rec.submissionEndDate)));
 				
 				if (rec.timeLeft == null || rec.timeLeft == "") {
 					rec.timeLeft = "3 days"; //dummy data
 				}
-				$('.colTLeft', row).html(((new Number(rec.currentPhaseRemainingTime)) / 60 / 60 / 24).toPrecision(1).toString() + ' Days');
+				//$('.colTLeft', row).html(((new Number(rec.currentPhaseRemainingTime)) / 60 / 60 / 24).toPrecision(1).toString() + ' Days');
+				$('.colTLeft', row).html(secondsToString(rec.currentPhaseRemainingTime));
 				
 				if (rec.isEnding === "true") {
 					$('.colTLeft', row).addClass('imp');
@@ -984,7 +1069,7 @@ var app = {
 				if (rec.purse == null || rec.purse == "") {
 					rec.purse = "1500"; //dummy data
 				}
-				$('.colPur', row).html("$" + rec.prize[0]);
+				$('.colPur', row).html("$" + numberWithCommas(rec.prize[0]));
 				
 				if (rec.registrants == null || rec.registrants == "") {
 					rec.registrants = "10"; //dummy data
@@ -995,12 +1080,13 @@ var app = {
 					rec.submissions = "10"; //dummy data
 				}
 				$('.colSub', row).html(rec.numSubmissions);
-				
+/*				
 				if (rec.isRegistered === "true") {
 					$('.action', row).html('<a href="/challenge-details/' + rec.challengeId + '" class="btn">Submit</a>');
 				} else {
 					$('.action', row).html('<a href="/challenge-details/' + rec.challengeId + '" class="btn btnAlt">Register</a>');
 				}
+*/
 			}
 			
             
@@ -1010,9 +1096,7 @@ var app = {
         $('.loading').hide();
     },
 
-    /*
-	*  challlenges getGridview Blocks
-	*/
+    // getGridview Blocks
     getContestGrid: function(gridEl, data, records2Disp, isAppend) {
 		if(isAppend != true){
         	gridEl.html(null);			
@@ -1038,17 +1122,17 @@ var app = {
 			$('.contestName', con).html('<i></i>' + rec.name);
 			
 			if (rec.startDate == null || rec.startDate == "") {
-                rec.startDate = "2014-01-03T21:00:05.000Z"; //dummy data
+                rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
 			$('.vStartDate', con).html(app.formatDate(rec.startDate));
 				
             if (rec.round1EndDate == null || rec.round1EndDate == "") {
-                rec.round1EndDate = "2014-01-03T21:00:05.000Z"; //dummy data
+                rec.round1EndDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
             $('.vEndRound', con).html(app.formatDate(rec.round1EndDate));
 			
 			if (con.endDate == null || con.endDate == "") {
-                con.endDate = "2014-01-03T21:00:05.000Z"; //dummy data
+                con.endDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
             $('.vEndDate', con).html(app.formatDate(rec.endDate));
 			
@@ -1063,7 +1147,7 @@ var app = {
 			if (rec.purse == null || rec.purse == "") {
 					rec.purse = "--"; //dummy data
 				}
-            $('.cgPur', con).html('<i></i> $' + rec.purse);
+            $('.cgPur', con).html('<i></i> $' + numberWithCommas(rec.purse));
 			
 			if (rec.registrants == null || rec.registrants == "") {
 					rec.registrants = "--"; //dummy data
@@ -1083,19 +1167,19 @@ var app = {
             //$('.contestName', con).html('<i></i>' + '<a href="/challenge-details/' + rec.roundId + '">' + rec.fullName + '</a>');
 				
 			if (rec.startDate == null || rec.startDate == "") {
-                rec.startDate = "2014-01-03T21:00:05.000Z"; //dummy data
+                rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
 			}
-			$('.vStartDate', con).html(app.formatDate2(rec.startDate));
+			$('.vStartDate', con).html(app.formatDate2(new Date(rec.startDate)));
 
             if (rec.round1EndDate == null || rec.round1EndDate == "") {
-                rec.round1EndDate = "2014-01-03T21:00:05.000Z"; //dummy data
+                rec.round1EndDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
-			$('.vEndRound', con).html(app.formatDate2(rec.endDate));
+			$('.vEndRound', con).html(app.formatDate2(new Date(rec.endDate)));
 			
 			if (con.endDate == null || con.endDate == "") {
-                con.endDate = "2014-01-03T21:00:05.000Z"; //dummy data
+                con.endDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
-			$('.vEndDate', con).html(app.formatDate2(rec.endDate));
+			$('.vEndDate', con).html(app.formatDate2(new Date(rec.endDate)));
 			
 			if (rec.timeLeft == null || rec.timeLeft == "") {
 					rec.timeLeft = "3 days"; //dummy data
@@ -1108,7 +1192,7 @@ var app = {
 			if (rec.purse == null || rec.purse == "") {
 					rec.purse = "1500"; //dummy data
 				}
-            $('.cgPur', con).html('<i></i> $' + rec.prize[0]);
+            $('.cgPur', con).html('<i></i> $' + numberWithCommas(rec.prize[0]));
 			
 			if (rec.registrants == null || rec.registrants == "") {
 					rec.registrants = "10"; //dummy data
@@ -1122,28 +1206,27 @@ var app = {
 		}
 		else{	
             //$('.contestName', con).html('<i></i>' + rec.contestName);
-			if(ajax.data["contest_type"]=="design"){
-				$('.contestName', con).html('<i></i>' +  rec.challengeName).attr('href','/challenge-details/' + rec.challengeId +'?type=design');
-			}else{
-				$('.contestName', con).html('<i></i>' +  rec.challengeName).attr('href','/challenge-details/' + rec.challengeId );	
-			}
-            
+            $('.contestName', con).html('<i></i>' + '<a href="/challenge-details/' + rec.challengeId + '?type=design">' + rec.challengeName + '</a>');
 
 			if (rec.startDate == null || rec.startDate == "") {
-            	rec.startDate = "2014-01-03T21:00:05.000Z"; //dummy data
+            	rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
 			}
-			$('.vStartDate', con).html(app.formatDate2(rec.postingDate));
+			$('.vStartDate', con).html(app.formatDate2(new Date(rec.postingDate)));
             
-			if (rec.round1EndDate == null || rec.round1EndDate == "") {
-                rec.round1EndDate = "2014-01-03T21:00:05.000Z"; //dummy data
-				}
-			$('.vEndRound', con).html(app.formatDate2(rec.checkpointSubmissionEndDate));
+			if (rec.checkpointSubmissionEndDate == null || rec.checkpointSubmissionEndDate == "") {
+				rec.checkpointSubmissionEndDate = ""; // no checkpoint
+				//$('.lEndRound').hide();
+				$('.vEndRound', con).html("");
+			} else {
+				$('.lEndRound').show();
+				$('.vEndRound', con).html(app.formatDate2(new Date(rec.checkpointSubmissionEndDate)));
+			}
 			
 			if (con.endDate == null || con.endDate == "") {
-                con.endDate = "2014-01-03T21:00:05.000Z"; //dummy data
+                con.endDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
             $('.vEndDate', con).html(app.formatDate(rec.endDate));
-			$('.vEndDate', con).html(app.formatDate2(rec.submissionEndDate));
+			$('.vEndDate', con).html(app.formatDate2(new Date(rec.submissionEndDate)));
 			
 			if (rec.timeLeft == null || rec.timeLeft == "") {
 					rec.timeLeft = "3 days"; //dummy data
@@ -1158,7 +1241,7 @@ var app = {
 			if (rec.purse == null || rec.purse == "") {
 					rec.purse = "1500"; //dummy data
 				}
-            $('.cgPur', con).html('<i></i> $' + rec.prize[0]);
+            $('.cgPur', con).html('<i></i> $' + numberWithCommas(rec.prize[0]));
 			
 			if (rec.registrants == null || rec.registrants == "") {
 					rec.registrants = "10"; //dummy data
@@ -1200,19 +1283,19 @@ var app = {
             	$('.contestName', row).html('<i></i>' + rec.name);
 				
 				if (rec.startDate == null || rec.startDate == "") {
-                rec.startDate = "2014-01-03T21:00:05.000Z"; //dummy data
+                rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
-				$('.vStartDate', row).html(app.formatDate2(rec.startDate));
+				$('.vStartDate', row).html(app.formatDate2(new Date(rec.startDate)));
 				
 				if (rec.round1EndDate == null || rec.round1EndDate == "") {
-                rec.round1EndDate = "2014-01-03T21:00:05.000Z"; //dummy data
+                rec.round1EndDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
-				$('.vEndRound', row).html(app.formatDate2(rec.round1EndDate));
+				$('.vEndRound', row).html(app.formatDate2(new Date(rec.round1EndDate)));
 				
 				if (rec.endDate == null || rec.endDate == "") {
-                rec.endDate = "2014-01-03T21:00:05.000Z"; //dummy data
+                rec.endDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
-				$('.vEndDate', row).html(app.formatDate2(rec.endDate));
+				$('.vEndDate', row).html(app.formatDate2(new Date(rec.endDate)));
 				
 				if (rec.timeLeft == null || rec.timeLeft == "") {
 					rec.timeLeft = "3 days"; //dummy data
@@ -1222,7 +1305,7 @@ var app = {
 				if (rec.purse == null || rec.purse == "") {
 					rec.purse = "1500"; //dummy data
 				}
-				$('.colPur', row).html("$" + rec.purse);				
+				$('.colPur', row).html("$" + numberWithCommas(rec.purse));				
 				
 				
 			}else if(ajax.data["contest_type"]=="data-marathon"){
@@ -1232,19 +1315,19 @@ var app = {
             	$('.contestName', row).html('<i></i>' + rec.fullName);
 				
 				if (rec.startDate == null || rec.startDate == "") {
-                rec.startDate = "2014-01-03T21:00:05.000Z"; //dummy data
+                rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
-				$('.vStartDate', row).html(app.formatDate2(rec.startDate));
+				$('.vStartDate', row).html(app.formatDate2(new Date(rec.startDate)));
 				
 				if (rec.round1EndDate == null || rec.round1EndDate == "") {
-                rec.round1EndDate = "2014-01-03T21:00:05.000Z"; //dummy data
+                rec.round1EndDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
-				$('.vEndRound', row).html(app.formatDate2(rec.round1EndDate));
+				$('.vEndRound', row).html(app.formatDate2(new Date(rec.round1EndDate)));
 				
 				if (rec.endDate == null || rec.endDate == "") {
-                rec.endDate = "2014-01-03T21:00:05.000Z"; //dummy data
+                rec.endDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
-				$('.vEndDate', row).html(app.formatDate2(rec.endDate));
+				$('.vEndDate', row).html(app.formatDate2(new Date(rec.endDate)));
 				
 				if (rec.timeLeft == null || rec.timeLeft == "") {
 					rec.timeLeft = "3 days"; //dummy data
@@ -1254,28 +1337,33 @@ var app = {
 				if (rec.purse == null || rec.purse == "") {
 					rec.purse = "1500"; //dummy data
 				}
-				$('.colPur', row).html("$" + rec.purse);
+				$('.colPur', row).html("$" + numberWithCommas(rec.purse));
 				
 			}else if(ajax.data["contest_type"]=="design"){
 				/*
 				* generate table row for contest type
-				*/			
-            	$('.contestName', row).html('<i></i>' + rec.challengeName).attr('href','/challenge-details/' + rec.challengeId + '?type=design');
+				*/		
+				
+            	$('.contestName', row).html('<i></i>' + '<a href="/challenge-details/' + rec.challengeId + '?type=design">' + rec.challengeName + '</a>');
 				
 				if (rec.startDate == null || rec.startDate == "") {
-                rec.startDate = "2014-01-03T21:00:05.000Z"; //dummy data
+                rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
-				$('.vStartDate', row).html(app.formatDate2(rec.postingDate));
+				$('.vStartDate', row).html(app.formatDate2(new Date(rec.postingDate)));
 				
-				if (rec.round1EndDate == null || rec.round1EndDate == "") {
-                rec.round1EndDate = "2014-01-03T21:00:05.000Z"; //dummy data
+				if (rec.checkpointSubmissionEndDate == null || rec.checkpointSubmissionEndDate == "") {
+					rec.checkpointSubmissionEndDate = ""; // no checkpoint
+					$('.lEndRound', row).html("");
+					$('.vEndRound', row).html("");
+				} else {
+					//$('.lEndRound').show();			
+					$('.vEndRound', row).html(app.formatDate2(new Date(rec.checkpointSubmissionEndDate)));
 				}
-				$('.vEndRound', row).html(app.formatDate2(rec.checkpointSubmissionEndDate));
 				
 				if (rec.endDate == null || rec.endDate == "") {
-                rec.endDate = "2014-01-03T21:00:05.000Z"; //dummy data
+                rec.endDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
-				$('.vEndDate', row).html(app.formatDate2(rec.submissionEndDate));
+				$('.vEndDate', row).html(app.formatDate2(new Date(rec.submissionEndDate)));
 				
 				if (rec.timeLeft == null || rec.timeLeft == "") {
 					rec.timeLeft = "3 days"; //dummy data
@@ -1285,29 +1373,33 @@ var app = {
 				if (rec.purse == null || rec.purse == "") {
 					rec.purse = "1500"; //dummy data
 				}
-				$('.colPur', row).html("$" + rec.prize[0]);
+				$('.colPur', row).html("$" + numberWithCommas(rec.prize[0]));
 				
 				
 			}else{
 				/*
 				* generate table row for contest type 
 				*/			
-            	$('.contestName', row).html('<i></i>' + rec.challengeName + '</a>').attr('href','<a href="/challenge-details/' + rec.challengeId);
+            	$('.contestName', row).html('<i></i>' + '<a href="/challenge-details/' + rec.challengeId + '">' + rec.challengeName + '</a>');
 				
 				if (rec.startDate == null || rec.startDate == "") {
-                rec.startDate = "2014-01-03T21:00:05.000Z"; //dummy data
+                rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
-				$('.vStartDate', row).html(app.formatDate2(rec.postingDate));
+				$('.vStartDate', row).html(app.formatDate2(new Date(rec.postingDate)));
 				
-				if (rec.round1EndDate == null || rec.round1EndDate == "") {
-                rec.round1EndDate = "2014-01-03T21:00:05.000Z"; //dummy data
+				if (rec.checkpointSubmissionEndDate == null || rec.checkpointSubmissionEndDate == "") {
+					rec.checkpointSubmissionEndDate = ""; // no checkpoint
+					$('.lEndRound', row).html("");
+					$('.vEndRound', row).html("");
+				} else {
+					//$('.lEndRound').show();			
+					$('.vEndRound', row).html(app.formatDate2(new Date(rec.checkpointSubmissionEndDate)));
 				}
-				$('.vEndRound', row).html(app.formatDate2(rec.checkpointSubmissionEndDate));
 				
 				if (rec.endDate == null || rec.endDate == "") {
-                rec.endDate = "2014-01-03T21:00:05.000Z"; //dummy data
+                rec.endDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
-				$('.vEndDate', row).html(app.formatDate2(rec.submissionEndDate));
+				$('.vEndDate', row).html(app.formatDate2(new Date(rec.submissionEndDate)));
 				
 				if (rec.timeLeft == null || rec.timeLeft == "") {
 					rec.timeLeft = "3 days"; //dummy data
@@ -1317,7 +1409,7 @@ var app = {
 				if (rec.purse == null || rec.purse == "") {
 					rec.purse = "1500"; //dummy data
 				}
-				$('.colPur', row).html("$" + rec.prize[0]);
+				$('.colPur', row).html("$" + numberWithCommas(rec.prize[0]));
 				
 			}		
 		
@@ -1368,7 +1460,7 @@ var blueprints = {
 									<div class="val vStartDate"> </div>\
 								</div>\
 								<div class="row">\
-									<label class="lbl">Round End</label>\
+									<label class="lbl lEndRound">Round End</label>\
 									<div class="val vEndRound"> </div>\
 								</div>\
 								<div class="row">\
@@ -1380,7 +1472,7 @@ var blueprints = {
 						<td class="colPur"></td>\
 						<td class="colReg"></td>\
 						<td class="colSub"></td>\
-						<td class="action"><a href="javascript:;" class="btn">Submit</a></td>\
+						<td class="action"><!--<a href="javascript:;" class="btn">Submit</a>--></td>\
 					</tr>',
     partialChallengeRow: '<tr> \
 						<td class="colCh"><div>\
@@ -1392,7 +1484,7 @@ var blueprints = {
 									<div class="val vStartDate"> </div>\
 								</div>\
 								<div class="row">\
-									<label class="lbl">Round End</label>\
+									<label class="lbl lEndRound">Round End</label>\
 									<div class="val vEndRound"> </div>\
 								</div>\
 								<div class="row">\
@@ -1411,7 +1503,7 @@ var blueprints = {
 												<div class="val vStartDate"></div>\
 											</div>\
 											<div class="row">\
-												<label class="lbl">Round End</label>\
+												<label class="lbl lEndRound">Round End</label>\
 												<div class="val vEndRound"></div>\
 											</div>\
 											<div class="row">\
@@ -1443,3 +1535,22 @@ $(document).ready(function() {
     app.initEvents();
 })
 
+function secondsToString(seconds)
+{
+	var numdays = Math.floor(seconds / 86400);
+	var numhours = Math.floor((seconds % 86400) / 3600);
+	var numminutes = Math.floor(((seconds % 86400) % 3600) / 60);
+	var numseconds = ((seconds % 86400) % 3600) % 60;
+	var style = "";
+	if ( numdays == 0 && numhours <= 2 ){
+		style="color:red";
+	}	
+	if (isNaN(numhours)){
+		return "<em style='font-size:14px;'>not available</em>";
+	}
+	return "<span style='font-size:14px;"+style+"'>"+( numdays > 0 ? numdays + " Day(s) " : "" ) + "" + numhours + " Hrs " + ( numdays == 0 ? numminutes + " Min " : "" )+"</span>";
+}
+
+function numberWithCommas(x) {
+    return x.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ",");
+}

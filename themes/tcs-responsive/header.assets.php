@@ -38,7 +38,8 @@
 <script>
 	var base_url = '<?php echo bloginfo( 'stylesheet_directory' ); ?>';
 	var siteURL = '<?php echo get_bloginfo('siteurl');?>';
-	var ajaxUrl = "<?php bloginfo('wpurl') ?>/wp-admin/admin-ajax.php";
+	var wpUrl = "<?php bloginfo('wpurl')?>";
+	var ajaxUrl = wpUrl+"/wp-admin/admin-ajax.php";		
 </script>
 	
 <?php fixIERoundedCorder(); ?>
@@ -55,6 +56,8 @@
 <script src="<?php bloginfo( 'stylesheet_directory' ); ?>/js/register-login.js" type="text/javascript"></script>
 
 <!-- auth -->
+<script id="auth0" src="https://sdk.auth0.com/auth0.js#client=<?php echo auth0_client_id;?>"></script>
+
 <script src="https://d19p4zemcycm7a.cloudfront.net/w2/auth0-1.2.2.min.js"></script>
 
 

@@ -12,6 +12,19 @@ class TCHOOK_Public extends TCHOOK_Plugin {
 		return $query;
 	}
 	
+	// get member badges
+	public function  get_member_badges($handle){
+		$url = "http://api.topcoder.com/rest/statistics/$handle/achievements?user_key=68a1d84e471ba90ac8a55b01b75af6b7";
+		$response = wp_remote_get ( $url );
+		if (is_wp_error ( $response ) || ! isset ( $response ['body'] )) {
+			return "Error in getting badges";
+		}
+		if ($response ['response'] ['code'] == 200) {
+			return  json_decode ( $response ['body'] );
+		}
+		return "Error in getting badges";
+	}
+	
 	public function get_json_from_url( $url ) {
 		$response = wp_remote_get ( $url );
 		#echo $url;

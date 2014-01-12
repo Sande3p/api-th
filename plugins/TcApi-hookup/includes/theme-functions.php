@@ -56,4 +56,9 @@ function get_most_recent_contest($contestType = ''){
 	return $TCHOOK_plugin-> get_most_recent_contest( $contestType);
 }
 
+function get_member_badges( $handle ){
+	global $TCHOOK_plugin;
+	return $TCHOOK_plugin->get_member_badges($handle);
+}
+
 ?>

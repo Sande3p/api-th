@@ -2228,3 +2228,14 @@
 	.sideArchiveStories .showMoreWrapper .btn{
 		width: 100px;
 	}
+
+.subscribeTopWrapper .feedBtn{
+	float: right;
+	margin-top: 4px;
+	color: #01A8E9;
+	background: url(../i/rss.png) no-repeat center left;
+	padding-left: 25px;
+}
+.subscribeTopWrapper .feedBtn:hover {
+color: #FFB800;
+}

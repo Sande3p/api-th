@@ -418,3 +418,21 @@ function renderGroupBadges(categoryName, groupRenderDiv, singleRenderDiv, badges
     }
 }
 
+getMappedBadgeId = function(badgeName){
+    var badgeList = globalBadgeInfo.mapBadge;
+    for(var i=0;i<badgeList.length;i++){
+        if(badgeList[i]==badgeName){
+            return i;
+        }
+    }
+    return -1;
+}
+
+applyBadgeIds = function(){
+    $('.hidenBadgesDiv .quoteBadgesItem').each(function(){
+       var bName = $('.achievementName',$(this)).val();
+       var id= getMappedBadgeId(bName);
+       $('.achievementId',$(this)).val(id);
+    });
+}
+

@@ -21,8 +21,9 @@ $siteURL = site_url ();
 <script type="text/javascript" >
 	var siteurl = "<?php bloginfo('siteurl');?>";
 	var activePastContest = "active";
+	var challengeDetailsUrl =  "<?php echo get_page_link_by_slug('challenge-details'); ?>";
 	$(document).ready(function() {
-		ajax.postPerPage = <?php echo get_option ( 'contest_per_page' ) ;?>;
+		ajax.postPerPage = <?php echo $postPerPage ?>;
 		app.buildRequestData("activeContest", "<?php echo $contest_type;?>");
 		app.challenges.init();
 		//listActiveContest("activeContest","activeContest","<?php // echo $contest_type;?>");
@@ -44,7 +45,7 @@ $siteURL = site_url ();
 						<header>
 							<h1>Open Challenges</h1>
 							<aside class="rt">
-								<a href="javascript:;" class="link viewPastCh">View Past Challenges</a>
+								<!-- <a href="javascript:;" class="link viewPastCh">View Past Challenges</a> -->
 								<span class="views"> <a href="#gridView" class="gridView"></a> <a href="#tableView" class="listView isActive"></a>
 								</span>
 							</aside>
@@ -55,12 +56,12 @@ $siteURL = site_url ();
 									<li><a href="all" class="active link">All</a></li>
 									<li><a href="design" class="link design">Design</a></li>
 									<li><a href="develop" class="link develop">Develop </a></li>
-									<li><a href="data" class="link data">Data</a></li>
+									<li><a href="data" class="link data">Data Science</a></li>
 								</ul>
 
 							</div>
 							<div class="lt">
-								<span>Sort by</span>
+								<!-- <span>Sort by</span>
 								<div class="ddWrap">
 								<a href="javascript:;" class="upDown val">
 									End Date <i></i>
@@ -71,11 +72,21 @@ $siteURL = site_url ();
 									<li>Prize</li>
 								</ul>
 								</div>
+								-->
 							</div>
 							<div class="rt">
+							<div class="subscribeTopWrapper" style="border-bottom:0px;height:30px;margin-bottom:0px">
+								<?php
+								//$contest_type="";
+								$FeedURL = get_bloginfo('wpurl')."/challenges/feed?list=active&contestType=".$contest_type;
+								?>
+								<a class="feedBtn" href="<?php echo $FeedURL;?>">Subscribe to <?php echo $contest_type; ?> challenges </a>
+							</div>
+								<!-- 
 								<a href="javascript:;" class="searchLink">
 									<i></i>Advanced Search
 								</a>
+								-->
 							</div>
 						</div>
 						<!-- /.actions -->
@@ -85,10 +96,10 @@ $siteURL = site_url ();
 									<thead>
 										<tr class="head">
 											<th class="colCh asc" char="contestName" >Challenges</th>
-											<th class="colType" char="contestType">Type</th>
+											<th class="colType" char="contestType" >Type</th>
 											<th class="colTime" char="startDate" >Timeline</th>
 											<th class="colTLeft" char="">Time Left</th>
-											<th class="colPur" char="purse" >Purse</th>
+											<th class="colPur" char="purse" >Prizes</th>
 											<th class="colReg" char="registrants">Registrants</th>
 											<th class="colSub" char="submissions">Submissions</th>
 											<th>&nbsp;</th>

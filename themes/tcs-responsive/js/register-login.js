@@ -1,4 +1,5 @@
 $(function(){
+
 	// modal
 	/**
 	 * show modal
@@ -29,12 +30,14 @@ $(function(){
 	});
 	
 	$('.btnRegister').on('click', function () {
-		document.getElementById("registerForm").reset();
+		//document.getElementById("registerForm").reset();
 		showModal('#register');
+		
 	});
 	
 	$('.actionLogin').on('click', function() {
 		document.getElementById("loginForm").reset();
+		$('#loginForm .btnSubmit').html('Login'); 
 		showModal('#login');
     });
 	
@@ -258,7 +261,8 @@ $(function(){
 		
 		
 		if(isValid){
-			$('#register .btnSubmit').html('Please Wait');
+			$('#register a.btnSubmit').html('Please Wait');
+			
 			$.post( ajaxUrl+'?action=post_register', { 
 			firstName: $('#registerForm input.firstName').val(),
 			lastName: $('#registerForm input.lastName').val(), 
@@ -272,22 +276,26 @@ $(function(){
 					$("#thanks h2").html('Thanks for Registering');
 					$("#thanks p").html('We have sent you an email with a activation instructions.<br>If you do not receive that email within 1 hour, please email <a href="mailto:support@topcoder.com">support@topcoder.com</a>');
 					showModal('#thanks'); 
-				}
-				else{
-					$('.modal').hide();
-					$("#thanks h2").html('Error');
-					$("#thanks p").html(data.description);
-					showModal('#thanks'); 
+					$('#registerForm .invalid').removeClass('invalid');
+					$('#registerForm .valid').removeClass('valid');
+					$('.err1,.err2',frm).hide();
 					
 				}
-			}, "json");	
-			
-		$('#register .btnSubmit').html('Sign Up');
+				else{
+					//$('.modal').hide();
+					//$("#thanks h2").html('Error');
+					//$("#thanks p").html(data.description);
+					//showModal('#thanks'); 
+					alert(data.description);
+					
+				}
+				$('#register .btnSubmit').html('Sign Up');
+			}, "json");				
 				
 		}
 	});
 	
-	$('#login a.btnSubmit').on('click', function(){
+	 $('#login a.btnSubmit').on('click', function(){
 		var frm = $(this).closest('form.login');
 		$('.invalid', frm).removeClass('invalid');
 		$('.err1,.err2',frm).hide();
@@ -299,7 +307,12 @@ $(function(){
 				isValid = false;
 			}
 		});
-		if(isValid)
+		
+		if (isValid){
+			$('#loginForm .btnSubmit').html('Please wait'); 
+		}
+		
+		/*if(isValid)
 		$('input:text',frm).each(function(){
 			if($(this).val() != "OK"){
 				$(this).closest('.row').find('.err1').show();
@@ -308,6 +321,7 @@ $(function(){
 				isValid = false;
 			}
 		});
+		
 		
 		
 		if(isValid){
@@ -329,6 +343,7 @@ $(function(){
 			
 			
 		}
+		*/
 	});
 	
 	/* hover style icons */

@@ -8,7 +8,7 @@ var coder = {
 		// tab navs
 		
 		
-        $('.subTrackTabs .tabNav a').off().on(ev, function() {
+        $('.subTrackTabs .tabNav a').on(ev, function() {
             $('.isActive', $(this).closest('.tabNav')).removeClass('isActive');
             $(this).addClass('isActive');
         });       
@@ -111,7 +111,7 @@ var coder = {
             xhr = $.getJSON(dataUrl, '', function(data) {
 				var count = 0;
 				$('.forumPosts .forumList').html(null);
-                $.each(data.data, function(key, rec) {
+                $.each(data, function(key, rec) {
                     var post = $(memBluprints.forum).clone();
 					post.addClass('post'+rec.type);
                     $('.postTitle', post).html(rec.title);
