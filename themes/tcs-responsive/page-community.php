@@ -22,6 +22,7 @@ $postPerPage = get_option ( "contest_per_page" ) == "" ? 30 : get_option ( "cont
 <script type="text/javascript">
 	var siteurl = "<?php bloginfo('siteurl');?>";
 	var activePastContest = "active";
+	var challengeDetailsUrl =  "<?php echo get_page_link_by_slug('challenge-details'); ?>";
 	$(document).ready(function() {
 		app.buildRequestData("activeContest","<?php echo $contest_type;?>","");
 		app.community.init();
