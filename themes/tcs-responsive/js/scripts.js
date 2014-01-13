@@ -396,7 +396,7 @@ var app = {
             });
 
             // challengeType
-            $('.challengeType a').on(ev, function() {
+         /*   $('.challengeType a').on(ev, function() {
                 if ($(this).hasClass('active'))
                     return false;
 					
@@ -407,7 +407,7 @@ var app = {
 				}
 				window.location = url;
 				return false;
-            });
+            });*/
 			
 			/* table short */
 			$('.layChallenges .dataTable thead th').click(function(){
@@ -916,7 +916,8 @@ var app = {
             	
 				var trackName = app.getTrackSymbol(rec.challengeType);				
             
-            	$('.contestName', row).html('<i></i>' + '<a href="/challenge-details/' + rec.challengeId + '?type=design">' + rec.challengeName + '</a>');
+            	$('.contestName', row).html('<i></i>' + rec.challengeName);
+				$('.contestName', row).attr('href',  challengeDetailsUrl + rec.challengeId + '?type=design');
 				row.addClass('track-' + trackName);
 				
 				if (rec.startDate == null || rec.startDate == "") {
@@ -977,7 +978,9 @@ var app = {
 //           		$('.contestName', row).html('<i></i>' + rec.contestName);
 				var trackName = app.getTrackSymbol(rec.challengeType);				
             
-            	$('.contestName', row).html('<i></i>' + '<a href="/challenge-details/' + rec.challengeId + '">' + rec.challengeName + '</a>' );
+            //	$('.contestName', row).html('<i></i>' + '<a href="/challenge-details/' + rec.challengeId + '">' + rec.challengeName + '</a>' );
+				$('.contestName', row).html('<i></i>' + rec.challengeName);
+				$('.contestName', row).attr('href',  challengeDetailsUrl + rec.challengeId );
 				row.addClass('track-' + trackName);
 				
 				if (rec.startDate == null || rec.startDate == "") {
@@ -1036,7 +1039,9 @@ var app = {
 				* generate table row for other contest type
 				*/	
 //           		$('.contestName', row).html('<i></i>' + rec.contestName);
-            	$('.contestName', row).html('<i></i>' + '<a href="/challenge-details/' + rec.challengeId + '">' + rec.challengeName + '</a>');
+           // 	$('.contestName', row).html('<i></i>' + '<a href="/challenge-details/' + rec.challengeId + '">' + rec.challengeName + '</a>');
+				$('.contestName', row).html('<i></i>' + rec.challengeName);
+				$('.contestName', row).attr('href',  challengeDetailsUrl + rec.challengeId );
 				if (rec.startDate == null || rec.startDate == "") {
                 rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
@@ -1118,9 +1123,10 @@ var app = {
 		if(ajax.data["contest_type"]=="data-srm" ){	
 			/*
 			* generate table row for contest type SRM
-			*/	
+			*/				
 			$('.contestName', con).html('<i></i>' + rec.name);
-			
+			$('.contestName', con).attr('href',  challengeDetailsUrl + rec.roundId);
+				
 			if (rec.startDate == null || rec.startDate == "") {
                 rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
 				}
@@ -1206,7 +1212,12 @@ var app = {
 		}
 		else{	
             //$('.contestName', con).html('<i></i>' + rec.contestName);
-            $('.contestName', con).html('<i></i>' + '<a href="/challenge-details/' + rec.challengeId + '?type=design">' + rec.challengeName + '</a>');
+          //  $('.contestName', con).html('<i></i>' + '<a href="/challenge-details/' + rec.challengeId + '?type=design">' + rec.challengeName + '</a>');
+			$('.contestName', con).html('<i></i>' + rec.challengeName);
+			$('.contestName', con).attr('href',  challengeDetailsUrl + rec.challengeId);
+			if(ajax.data["contest_type"]=="design"){
+				$('.contestName', con).attr('href',  challengeDetailsUrl + rec.challengeId + '?type=design');
+			}
 
 			if (rec.startDate == null || rec.startDate == "") {
             	rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
@@ -1344,7 +1355,9 @@ var app = {
 				* generate table row for contest type
 				*/		
 				
-            	$('.contestName', row).html('<i></i>' + '<a href="/challenge-details/' + rec.challengeId + '?type=design">' + rec.challengeName + '</a>');
+            //	$('.contestName', row).html('<i></i>' + '<a href="/challenge-details/' + rec.challengeId + '?type=design">' + rec.challengeName + '</a>');
+				$('.contestName', row).html('<i></i>' + rec.challengeName);
+				$('.contestName', row).attr('href',  challengeDetailsUrl + rec.challengeId + '?type=design');
 				
 				if (rec.startDate == null || rec.startDate == "") {
                 rec.startDate = "10.31.2013 10:10 EDT"; //dummy data
@@ -1380,7 +1393,9 @@ var app = {
 				/*
 				* generate table row for contest type 
 				*/			
-            	$('.contestName', row).html('<i></i>' + '<a href="/challenge-details/' + rec.challengeId + '">' + rec.challengeName + '</a>');
+            	//$('.contestName', row).html('<i></i>' + '<a href="/challenge-details/' + rec.challengeId + '">' + rec.challengeName + '</a>');
+				$('.contestName', row).html('<i></i>' + rec.challengeName);
+				$('.contestName', row).attr('href',  challengeDetailsUrl + rec.challengeId);
 				
 				if (rec.startDate == null || rec.startDate == "") {
                 rec.startDate = "10.31.2013 10:10 EDT"; //dummy data

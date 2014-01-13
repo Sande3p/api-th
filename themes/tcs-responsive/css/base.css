@@ -430,7 +430,7 @@ em{
     background: #333;
     min-height: 244px;
     color: #959595;
-    z-index: 100000;
+    z-index: 10;
     position: relative;
 }
 #footer .container{

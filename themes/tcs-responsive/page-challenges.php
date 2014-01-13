@@ -50,13 +50,16 @@ $siteURL = site_url ();
 								</span>
 							</aside>
 						</header>
+						<?php 
+						$baseUrl = get_page_link_by_slug('challenges');
+						?>
 						<div class="actions">
 							<div class="mid challengeType">
 								<ul>
 									<li><a href="all" class="active link">All</a></li>
-									<li><a href="design" class="link design">Design</a></li>
-									<li><a href="develop" class="link develop">Develop </a></li>
-									<li><a href="data" class="link data">Data Science</a></li>
+									<li><a href="<?php bloginfo('wpurl');?>/design/challenges/" class="link design">Design</a></li>
+									<li><a href="<?php bloginfo('wpurl');?>/develop/challenges/" class="link develop">Develop </a></li>
+									<li><a href="<?php bloginfo('wpurl');?>/data/challenges/" class="link data">Data Science</a></li>
 								</ul>
 
 							</div>
